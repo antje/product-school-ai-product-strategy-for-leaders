@@ -15,7 +15,7 @@
 | Component | Module | Status | Key Artifact |
 |-----------|--------|--------|-------------|
 | **The Bet** | M1 | Done | [`01-the-bet/`](01-the-bet/): vulnerability diagnostic and working prototype |
-| **The Moat** | M2 | [ ] | `02-the-moat/` |
+| **The Moat** | M2 | Done | [`02-the-moat/`](02-the-moat/): data flywheel and kill switch audit |
 | **The Margin** | M3 | [ ] | `03-the-margin/` |
 | **The Contract** | M4 | [ ] | `04-the-contract/` |
 | **The Guardrails** | M5 | [ ] | `05-the-guardrails/` |
@@ -43,13 +43,13 @@
 
 **Why this won't get copied in 6 months.**
 
-- **Data Flywheel Score:** __/20
-- **Weakest Loop:**
-- **Competitive Position:** [describe axes + placement]
-- **Encroachment Defense:**
-- **Vendor Portability:** Ready / Partial / Locked
+- **Data Flywheel Score:** 9/20 (Correction 4 · Preference 2 · Domain Context 1 · Network 2)
+- **Weakest Loop:** Domain Context. Left at 1 deliberately, because covering more decision types means covering ones where nobody can check the advice afterwards. The investment goes to Network instead.
+- **Competitive Position:** ChatPRD scores 8/20 on the same loops, so the category has no flywheel. The whole difference is the Correction loop: their corrections say a user changed the wording, these say the user was wrong.
+- **Encroachment Defense:** The most dangerous attacker is the experimentation platforms, not the AI writing tools, because the beachhead sits on a surface they already own. What they cannot see is the decision itself, the objection, and the override.
+- **Vendor Portability:** Partial. Eval is strong because the product already scores its own advice, so the usual blocker is solved. Provider, abstraction and routing are all High risk and about two weeks of ordinary work away.
 
-→ Details: [`02-the-moat/`](02-the-moat/)
+→ Details: [`data-flywheel.md`](02-the-moat/data-flywheel.md) · [`kill-switch.md`](02-the-moat/kill-switch.md)
 
 ---
 

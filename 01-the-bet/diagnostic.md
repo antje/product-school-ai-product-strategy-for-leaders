@@ -120,7 +120,7 @@ It is a 4 rather than a 5 for two specific reasons. Team-specific history stays 
 
 **Score rationale:**
 
-This score got worse as the product got more ambitious. That trade is worth stating rather than hiding.
+This score got worse as the product got more ambitious.
 
 Encroachment risk is high on two fronts. Coding agents already read the repository, which is one of the four context sources, and they are steadily getting better at remembering across sessions. Separately, teaching product fundamentals to a newer product manager is the part of this product a strong general model already does well, because that knowledge is public and well represented in training data. So the teaching mode is more exposed than the challenging mode, and the teaching mode is also what opens the wider market.
 
