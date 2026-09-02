@@ -88,7 +88,7 @@ Per seat per month, at an assumed 10 teams and 50 seats.
 | Human-in-the-loop | $5.000 | 2 hours x $150 = $300 per team, / 12 months / 5 seats |
 | **Total AI COGS** | **$7.719** | Template label. The first two rows and part of the fourth are AI. The rest is infrastructure and labour |
 
-**Blended cost per request: $1.939 of AI cost over 528 requests, so $0.00367.** Gross margin is **74.3%** at $30 a seat and **94.3%** at the pricing proposed below, rising to 98.2% by year three.
+**Blended cost per request: $1.939 of AI cost over 528 requests, so $0.00367.** Gross margin is **74.3%** at $30 a seat and **94.9%** at the pricing proposed below, rising to 97.8% by year three.
 
 Two things this table says that are worth stating plainly.
 
@@ -160,9 +160,9 @@ Worth building, and not existential. The temptation when modelling this is to pr
 
 **Current pricing:** none, the product is pre-revenue.
 
-**Proposed AI pricing:** $500 per team per month, plus $298 per resolved call. In year one that is $6,000 base and about $2,150 metered, so roughly **$8,150 per team**, rising as the record deepens.
+**Proposed AI pricing:** $500 per team per month, plus **$60 per experiment reviewed**. At 50 experiments a year that is $6,000 base and $3,000 metered, so **$9,000 per team per year**.
 
-**Model:** hybrid.
+**Model:** hybrid, sold self-serve.
 
 **Strategy posture: maximize.** Not skim, because there is no track record to skim on. Not penetrate, because a low price on a product that claims to improve decisions argues against the claim.
 
@@ -170,73 +170,88 @@ Worth building, and not existential. The temptation when modelling this is to pr
 
 The obvious answer is a wasted experiment prevented, and it is wrong twice over.
 
-**A failed experiment is not waste.** It is the mechanism. A team running 50 tests a year expects most to fail, because that is how the winners get found. A product that sells itself as stopping tests that would fail is selling less learning.
+**A failed experiment is not waste.** It is the mechanism. A team running 50 tests a year expects most to fail, because that is how the winners get found. A product selling itself as stopping tests that would fail is selling less learning.
 
 **Loss avoidance also sells badly.** There is no budget line for waste prevented, and nobody is promoted for experiments they did not run.
 
-What the coach actually detects is not failure, it is **repetition**. Every objection cites the team's own past experiments. It does not say this will fail, it says you established this eighteen months ago. A test that fails for a new reason is valuable. A test that fails for a reason already in the corpus is the only real waste.
+What the coach detects is not failure, it is **repetition**. Every objection cites the team's own past experiments. It does not say this will fail, it says you established this eighteen months ago. A test that fails for a new reason is valuable. A test that fails for a reason already in the corpus is the only real waste.
 
-So the value is **recovered discovery throughput**: experiment slots taken back from re-treading known ground and spent on new ground instead. A team has roughly 50 slots a year, and recovering four of them is about 8% more novel experiments from the same headcount and the same calendar. That is a throughput number a product leader can put in a plan.
+So the value is **recovered discovery throughput**: experiment slots taken back from re-treading known ground and spent on new ground. A team has roughly 50 slots a year, and recovering four is about 8% more novel experiments from the same headcount and calendar.
 
 There is a second stream, and it is the social half of the job. Killing an experiment is politically expensive. A record showing the team tested this assumption three times, with results, is what makes the kill survivable in a review.
 
-### Unit of work: one resolved call
+### Unit of work: one experiment reviewed
 
-A resolved call is an objection that the team acted on and that the outcome later showed was right. It is this product's equivalent of Intercom's resolved conversation, or a coding agent's resolved ticket: the customer is billed when they got the thing they came for.
+Billing happens when a team submits an experiment brief and the coach reviews it. Not per seat, not per objection, and not per correct call.
 
-Three units were considered and the difference is what revenue tracks.
+Three candidate units were tested against what a buyer's finance function would accept, and two failed.
 
-| Unit | Per year | Price | Cost per unit | Revenue tracks |
+| Unit | Observable to the buyer | Gameable | Behaviour as the product works | Forecastable |
 |---|---|---|---|---|
-| Experiment reviewed | 50 | $50 | $0.081 | Activity. Bills for "nothing to flag" 40% of the time |
-| Objection raised | 30 | $83 | $0.135 | Warnings issued, including wrong ones |
-| **Resolved call** | **7.2** | **$298** | **$0.482** | **Value delivered** |
+| Resolved call, acted on and right | No, we score it ourselves | Yes, by not clicking accept | Shrinks | No, three stacked rates |
+| Objection raised | Yes | No | Shrinks | Partly |
+| **Experiment reviewed** | **Yes** | **No** | **Grows** | **Yes** |
 
-Billing per experiment reviewed would charge a team about $1,000 a year for silence. Billing per objection raised charges for warnings whether or not they were any good. Only the third unit is one the customer would defend, and it is the one that makes the invoice and the hit rate count the same events.
+**Why the outcome-based unit fails, even though the module recommends outcome pricing.** A resolved call is defined as an objection the team acted on that our own scoring later judged correct. That means **the vendor decides the invoice**, which no buyer's finance function accepts and no auditor is comfortable with. Intercom can bill per resolved conversation because resolution is determined by the customer's behaviour, not by Intercom's opinion of its own accuracy. We have no equivalent, so we should not pretend to.
 
-**What it is deliberately not.** Not a seat, because the scored work happens 1.67 times per seat per month and access pricing needs frequency to feel fair. And not the daily help, even though that is 84% of the cost, because metering it would make people think before asking and that is the habit the whole position rests on.
+It also creates a leak that costs nothing to exploit. If billing depends on clicking accept, the rational customer reads the objection, acts on it, and clicks keep original. Full value, no charge. And it gives us a financial incentive to nudge people toward accepting, which corrupts the only thing the product sells.
 
-**Why a base fee as well.** Two reasons. A resolved call reads out weeks after the work, so pure outcome pricing would put a quarter of lag into revenue recognition. And the record has value on days when nobody drafts anything, which is exactly when experiment cadence falls.
+**Why the unit must not shrink as the product works.** Objections fall as a team stops repeating itself, which is the product succeeding. Any unit tied to warnings therefore bills less the better it gets, and the expansion case would quietly depend on the coach not working.
+
+Experiments reviewed does the opposite. Recovered slots mean **more** experiments, so the product working raises the billable quantity. Revenue and customer value move the same direction for the same reason.
+
+**On billing for a clean review.** About 40% of briefs draw no objection, and charging for those is not a flaw. A code review that finds nothing is still a code review, and an audit that finds nothing still gets invoiced. What is being bought is a check on every decision, and "clear to proceed, and here is the history that says so" is an output, not silence.
+
+**Why a base fee as well as metering.** The record has value on days when nobody drafts anything, and experiment cadence falls exactly when a team is under pressure. The base holds the leadership view in place through a quiet quarter, and it carries the fixed cost of serving the account.
+
+**Not the daily help**, even though it is 84% of cost. Metering it would make people think before asking, and that is the habit the whole position rests on.
 
 ### Revenue scales with value, cost scales with usage
 
-This is the reason the unit matters. The two do not move together, and the gap between them is the moat expressed as money.
+Both move with experiments, but not at the same rate, and the gap is where the moats show up.
 
-**Cost tracks experiments.** Every review costs the same to produce whether the coach is right or wrong, so AI COGS moves with volume and stays forecastable.
+**Cost tracks experiments reviewed** and nothing else. Every review costs the same to produce whether or not it finds something, so COGS is forecastable from a single number.
 
-**Value tracks the corpus**, and it compounds on two independent multipliers, which are the two moats.
+**Value tracks the corpus.** As the record fills, the coach is right more often and the team overrides less. The same $60 review is worth more in year three than in month three, because the objection behind it is grounded in more of the team's own history. The **data moat** raises the hit rate. The **workflow moat** raises the rate at which advice is acted on. Neither shows up in the price, both show up in retention and in the customer's willingness to expand.
 
-The **data moat** makes the coach right more often, because every resolved call adds a labelled example. The **workflow moat** makes the team override less often, because they have watched the coach be right and the habit has set.
-
-| | Experiments | Objections | Hit rate | Acted on | Resolved calls |
+| | Experiments | Revenue | Growth | COGS | Gross margin |
 |---|---|---|---|---|---|
-| Year 1 | 50 | 30 | 60% | 40% | 7.2 |
-| Year 2 | 70 | 42 | 70% | 55% | 16.2 |
-| Year 3 | 85 | 51 | 75% | 65% | 24.9 |
+| Year 1 | 50 | $9,000 | | $463 | 94.9% |
+| Year 2 | 70 | $10,200 | 113% | $210 | 97.9% |
+| Year 3 | 85 | $11,100 | 109% | $245 | 97.8% |
 
-Experiments grow 70% over three years. Resolved calls grow **245%**, because two multipliers move at once instead of one.
+Expansion of 113% and 109% is more modest than a resolved-call model would project, and it is the number that survives scrutiny. It rests on one thing a customer controls and can verify: how many experiments they ran.
 
-| | Revenue | COGS | Gross margin |
+### Forecastability
+
+The earlier design rested on three multiplied rates, none measured: flag rate, acted-on rate and hit rate. Across a plausible range the metered half spanned **$838 to $4,302, a 5.1x spread**. Presenting a point estimate from that would have been false precision.
+
+Experiments reviewed rests on one assumption. Between 35 and 70 experiments a year, revenue runs **$8,100 to $10,200, a 1.3x spread**, and the buyer already knows which end they are at.
+
+### Sales motion, which decides the price as much as the value does
+
+An $8,000 to $9,000 contract sits in the awkward middle: too expensive for a casual card purchase, too cheap to justify a salesperson who must clear a security review to run the backtest. Left unresolved, that alone breaks the economics.
+
+**The answer is to make it self-serve, which is the same investment already argued for on cost grounds.** The backtest connects to an analytics platform by OAuth and runs without a human, so a prospect sees their own history scored before talking to anyone. That is a product-led motion at a team price, which is how Linear, Vercel and Statsig sell in this range.
+
+| Motion | CAC | Payback | 3-year LTV:CAC |
 |---|---|---|---|
-| Year 1 | $8,146 | $463 | 94.3% |
-| Year 2 | $10,828 | $210 | 98.1% |
-| Year 3 | $13,420 | $245 | 98.2% |
+| **Self-serve, no rep** | **$1,200** | **1.7 months** | **24.5x** |
+| Rep-assisted with security review | $3,200 | 4.5 months | 9.2x |
 
-Gross expansion is **133% in year two and 124% in year three**. Margin widens with tenure rather than narrowing, because revenue is tied to a quantity that compounds and cost is tied to one that does not.
+Both work. Only one is achievable without hiring, and the difference between them is the same self-serve onboarding work that is 65% of the cost of serving a customer.
 
 ### Checking the price against the value
 
-At $8,146 in year one for 7.2 resolved calls, the buyer pays about $1,130 per call that changed a decision correctly.
+At $9,000 a year for 50 reviews, a team pays $180 per experiment checked.
 
-For that to be worth it, roughly one resolved call in eight has to recover a slot that would otherwise have gone to known ground. Given that every objection is triggered by a match against the team's own history, one in eight is a low bar, and it is checkable in the backtest before anyone signs.
-
-The comparison that makes the case is not against a cheaper tool. It is against the alternative of finding out eighteen months later that the team had already run the test.
+An experiment costs about $25,000 to run in loaded time for three people. So the review costs **0.7% of the experiment it is checking**. Framed that way the question is not whether $180 is a lot, but whether anyone would run a $25,000 test without a $180 check against their own history first.
 
 | Option | Year 1 revenue | Gross margin | What the buyer is betting on |
 |---|---|---|---|
 | $30/seat | $1,800 | 74.3% | Nothing. The price is too low to signal that decisions are at stake |
-| $60/seat | $3,600 | 87.1% | Access to a tool, not to an outcome |
-| **$500/mo + $298 per resolved call** | **$8,146** | **94.3%** | **One resolved call in eight recovers an experiment slot** |
+| $60/seat | $3,600 | 87.1% | Access to a tool rather than a check on a decision |
+| **$500/mo + $60 per experiment** | **$9,000** | **94.9%** | **That a check worth 0.7% of the experiment is worth running** |
 
 ## Stress Tests
 
@@ -278,68 +293,67 @@ COGS: $463 per team in year one, of which $347 is fixed and $116 variable
 Gross margin: **74.3%**
 
 **After, AI-powered**
-Revenue: $500 per month base plus $298 per resolved call = $8,146 per team in year one, $13,420 by year three
+Revenue: $500 per month base plus $60 per experiment reviewed = $9,000 per team in year one, $11,100 by year three
 COGS: $463 in year one, $245 by year three
-Gross margin: **94.3%**, rising to **98.2%**
+Gross margin: **94.9%**, rising to **97.8%**
 
 **Net margin shift**
-Δ margin: **+20.0 points in year one, +23.9 by year three** · Δ gross dollars: **+$6,346 per team per year**, or +$63,460 at ten teams
+Δ margin: **+20.6 points** · Δ gross dollars: **+$7,200 per team per year**, or +$72,000 at ten teams
 
 ### The narrative
 
-**Why margin moves, and why it moves the unusual way.** The standard AI board story is margin down and gross profit up, and the job is explaining why the trade is fine. This one goes up on both, and the reason is structural rather than good housekeeping. The expensive part of the product is the daily help, which stays free because it buys the habit. The priced part is the rare scored call. Charging for the work rather than for access adds $6,346 per team and no cost at all.
+**Why margin moves, and why it moves the unusual way.** The standard AI board story is margin down and gross profit up, and the job is explaining why the trade is fine. This one goes up on both, and the reason is structural rather than good housekeeping. The expensive part of the product is the daily help, which stays free because it buys the habit. The priced part is the review, which costs almost nothing to produce. Charging for the check rather than for access adds $7,200 per team and no cost at all.
 
-**Why it keeps moving.** Cost tracks experiments reviewed, which grows 70% over three years. Revenue tracks resolved calls, which grows 245%, because two things compound at once: the coach is right more often as the corpus fills, and the team overrides less often as it watches the coach be right. Those two are the data moat and the workflow moat, and this is where they show up on the P&L.
+**Why it keeps moving.** Cost falls after year one because onboarding is a one-time expense. Revenue grows because experiment volume grows, and it grows partly because the product works: recovered slots mean more experiments. That is the alignment worth pointing at. The product succeeding raises the billable quantity rather than reducing it, which is not true of any outcome-based unit we considered.
 
-| | Experiments | Resolved calls | Revenue | Gross expansion |
-|---|---|---|---|---|
-| Year 1 | 50 | 7.2 | $8,146 | |
-| Year 2 | 70 | 16.2 | $10,828 | **133%** |
-| Year 3 | 85 | 24.9 | $13,420 | **124%** |
+| | Experiments | Revenue | Growth |
+|---|---|---|---|
+| Year 1 | 50 | $9,000 | |
+| Year 2 | 70 | $10,200 | **113%** |
+| Year 3 | 85 | $11,100 | **109%** |
 
-**That is gross expansion, not net revenue retention**, and the difference is what a board is actually shown. Net of churn, at a 133% gross expansion:
+**That is gross expansion, not net revenue retention.** Net of churn:
 
 | Logo retention | NRR |
 |---|---|
-| 100% | 133% |
-| 90% | 120% |
-| 80% | 106% |
-| 70% | 93% |
+| 100% | 113% |
+| 90% | 102% |
+| 80% | 90% |
 
-NRR clears 100% unless roughly a quarter of teams churn. With no customers there is no churn data, so the honest claim is that the pricing model makes strong NRR reachable and retention decides whether it is reached. The moat argument and the retention argument are the same argument, which is convenient and also means they fail together.
+NRR clears 100% if fewer than about one team in nine churns. With no customers there is no churn data, so the honest claim is that the structure makes NRR above 100% reachable and retention decides whether it is reached.
 
-**The hedge.** If metered usage collapsed to zero the base fee alone is $6,000 per team, 74% of year-one plan, still clearing 92% margin against a $463 cost to serve. If the premium proves unsellable, retreating to $60 a seat gives $3,600 at 87% margin, a worse business but not a broken one.
+**Where the moats show up.** Not in the price, which is flat per review. In retention and in expansion. As the corpus fills the coach is right more often, and as the habit sets the team overrides less, so the same $60 review is worth more in year three than in month three. That is what makes a team run more experiments and keeps them from leaving. The data moat and the workflow moat are the retention argument, and they fail together if either stalls.
+
+**The hedge.** If metered volume collapsed, the base alone is $6,000 per team, two thirds of plan, still clearing 92% margin against a $463 cost to serve. If the price proves unsellable, retreating to $60 a seat gives $3,600 at 87% margin, a worse business but not a broken one.
 
 ### The number this page was missing: payback
 
-Gross margin is half of unit economics and it is the flattering half. A CFO asks what a customer costs to acquire and how long gross profit takes to repay it.
+Gross margin is half of unit economics and it is the flattering half. A CFO asks what a customer costs to acquire and how long gross profit takes to repay it. This is also where the price and the sales motion have to agree, because a contract of this size cannot carry a salesperson.
 
-**Cost to serve is front-loaded.** Year one is $463 per team because onboarding sits in it. From year two it is around $210, so margin rises without anything improving.
-
-| Price | Year 1 ACV | Year 1 gross profit | CAC payback | 3-year LTV:CAC |
+| Motion | CAC | Year 1 gross profit | Payback | 3-year LTV:CAC |
 |---|---|---|---|---|
-| **$500/mo + $298 per resolved call** | **$8,146** | **$7,683** | **5.0 months** | **9.8x** |
-| $60/seat | $3,600 | $3,137 | 12.2 months | 3.1x |
-| $30/seat | $1,800 | $1,337 | 28.7 months | 1.4x |
+| **Self-serve, backtest runs without a human** | **$1,200** | **$8,537** | **1.7 months** | **24.5x** |
+| Rep-assisted, security review in the path | $3,200 | $8,537 | 4.5 months | 9.2x |
+| $30/seat, rep-assisted | $3,200 | $1,337 | 28.7 months | 1.4x |
 
-**This is the real argument against seat pricing, and it is not margin.** At $30 a seat the product still runs 74% gross margin, which looks fine, takes 29 months to repay the cost of winning the customer, and returns 1.4x lifetime value against acquisition cost. That business cannot fund its own growth. The same cost structure on resolved calls pays back in five months at 9.8x, and the multiple improves each year because revenue compounds while the cost to serve does not.
+**The real argument against seat pricing is not margin.** At $30 a seat the product still runs 74% gross margin, which looks fine, takes 29 months to repay the cost of winning the customer, and returns 1.4x lifetime value against acquisition. That cannot fund its own growth.
 
-The sales motion is human and evidence-led, because a backtest has to be run and explained. Only a high ACV carries that.
+**And the real argument for self-serve is not cost.** It is that it is the only motion this ACV supports. Nine thousand dollars is too much for a casual card purchase and too little for a rep who has to clear a security review before running the backtest. Making the backtest run on an OAuth connection without a human resolves both at once.
 
 ### What this asks the board to decide
 
-**Approve the pricing model change.** Seat to hybrid on resolved calls is +$6,346 per team in year one at no additional cost, and it moves CAC payback from 29 months to five. What has to be true is that the backtest convinces a buyer, and that is testable before any of this ships.
+**Approve the pricing model change.** Seat to hybrid on experiments reviewed is +$7,200 per team in year one at no additional cost. What has to be true is that a self-serve backtest convinces a buyer, and that is testable before any of this ships.
 
-**Fund the cascade before the daily-help surface launches.** It is 19.5 points of gross margin and about $3,500 a year at ten teams. Cheap to build now, awkward to retrofit once request volume is 300 times higher.
+**Fund self-serve onboarding, and treat it as a revenue decision rather than a cost one.** Two hours of a person per team is the largest line in year-one COGS and a growth ceiling at 200 hours per hundred teams. More importantly it is what makes a $9,000 ACV sellable at all, by taking the rep and the security review out of the path.
 
-**Fund self-serve onboarding.** Two hours of a person per team is the largest line in year-one COGS, and more importantly it is a growth ceiling. A hundred teams is 200 hours, five person-weeks per cohort. Each hour removed returns $150 per team per year and, at scale, the ability to add customers without adding people.
+**Fund the cascade before the daily-help surface launches.** It is 19.5 points of gross margin and about $3,500 a year at ten teams. Cheap now, awkward to retrofit once request volume is 300 times higher.
 
 ### What would say this is wrong
 
 Three numbers, in the order they would surface.
 
-**The acted-on rate not rising.** The whole expansion case assumes teams override less as the coach earns trust, moving from 40% acted on to 65%. If that rate is flat after two quarters, the workflow moat is not forming and revenue grows only with experiment volume, which takes gross expansion from 133% back to about 112%.
+**Experiment volume flat or falling.** The whole expansion case is that recovered slots produce more experiments. If volume does not move in year two, revenue does not either, and the value claim is unproven at the same time.
 
-**The hit rate not rising.** The data moat assumes 60% to 75% as the corpus fills. If it is flat, the coach is not learning from its own record and the central claim of the product is in question, not just the pricing.
+**Churn above one team in nine.** NRR drops below 100% and the expansion argument goes with it. Retention is where the moats are supposed to appear, so this failing means they are not forming.
 
-**CAC nearer $8,000 than $3,200**, which is plausible for a human, evidence-led sale. Payback stretches past a year even at the proposed price. Replace that assumption with a measurement after the first five deals rather than carrying it into a plan.
+**Self-serve conversion not working.** If prospects will not connect an analytics platform without a call, CAC goes to the rep-assisted number or higher, payback stretches past a year, and the ACV question reopens. Replace the $1,200 assumption with a measurement after the first twenty signups rather than carrying it into a plan.

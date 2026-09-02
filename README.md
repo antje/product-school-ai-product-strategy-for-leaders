@@ -58,10 +58,10 @@
 **Will this make money or bleed it?**
 
 - **Gross Margin (current):** 74.3% at a $30 seat price. COGS is $7.72 per seat per month, and 65% of it is human onboarding rather than inference.
-- **Gross Margin (AI-adjusted):** 94.3% in year one on the proposed pricing, rising to 98.2% by year three. Margin widens with tenure because revenue tracks resolved calls, which compound, while cost tracks experiments, which do not.
-- **Pricing Model:** Hybrid. $500 per team per month plus $298 per resolved call, where a resolved call is an objection the team acted on that the outcome later showed was right. Billing per experiment reviewed would charge about $1,000 a year for silence.
+- **Gross Margin (AI-adjusted):** 94.9% in year one on the proposed pricing, 97.8% by year three once onboarding drops out.
+- **Pricing Model:** Hybrid, sold self-serve. $500 per team per month plus $60 per experiment reviewed, so $9,000 in year one. Outcome units were rejected because a resolved call would let the vendor decide the invoice, and because any unit tied to warnings shrinks as the coach teaches the team to stop repeating itself.
 - **Cascading Strategy:** 96% of requests to small models and embeddings, 4% to mid and frontier. A task moves up a tier only when a smaller model actually fails at it and being wrong costs something. Worth 19.5 points of gross margin.
-- **Break-even at:** Roughly one resolved call in eight recovering an experiment slot that would otherwise have re-tested known ground. CAC payback is 5.0 months against 28.7 months at seat pricing.
+- **Break-even at:** A review costs 0.7% of the $25,000 experiment it checks. CAC payback is 1.7 months self-serve, against 28.7 months at seat pricing with a rep.
 
 → Details: [`cost-curve.md`](03-the-margin/cost-curve.md)
 
