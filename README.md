@@ -16,7 +16,7 @@
 |-----------|--------|--------|-------------|
 | **The Bet** | M1 | Done | [`01-the-bet/`](01-the-bet/): vulnerability diagnostic and working prototype |
 | **The Moat** | M2 | Done | [`02-the-moat/`](02-the-moat/): data flywheel and kill switch audit |
-| **The Margin** | M3 | [ ] | `03-the-margin/` |
+| **The Margin** | M3 | Done | [`03-the-margin/`](03-the-margin/): cost curve, pricing and board story |
 | **The Contract** | M4 | [ ] | `04-the-contract/` |
 | **The Guardrails** | M5 | [ ] | `05-the-guardrails/` |
 | **The Pitch** | M6 | [ ] | `06-the-pitch/` |
@@ -57,13 +57,13 @@
 
 **Will this make money or bleed it?**
 
-- **Gross Margin (current):**
-- **Gross Margin (AI-adjusted):**
-- **Pricing Model:**
-- **Cascading Strategy:**
-- **Break-even at:**
+- **Gross Margin (current):** 74.3% at a $30 seat price. COGS is $7.72 per seat per month, and 65% of it is human onboarding rather than inference.
+- **Gross Margin (AI-adjusted):** 94.3% in year one on the proposed pricing, rising to 98.2% by year three. Margin widens with tenure because revenue tracks resolved calls, which compound, while cost tracks experiments, which do not.
+- **Pricing Model:** Hybrid. $500 per team per month plus $298 per resolved call, where a resolved call is an objection the team acted on that the outcome later showed was right. Billing per experiment reviewed would charge about $1,000 a year for silence.
+- **Cascading Strategy:** 96% of requests to small models and embeddings, 4% to mid and frontier. A task moves up a tier only when a smaller model actually fails at it and being wrong costs something. Worth 19.5 points of gross margin.
+- **Break-even at:** Roughly one resolved call in eight recovering an experiment slot that would otherwise have re-tested known ground. CAC payback is 5.0 months against 28.7 months at seat pricing.
 
-→ Details: [`03-the-margin/`](03-the-margin/)
+→ Details: [`cost-curve.md`](03-the-margin/cost-curve.md)
 
 ---
 
