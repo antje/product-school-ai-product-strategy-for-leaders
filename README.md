@@ -71,8 +71,8 @@
 
 **Why users will trust a probabilistic system.**
 
-- **Reliability Target:** Split by what the data supports. Four mechanical guarantees are enforceable now: zero fabricated citations, 100% scorable predictions, no golden-row regressions per release, deterministic refusals. The hit rate cannot be measured against a synthetic corpus, so no accuracy figure ships until a customer backtest exists.
-- **Golden Dataset:** 10 rows, 4 adversarial, 6 edge cases. Drawn from the 50-experiment corpus the running product processes, against a rule the coach never sees. ~150 rows at v1.
+- **Reliability Target:** Accuracy 90% (alert <85%), hallucination <1% (alert >2%), latency p95 <20s, drift <5pp per 4 weeks. Measured weekly against the golden set, segmented by prompt version, model and call type. Accuracy proves consistency against a corpus we built; the commercial claim that predictions beat a team's own judgment needs a customer's real history and is not asserted.
+- **Golden Dataset:** 10 rows today, 300 at v1, 4 adversarial and 6 edge cases. At 10 rows a 90% measurement carries ±18.6 points, so the contract is not enforceable until the set grows. The path to 300 is corpus rows, reworded variants, refusal cases and the first three customer backtests.
 - **Confidence UX:** Four outcomes rather than one answer. Refuse before any model call on an unreviewable brief, Object when history contradicts, Endorse on named positive precedent, Decline when history is silent. Below 90% confidence an endorsement degrades to Decline, because encouragement costs more to get wrong than caution does.
 - **HITL Architecture:** A human is reached only on a fabricated citation or an endorsement whose precedents disagree. Refusals and declines never escalate, so review volume tracks failures rather than usage and the queue shrinks as the corpus grows.
 - **Failure Mode Coverage:** Four coverage gaps named, and one real failure kept rather than fixed. The live coach misread ex-044's mechanism from its prose and was wrong by 9.2pp. Softening the corpus to hide it would be the self-grading failure the product exists to avoid.

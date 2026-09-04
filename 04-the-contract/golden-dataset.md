@@ -1,5 +1,28 @@
 # Golden Dataset & Reliability Contract
 
+## The contract
+
+What product-coach promises, how it is measured, and what happens when it breaks.
+
+| Metric | Target | Measurement | Alert Threshold |
+|--------|--------|-------------|-----------------|
+| Accuracy | 90% | Weekly, full golden set, rule judge, segmented by `prompt_version`, `model` and call type | <85% pages the founder, triggers gold-set audit |
+| Hallucination rate | <1% | Same weekly run. Cited ids checked against the corpus deterministically, plus a safety rubric on misdescribed results, invented numbers and unsupported mechanism claims | >2% routes all reviews to decline-only, pages the founder |
+| Latency p95 | <20s | Continuous, per review. 60s function ceiling, and a timed-out review is a failed review | >30s p95, or completion below 97% over 20 reviews, pages the founder |
+| Drift velocity | <5pp decay per 4 weeks | 4-week rolling pass rate on the full golden set, against a frozen prompt version and model id | >10pp decay pins to the last verified model, triggers gold-set audit |
+
+**HITL architecture:** a fabricated citation on write, an endorsement whose precedents disagree, or two or more drift flips in a week routes to the founder. Refusals and declines never escalate. Reviewer corrections feed back into the weekly gold-set audit.
+
+**Defensible bands:** Accuracy 88 to 93 (not 99) · Hallucination <1% · Latency <20s · Drift <5pp per 4 weeks
+
+**Consequence patterns:** Page the founder · Route to decline-only · Pin to last verified model · Gold-set audit
+
+**Golden set:** 300 rows at v1, 10 today. The gap is the main risk in this document and the arithmetic is below.
+
+**One thing this contract does not promise.** It says nothing about whether the advice is good. Accuracy above measures whether the coach makes the call the golden set expects, against a corpus we built. The product's commercial claim, that its predictions beat a team's own judgment, needs a customer's real history and is not asserted here.
+
+---
+
 ## What is real here, and what is synthetic
 
 Everything below rests on this, so it goes first.
@@ -28,7 +51,7 @@ The behaviour suite is what the ten golden rows below test. The judgment backtes
 | The corpus reflects how early-funnel experiments actually behave | No real corpus is available, and the exercise needs labelled outcomes | If the planted rule does not resemble reality, the coach is being trained and tested on a fiction |
 | One hidden rule is enough structure | A single rule can be verified by recomputation, so the test is reviewable | Real product histories have many overlapping effects and much more noise |
 | The rule judge is the right grader | An objection carries an explicit metric, direction and threshold, so it can be checked without interpretation | It only works because the corpus supplies a clean actual lift. Real read-outs are messier |
-| 50 rows is enough to test behaviour | It is what exists | Well below the 100 to 500 the module recommends for a shipping product |
+| 50 corpus experiments and 10 golden rows are enough to test behaviour | It is what exists today | The contract's targets need 300 rows to be enforceable. At 10 the alert thresholds sit inside the noise |
 | The coach never sees the rule | It is stated in a comment, never placed in a prompt or on a record | Verified by inspection, not enforced by a test. A future refactor could leak it |
 
 ### The ground-truth rule, stated openly
@@ -128,7 +151,7 @@ Row 10 tests the hardest behaviour to get right: declining when there is no patt
 3. All rows are single-metric. Briefs with a primary metric and a guardrail metric that move in opposite directions are not covered.
 4. The corpus is one fictional company with one hidden rule. It tests whether the coach can find a pattern, not whether it can find a *different* pattern in a different company. That gap closes only with real customer backtests.
 
-**Growth path:** 10 rows today, ~150 at v1. New rows come from two sources, and both are automatic. Every resolved call in the ledger is a candidate row, already labelled. Every customer backtest adds up to 17 more, already labelled by the customer's own history.
+**Growth path:** 10 rows today, 300 at v1. New rows come from two sources, and both are automatic. Every resolved call in the ledger is a candidate row, already labelled. Every customer backtest adds up to 17 more, already labelled by the customer's own history.
 
 ## Confidence UX Design
 
@@ -166,44 +189,49 @@ A low-confidence call still carries a prediction, and a prediction entered at lo
 | Correct and override | Yes | Accept the sharpened hypothesis or keep the original. Both are recorded |
 | Corrections feed the model | Yes, indirectly | Overrides plus outcomes become labelled rows. They tune retrieval and objection-type priors, not a per-customer model |
 
-## Reliability Contract
+## Why these numbers
 
-Split by what the available data can actually support. Three of these are measurable today. The fourth is the product's whole differentiator and is not.
+**The contract needs 300 rows and today there are 10.** That is the gap to close before any of the targets above can be enforced.
 
-### Measurable now, on synthetic data
-
-These are mechanical or operational properties. They are true or false regardless of whether the corpus labels reflect reality.
-
-| Metric | Target | Measurement | Alert Threshold |
-|--------|--------|-------------|-----------------|
-| Fabricated citation rate | 0% | Every cited experiment id checked against the corpus on write. A citation to an id that does not exist, or to an experiment whose read date falls after the brief's, is a hard failure. Endorsements are the higher risk, since they cite supporting cases rather than contradicting ones | Any occurrence pauses both call paths, routes every review to decline-only, and pages the founder |
-| Prediction well-formedness | 100% | Every objection and endorsement must carry a metric, a direction and a numeric threshold, so the rule judge can score it without interpretation | Any unscorable call blocks the release |
-| Golden-row regression | 0 flips per release | The 10 rows re-run on every prompt or model change, before deploy, segmented by `prompt_version` and `model` | Any row flipping pass to fail blocks the release |
-| Refusal determinism | 100% | The four preflight checks re-run 20 times on one brief must return identical results. They are arithmetic, so any variation is a bug | Any variation blocks the release |
-| **Provider drift** | 0 flips per week | The same 10 rows re-run weekly against a **frozen** prompt version and model id. Nothing on our side changed, so any movement is the provider changing behaviour behind a stable name | 1 row flips, audit within 24h. 2 or more, pin to the last verified model and page the founder |
-| **Review completion rate** | 99% | Share of reviews returning a result rather than timing out. Model calls run 10 to 15 seconds against a 60 second function ceiling, and a timed-out review is a failed review | Below 97% over 20 reviews, page the founder. Below 90%, disable the review path and show a maintenance state rather than a spinner |
-
-**Why provider drift is on this list and accuracy is not.** Both look like quality metrics. Drift measures whether the system's behaviour changed when nothing on our side did, which is answerable without knowing whether the answers are correct. Accuracy asks whether the answers are correct, which the synthetic corpus cannot say.
-
-**Why fabricated citations are zero-tolerance rather than a percentage.** This is the Air Canada line. An objection citing an experiment the team never ran is the product inventing a fact and attributing it to the customer's own history. One occurrence destroys the evidence claim the position rests on, so it is checked deterministically on write rather than sampled.
-
-**Why review completion is here at all.** It was nearly left out on the grounds that the review is not interactive, and that was wrong. The failure already happened: model calls exceeded Vercel's default function timeout and surfaced as a generic 502 that looked like a model fault. `maxDuration = 60` on the review and replay routes is what fixes it, and this metric is what would have caught it.
-
-**Consequence patterns used here:** page the founder, block the release, pin to the last verified model, route to decline-only, disable the path. There is no auto-rollback, because there is no second model qualified to roll back to until the swap gate from the vendor audit has been run.
-
-### Not measurable until a real customer backtest exists
-
-| Metric | Target | Why it cannot be measured yet |
+| Rows | Precision on a 90% measurement | One flip moves the rate |
 |---|---|---|
-| Hit rate on scored calls, objections and endorsements separately | 70% each | The only available ground truth is a rule we wrote. A hit rate against it measures whether the coach agrees with its author. The two must be reported apart, because a system that endorses freely and objects rarely can post a good blended number while being useless |
-| Decline rate | 30 to 45% | On the corpus it is 37%, but that is a property of how much noise the planted rule contains rather than of any real history |
-| Lift separation, flagged versus unflagged | Flagged experiments underperform by a clear margin | This is the product's central claim. It requires outcomes the vendor did not author |
+| 10 | ±18.6 points | 10.0 points |
+| 50 | ±8.3 points | 2.0 points |
+| 150 | ±4.8 points | 0.7 points |
+| **300** | **±3.4 points** | **0.3 points** |
 
-**The rule this sets.** No accuracy figure is published, shown in the product, or used in a sales conversation until it comes from a customer's own history. Until then the product ships with the behaviour guarantees above and no performance claim at all.
+At ten rows the alert threshold sits inside the noise. Three hundred also allows segmenting by call type at about 100 each, which matters because a coach that classifies objections well and endorsements badly would post a fine blended number.
 
-That is a real cost. The scoreboard is the differentiator and it stays empty until the first backtest runs. Publishing a number from a synthetic corpus would be faster and would be exactly the failure this module is about.
+Three hundred is the same figure the worked support-copilot example uses, and the module's guidance is 100 to 500.
 
-**The gate that unlocks it.** One customer connects their analytics platform, the coach runs backwards over their completed experiments, and the flagged and unflagged sets are compared on outcomes nobody here wrote. Around 36 resolved calls resolves a hit rate near 70% to plus or minus 15 points, which is roughly three customer backtests.
+**Where the 300 come from**, all but the last available without a customer:
+
+| Source | Rows | How |
+|---|---|---|
+| Corpus experiments as they stand | 50 | One row each, already labelled |
+| Reworded variants | 50 | The same experiment with prose that points away from its mechanism, which is the ex-044 failure class |
+| Refusal cases | 40 | Four preflight codes, ten variations each |
+| Constructed adversarial | 30 | Overfit traps, contradicting precedent, conflicting guardrails |
+| Resolved ledger calls | accumulating | Every scored call is a labelled row by construction |
+| Customer backtests | ~50 each | The first three get to 300 |
+
+**Accuracy and hit rate are two different numbers.**
+
+Accuracy above is whether the coach made the *correct call* on a golden row, where the correct call is known. That is the same kind of measurement as a support copilot's 92%, and 90% is the right band. It is not 99% because the coach already misreads a brief whose wording contradicts its category, which row 7 records.
+
+The **hit rate** is different: of the predictions the coach commits to, how many come true. That runs near 70%, and it is not a weak number. Predicting how an experiment lands is genuinely uncertain, and a product manager working unaided is close to a coin flip. Seventy percent on forecasts and 90% on classification are both strong, and they are measuring different things.
+
+The hit rate is the product's commercial claim and it is deliberately not in this contract, because it cannot be measured against a corpus we wrote.
+
+**Why hallucination is under 1% and not zero.** A fabricated citation is only one kind, and it is the easy one: an id either exists or it does not, so that sub-check is deterministic and does run at zero tolerance on write. The harder kinds are a real id described wrongly, an invented number, or a mechanism claim the cited rows do not support. Those need a rubric and cannot be driven to zero. 
+
+The stakes are still the Air Canada stakes, and worse in one respect. Air Canada's bot invented a policy. This product would be inventing a fact about the customer's own history and handing it back to them as evidence.
+
+**Why drift is measured as decay rather than flips.** Ten rows is a coarse instrument, since one flip moves the pass rate ten points. A rolling four-week trend absorbs single-run noise and still catches a provider changing behaviour behind a stable model name. It gets sharper as the row count grows toward 300.
+
+**Why there is no auto-rollback.** There is no second qualified model to roll back to until the vendor swap gate from the kill-switch audit has been run. What fires instead is routing every review to decline-only, which is degraded-safe.
+
+**What the synthetic corpus limits.** Accuracy is measured against a rule we wrote, so it proves consistency rather than correctness. No accuracy figure ships to a customer or a sales conversation until it comes from a real backtest on a history nobody here authored. The other three metrics hold either way, because they are properties of the system rather than of the answers.
 
 ## HITL Architecture
 
