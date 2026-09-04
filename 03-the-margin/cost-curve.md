@@ -200,7 +200,9 @@ It also creates a leak that costs nothing to exploit. If billing depends on clic
 
 Experiments reviewed does the opposite. Recovered slots mean **more** experiments, so the product working raises the billable quantity. Revenue and customer value move the same direction for the same reason.
 
-**On billing for a clean review.** About 40% of briefs draw no objection, and charging for those is not a flaw. A code review that finds nothing is still a code review, and an audit that finds nothing still gets invoiced. What is being bought is a check on every decision, and "clear to proceed, and here is the history that says so" is an output, not silence.
+**On billing for a clean review.** A share of reviews return no objection, and charging for those is not a flaw. A code review that finds nothing is still a code review, and an audit that finds nothing still gets invoiced. What is being bought is a check on every decision.
+
+**Refined after Module 4 (2026-09-03).** That argument was carrying more weight than it should. A fourth outcome was added to the coach: an endorsement, which cites positive precedent and carries its own prediction. That changes the picture materially. Roughly 63% of reviews now return a scored call rather than 31%, and only 37% return nothing at all. So most reviews produce a cited, falsifiable output, and the invoice needs less defending than it did. The unit and the price are unchanged, because the frontier model call happens on every review regardless of which way the call goes.
 
 **Why a base fee as well as metering.** The record has value on days when nobody drafts anything, and experiment cadence falls exactly when a team is under pressure. The base holds the leadership view in place through a quiet quarter, and it carries the fixed cost of serving the account.
 

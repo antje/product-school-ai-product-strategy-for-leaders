@@ -113,6 +113,17 @@ An overall accuracy claim is available after roughly three customers, which is r
 
 That is the threshold for the flywheel doing visible work, and it is a sales target rather than an engineering one. It also confirms the priority independently: nothing in this arithmetic improves by making one customer's experience better.
 
+**Refined after Module 4 (2026-09-03).** The rates above assume the coach only produces a scorable call when it objects. Adding a fourth outcome, an endorsement carrying its own prediction on named positive precedent, roughly doubles the share of reviews that produce a labelled row.
+
+| | Object only | With endorsements |
+|---|---|---|
+| Scorable share of reviews | 31% | 63% |
+| Labels per 50-experiment backtest | 16 | 32 |
+| Backtests for an overall hit rate at ±15 points | 2.3 | 1.1 |
+| Backtests for a per-call-type hit rate at ±15 points | 18.5 | 9.1 |
+
+The seventeen-customer threshold above was the binding constraint on this whole strategy, and it halves. The figures in this section stay as written, because they are the record of what the design supported in Module 2. This is the correction.
+
 ### For comparison, a competitor's flywheel
 
 Scored from public information about ChatPRD, so these are estimates rather than measurements.
