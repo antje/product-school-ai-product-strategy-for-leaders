@@ -17,7 +17,7 @@
 | **The Bet** | M1 | Done | [`01-the-bet/`](01-the-bet/): vulnerability diagnostic and working prototype |
 | **The Moat** | M2 | Done | [`02-the-moat/`](02-the-moat/): data flywheel and kill switch audit |
 | **The Margin** | M3 | Done | [`03-the-margin/`](03-the-margin/): cost curve, pricing and board story |
-| **The Contract** | M4 | [ ] | `04-the-contract/` |
+| **The Contract** | M4 | Done | [`04-the-contract/`](04-the-contract/): golden dataset, confidence UX, reliability contract |
 | **The Guardrails** | M5 | [ ] | `05-the-guardrails/` |
 | **The Pitch** | M6 | [ ] | `06-the-pitch/` |
 
@@ -71,13 +71,13 @@
 
 **Why users will trust a probabilistic system.**
 
-- **Reliability Target:**
-- **Golden Dataset:** __ rows, __ adversarial
-- **Confidence UX:** [approach]
-- **HITL Architecture:**
-- **Failure Mode Coverage:**
+- **Reliability Target:** Split by what the data supports. Four mechanical guarantees are enforceable now: zero fabricated citations, 100% scorable predictions, no golden-row regressions per release, deterministic refusals. The hit rate cannot be measured against a synthetic corpus, so no accuracy figure ships until a customer backtest exists.
+- **Golden Dataset:** 10 rows, 4 adversarial, 6 edge cases. Drawn from the 50-experiment corpus the running product processes, against a rule the coach never sees. ~150 rows at v1.
+- **Confidence UX:** Four outcomes rather than one answer. Refuse before any model call on an unreviewable brief, Object when history contradicts, Endorse on named positive precedent, Decline when history is silent. Below 90% confidence an endorsement degrades to Decline, because encouragement costs more to get wrong than caution does.
+- **HITL Architecture:** A human is reached only on a fabricated citation or an endorsement whose precedents disagree. Refusals and declines never escalate, so review volume tracks failures rather than usage and the queue shrinks as the corpus grows.
+- **Failure Mode Coverage:** Four coverage gaps named, and one real failure kept rather than fixed. The live coach misread ex-044's mechanism from its prose and was wrong by 9.2pp. Softening the corpus to hide it would be the self-grading failure the product exists to avoid.
 
-→ Details: [`04-the-contract/`](04-the-contract/)
+→ Details: [`golden-dataset.md`](04-the-contract/golden-dataset.md)
 
 ---
 
