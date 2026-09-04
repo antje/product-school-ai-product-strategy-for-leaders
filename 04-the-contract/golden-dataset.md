@@ -172,16 +172,24 @@ Split by what the available data can actually support. Three of these are measur
 
 ### Measurable now, on synthetic data
 
-These are mechanical properties. They are true or false regardless of whether the corpus labels reflect reality.
+These are mechanical or operational properties. They are true or false regardless of whether the corpus labels reflect reality.
 
 | Metric | Target | Measurement | Alert Threshold |
 |--------|--------|-------------|-----------------|
-| Fabricated citation rate | 0% | Every cited experiment id checked against the corpus on write. A citation to an id that does not exist, or to an experiment whose read date falls after the brief's, is a hard failure. Endorsements are the higher risk here, since they cite supporting cases rather than contradicting ones | Any occurrence pauses both call paths and routes to decline-only |
-| Prediction well-formedness | 100% | Every objection and every endorsement must carry a metric, a direction and a numeric threshold, so the rule judge can score it without interpretation | Any call that cannot be scored blocks the release |
-| Regression on the ten golden rows | 0 flips per release | Rows re-run on every prompt or model change, before deploy, segmented by `prompt_version` and `model` | Any row flipping from pass to fail blocks the release |
-| Refusal determinism | 100% | The four preflight checks re-run 20 times on the same brief must return identical results. They are arithmetic, so any variation is a bug | Any variation blocks the release |
+| Fabricated citation rate | 0% | Every cited experiment id checked against the corpus on write. A citation to an id that does not exist, or to an experiment whose read date falls after the brief's, is a hard failure. Endorsements are the higher risk, since they cite supporting cases rather than contradicting ones | Any occurrence pauses both call paths, routes every review to decline-only, and pages the founder |
+| Prediction well-formedness | 100% | Every objection and endorsement must carry a metric, a direction and a numeric threshold, so the rule judge can score it without interpretation | Any unscorable call blocks the release |
+| Golden-row regression | 0 flips per release | The 10 rows re-run on every prompt or model change, before deploy, segmented by `prompt_version` and `model` | Any row flipping pass to fail blocks the release |
+| Refusal determinism | 100% | The four preflight checks re-run 20 times on one brief must return identical results. They are arithmetic, so any variation is a bug | Any variation blocks the release |
+| **Provider drift** | 0 flips per week | The same 10 rows re-run weekly against a **frozen** prompt version and model id. Nothing on our side changed, so any movement is the provider changing behaviour behind a stable name | 1 row flips, audit within 24h. 2 or more, pin to the last verified model and page the founder |
+| **Review completion rate** | 99% | Share of reviews returning a result rather than timing out. Model calls run 10 to 15 seconds against a 60 second function ceiling, and a timed-out review is a failed review | Below 97% over 20 reviews, page the founder. Below 90%, disable the review path and show a maintenance state rather than a spinner |
+
+**Why provider drift is on this list and accuracy is not.** Both look like quality metrics. Drift measures whether the system's behaviour changed when nothing on our side did, which is answerable without knowing whether the answers are correct. Accuracy asks whether the answers are correct, which the synthetic corpus cannot say.
 
 **Why fabricated citations are zero-tolerance rather than a percentage.** This is the Air Canada line. An objection citing an experiment the team never ran is the product inventing a fact and attributing it to the customer's own history. One occurrence destroys the evidence claim the position rests on, so it is checked deterministically on write rather than sampled.
+
+**Why review completion is here at all.** It was nearly left out on the grounds that the review is not interactive, and that was wrong. The failure already happened: model calls exceeded Vercel's default function timeout and surfaced as a generic 502 that looked like a model fault. `maxDuration = 60` on the review and replay routes is what fixes it, and this metric is what would have caught it.
+
+**Consequence patterns used here:** page the founder, block the release, pin to the last verified model, route to decline-only, disable the path. There is no auto-rollback, because there is no second model qualified to roll back to until the swap gate from the vendor audit has been run.
 
 ### Not measurable until a real customer backtest exists
 
@@ -203,13 +211,14 @@ That is a real cost. The scoreboard is the differentiator and it stays empty unt
 
 1. Any preflight refusal fires. Return to the PM with the check and the remedy. No model call, no human.
 2. Confidence below 70%. Decline, recorded as `not-scored`. No human.
-3. A fabricated citation is detected on write. Block the call, route to a human reviewer, page the on-call.
+3. A fabricated citation is detected on write. Block the call, route every review to decline-only, page the founder.
 4. An endorsement clears its three-precedent bar but the precedents disagree with each other. Downgrade to Decline and queue for audit.
-5. A resolved call comes back Wrong on a golden row. Add to the weekly audit queue.
+5. Provider drift flips two or more golden rows in a week. Pin to the last verified model id and page the founder.
+6. A resolved call comes back Wrong on a golden row. Add to the weekly audit queue.
 
 **Who the human is.** At current scale, the founder. That is honest rather than embarrassing, and it is what makes the queue-shrinking design a requirement rather than a preference.
 
-**Why the queue shrinks rather than scaling with usage.** Only conditions 3 and 4 reach a person, and both are rare by construction. Condition 1 is arithmetic and condition 2 is a decline, so the two highest-volume paths never touch a human. Review volume therefore tracks failures rather than usage, which is the difference between the crutch pattern and the feature pattern.
+**Why the queue shrinks rather than scaling with usage.** Only conditions 3, 4 and 5 reach a person, and all three are rare by construction. Condition 1 is arithmetic and condition 2 is a decline, so the two highest-volume paths never touch a human. Review volume therefore tracks failures rather than usage, which is the difference between the crutch pattern and the feature pattern.
 
 **Corrections feed back.** Every human review produces a labelled row that joins the gold set. This is the same mechanism as the Correction loop in the moat work, and it is the only place a human touching the system makes the system permanently better rather than just fixing one output.
 
