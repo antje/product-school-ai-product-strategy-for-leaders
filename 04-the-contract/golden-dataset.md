@@ -11,7 +11,7 @@ What product-coach promises, how it is measured, and what happens when it breaks
 | Latency p95 | <20s | Continuous, per review. 60s function ceiling, and a timed-out review is a failed review | >30s p95, or completion below 97% over 20 reviews, pages the founder |
 | Drift velocity | <5pp decay per 4 weeks | 4-week rolling pass rate on the full golden set, against a frozen prompt version and model id | >10pp decay pins to the last verified model, triggers gold-set audit |
 
-**HITL architecture:** a fabricated citation on write, an endorsement whose precedents disagree, or two or more drift flips in a week routes to the founder. Refusals and declines never escalate. Reviewer corrections feed back into the weekly gold-set audit.
+**HITL architecture:** a fabricated citation on write, an endorsement whose precedents disagree, or a 4-week pass rate decaying more than 10 points routes to the founder. Refusals and declines never escalate. Reviewer corrections feed back into the weekly gold-set audit.
 
 **Defensible bands:** Accuracy 88 to 93 (not 99) · Hallucination <1% · Latency <20s · Drift <5pp per 4 weeks
 
@@ -33,16 +33,9 @@ That last point is the one that matters. The coach is being tested against an an
 
 **Real.** The model calls. Fifteen of them on 2026-08-29, logged with model, cost and outcome. The objections the coach produced, the declines it produced, and the fact that its output could be mechanically scored without a human interpreting it. Those are real behaviours of a real system on fake inputs.
 
-**What follows from that split.** A synthetic corpus can test whether the machinery works. It cannot test whether the advice is any good. An accuracy number computed against your own answer key measures obedience to yourself.
+**What follows from that split.** A synthetic corpus can test whether the machinery works. It cannot test whether the advice is any good. An accuracy number computed against your own answer key measures obedience to yourself, which is why the contract above reports accuracy and withholds the hit rate.
 
-So this document covers two datasets, and only one of them exists.
-
-| | Exists | What it can prove | What it cannot |
-|---|---|---|---|
-| **Behaviour suite**, synthetic | Yes, 50 rows | Consistency between releases, refusals fire, no fabricated citations, every objection is scorable | Anything about the quality of the judgment |
-| **Judgment backtest**, a customer's real experiment history | No | Whether flagged experiments underperform unflagged ones | Nothing yet. It does not exist |
-
-The behaviour suite is what the ten golden rows below test. The judgment backtest is the gate that has to be passed before any accuracy figure is published, and it needs a customer.
+The judgment backtest, on a customer's real history, is the gate that unlocks the commercial claim. It does not exist yet.
 
 ### The assumptions this exercise runs on
 
@@ -151,7 +144,7 @@ Row 10 tests the hardest behaviour to get right: declining when there is no patt
 3. All rows are single-metric. Briefs with a primary metric and a guardrail metric that move in opposite directions are not covered.
 4. The corpus is one fictional company with one hidden rule. It tests whether the coach can find a pattern, not whether it can find a *different* pattern in a different company. That gap closes only with real customer backtests.
 
-**Growth path:** 10 rows today, 300 at v1. New rows come from two sources, and both are automatic. Every resolved call in the ledger is a candidate row, already labelled. Every customer backtest adds up to 17 more, already labelled by the customer's own history.
+**Growth path:** 10 rows today, 300 at v1. New rows arrive without anyone writing them. Every resolved call in the ledger is a labelled row by construction. Every customer backtest contributes about 50 rows, of which roughly 32 are scorable once endorsements count.
 
 ## Confidence UX Design
 
@@ -170,7 +163,7 @@ The order matters because the refusals cost nothing and never vary. A brief that
 
 Sample size per arm uses n ≈ 16·p(1−p)/δ², the standard planning approximation at 80% power and 5% two-sided significance. The arithmetic is shown so the PM can check the work.
 
-**High confidence (>90%):** the call is stated directly with its prediction, the cited past experiments, and the coach's hit rate on that call type. No hedging. This applies to both objections and endorsements, and the prediction is written into the ledger either way.
+**High confidence (>90%):** the call is stated directly with its prediction and the cited past experiments. No hedging. The coach's hit rate appears here only once it comes from that customer's own resolved calls, never from the synthetic corpus. This applies to both objections and endorsements, and the prediction is written into the ledger either way.
 
 **Medium confidence (70-90%):** the call is shown with the confidence figure visible. Copy shifts from "this will land below X" to "on this team's history this pattern has landed below X in n of m cases." The prediction is still recorded and still scored. Softening the language does not soften the accountability.
 
@@ -213,7 +206,7 @@ Three hundred is the same figure the worked support-copilot example uses, and th
 | Refusal cases | 40 | Four preflight codes, ten variations each |
 | Constructed adversarial | 30 | Overfit traps, contradicting precedent, conflicting guardrails |
 | Resolved ledger calls | accumulating | Every scored call is a labelled row by construction |
-| Customer backtests | ~50 each | The first three get to 300 |
+| Customer backtests | ~50 each, ~32 scorable | The first three close the gap |
 
 **Accuracy and hit rate are two different numbers.**
 
@@ -241,7 +234,7 @@ The stakes are still the Air Canada stakes, and worse in one respect. Air Canada
 2. Confidence below 70%. Decline, recorded as `not-scored`. No human.
 3. A fabricated citation is detected on write. Block the call, route every review to decline-only, page the founder.
 4. An endorsement clears its three-precedent bar but the precedents disagree with each other. Downgrade to Decline and queue for audit.
-5. Provider drift flips two or more golden rows in a week. Pin to the last verified model id and page the founder.
+5. The 4-week rolling pass rate decays more than 10 points. Pin to the last verified model id and page the founder.
 6. A resolved call comes back Wrong on a golden row. Add to the weekly audit queue.
 
 **Who the human is.** At current scale, the founder. That is honest rather than embarrassing, and it is what makes the queue-shrinking design a requirement rather than a preference.
