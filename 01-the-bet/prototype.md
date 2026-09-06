@@ -57,31 +57,31 @@ Keep the same three figures and the same wording everywhere else on the
 page. Change nothing else.
 ```
 
-**The gap it fixes.** The first build put the coach's hit rate at the bottom of the panel in the smallest type on the page. That inverts what matters. The objection is the part a competitor can copy next quarter. The record of whether past objections were right is the part that takes years to accumulate. Credibility should sit next to the claim it supports rather than trailing it as a footnote.
+The refinement fixes a hierarchy problem. The first build put the coach's hit rate at the bottom of the panel in the smallest type on the page. That inverts what matters. The objection is the part a competitor can copy next quarter. The record of whether past objections were right is the part that takes years to accumulate. Credibility should sit next to the claim it supports rather than trailing it as a footnote.
 
 Reframing the figures from an overall record to a record on this kind of call does a second thing. An aggregate hit rate tells a reader how good the coach is in general. A hit rate on objections about assumed causation tells them how much to trust the one on screen.
 
 ## Prototype Link
 <!-- Paste the shareable URL -->
 
-**https://product-coach.vercel.app/**
+https://product-coach.vercel.app/
 
 Live and public. Click "Review experiment" to trigger the coach. The Team history tab and the "View all calls" link are navigation stubs. The prototype demonstrates the single review moment rather than the whole product.
 
 ### Screenshots
 
-**Before the review.** The drafted experiment brief on the left, and the coach waiting on the right against 24 indexed past experiments.
+Before the review. The drafted experiment brief on the left, and the coach waiting on the right against 24 indexed past experiments.
 
 ![product-coach, before the review](screenshots/prototype-01-before-review.png)
 
-**After the review**, showing the refined layout. One objection, the coach's record on that kind of objection directly beneath it, the three past experiments that support it with their real results, and a sharpened hypothesis to accept or reject.
+After the review, showing the refined layout. One objection, the coach's record on that kind of objection directly beneath it, the three past experiments that support it with their real results, and a sharpened hypothesis to accept or reject.
 
 ![product-coach, after the review](screenshots/prototype-02-after-review.png)
 
 ## AI Value Archetype
 <!-- Automator / Copilot / Oracle / Creator / Orchestrator -->
 
-**Copilot**, moving to Orchestrator later.
+Copilot, moving to Orchestrator later.
 
 Copilot fits what this prototype shows and what the product is at the start. The economics scale with seats rather than with tasks replaced or assets produced. The human stays in the loop by design, because the product's differentiator is that it argues rather than answers.
 
@@ -94,7 +94,7 @@ The archetype changes once the coach proposes experiments instead of only review
 
 Product teams will pay for a coach that argues with their decisions using their own data and keeps score on whether it was right.
 
-**Why now.** Two things became true recently. Agents can read a team's live systems instead of being told about them. And experiment platforms log hypotheses and results well enough that the coach can be graded against a team's own history before anyone buys it. Neither was true two years ago. The second is what makes the scoreboard something you can sell on rather than something you promise.
+Why now. Two things became true recently. Agents can read a team's live systems instead of being told about them. And experiment platforms log hypotheses and results well enough that the coach can be graded against a team's own history before anyone buys it. Neither was true two years ago. The second is what makes the scoreboard something you can sell on rather than something you promise.
 
 ## Kill Criteria
 <!-- When would you stop? What evidence would kill this bet? -->

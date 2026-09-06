@@ -33,7 +33,7 @@ A fair objection is that a scoreboard takes months to fill, and a buyer will not
 
 It does not have to. Experiment histories already sit inside analytics platforms, with hypotheses, results, and dates recorded. The coach can run backwards over experiments a team has already completed and show which ones it would have flagged and how those turned out. The proof is computed on the buyer's own history rather than on a reference customer's.
 
-**Where the sample size comes from.** The working number is about fifty experiments, chosen for availability rather than for statistical comfort. A team running weekly tests has roughly a year of history on hand, which is about fifty. Assume the coach flags around a third of them. That splits into 17 flagged and 33 unflagged. Group sizes that small support a directional read, not a precise one. The reason that is acceptable: an effect too small to see across a year of a team's own history is too small to build a product on. The one-third flag rate is an assumption, and it is the first thing the backtest should measure rather than take on faith.
+Where the sample size comes from. The working number is about fifty experiments, chosen for availability rather than for statistical comfort. A team running weekly tests has roughly a year of history on hand, which is about fifty. Assume the coach flags around a third of them. That splits into 17 flagged and 33 unflagged. Group sizes that small support a directional read, not a precise one. The reason that is acceptable: an effect too small to see across a year of a team's own history is too small to build a product on. The one-third flag rate is an assumption, and it is the first thing the backtest should measure rather than take on faith.
 
 ### Then it proposes, and learns
 
@@ -41,7 +41,7 @@ A track record earns the right to propose rather than only to react. At that poi
 
 What updates can be named specifically. Its priors about which objection types matter for this team. Its retrieval over the record of past outcomes. Its weighting of which metrics tend to predict which failures. It does not rewrite itself. It keeps score and adjusts.
 
-**One rule governs the learning: synthetic data generates hypotheses, real data judges them.** Synthetic scenarios are useful for proposing experiments nobody thought of, and for building evaluation coverage on rare cases. They are never a learning signal for what works. A system that learns from a model's beliefs about how products behave becomes self-consistent and confident. A system that also grades itself would then grade itself accurate against its own invented priors. That would remove the only thing the product is selling.
+One rule governs the learning: synthetic data generates hypotheses, real data judges them. Synthetic scenarios are useful for proposing experiments nobody thought of, and for building evaluation coverage on rare cases. They are never a learning signal for what works. A system that learns from a model's beliefs about how products behave becomes self-consistent and confident. A system that also grades itself would then grade itself accurate against its own invented priors. That would remove the only thing the product is selling.
 
 ### It calibrates to the person
 
@@ -59,7 +59,7 @@ It will not compete on document generation. That is the incumbent's ground. Thos
 
 The product leader who owns decision quality for a team. It is priced per seat, alongside the other tools that team already pays for.
 
-The record that leadership reads is not a second product. It is what makes a renewal an executive decision rather than a team preference.
+The record leadership reads is what makes a renewal an executive decision rather than a team preference.
 
 **Your Role:** Founder, deciding whether to build it.
 
@@ -90,7 +90,7 @@ Frequency helps the two assets that do count. The coach attaches to review, so i
 
 It is a 4 rather than a 5 for two reasons. The dependency is earned over quarters, so a young account can still leave in a weekend without losing anything. And there is no network effect, because the account covers a product team rather than a whole company, even when executives read the output. A 5 would be a product an organization cannot route around when procurement wants it gone.
 
-**What happens if a larger competitor copies the mechanism.** Assume ChatPRD ships review-with-evidence next quarter. The mechanism is not hard to copy, and their team is capable of building it. What they cannot copy on the day they ship is the record itself: which calls were flagged, which were overridden, and how those turned out. That record only accumulates in real time. So the lead is measured in months of collected outcomes rather than in features, and it holds only while this product collects faster than they do. That is the reason for keeping the beachhead narrow. A dense record on one decision type is defensible. A thin record spread across ten is not.
+What happens if a larger competitor copies the mechanism. Assume ChatPRD ships review-with-evidence next quarter. The mechanism is not hard to copy, and their team is capable of building it. What they cannot copy on the day they ship is the record itself: which calls were flagged, which were overridden, and how those turned out. That record only accumulates in real time. So the lead is measured in months of collected outcomes rather than in features, and it holds only while this product collects faster than they do. That is the reason for keeping the beachhead narrow. A dense record on one decision type is defensible. A thin record spread across ten is not.
 
 **Named attacker (from partner challenge):** [ChatPRD](https://www.chatprd.ai/), at $15 per seat and $29 per seat for teams. It already ships team workspaces, shared projects, comments, and Linear, Slack, and Google Drive integrations. Those integrations move documents between tools. These integrations feed evidence into a judgment. That is a real difference in purpose, but it is one product decision away from being copied by a company that already has the seats.
 
@@ -142,14 +142,14 @@ The product is sold on keeping score, so if the coach's calls do not beat the te
 ## Confidence Level
 <!-- H / M / L — how confident are you in this bet after the diagnostic? -->
 
-**M.**
+M.
 
 The demand is proven and the specific wedge is not.
 
 ChatPRD sells AI coaching to product managers at $15 a seat, so the market exists and is already priced. A large share of people doing the job arrived from engineering, design, support, or founding a company, and nothing in the category is built for someone still learning the craft.
 
-**Why not H.** The central claim is untested. Nothing yet shows that a coach with full context makes better calls than the team would have made alone, and everything else rests on that being true and measurable. The design answers the questions around the claim but not the claim itself. Backtesting answers how the product proves itself before anyone buys. Seat pricing under a product leader answers who pays. Neither of those makes the coach right.
+Why not H. The central claim is untested. Nothing yet shows that a coach with full context makes better calls than the team would have made alone, and everything else rests on that being true and measurable. The design answers the questions around the claim but not the claim itself. Backtesting answers how the product proves itself before anyone buys. Seat pricing under a product leader answers who pays. Neither of those makes the coach right.
 
-**Why not L.** The remaining risks are about accuracy rather than about behaviour, and accuracy is testable. Nothing depends on anyone adopting a habit they have never had, because the coach attaches to review. Nothing depends on anyone maintaining a record, because verification is automatic. Attribution is clean on the beachhead, because experiments carry their own controls. And the product is useful on day one, before any history exists, because the person layer works from cold.
+Why not L. The remaining risks are about accuracy rather than about behaviour, and accuracy is testable. Nothing depends on anyone adopting a habit they have never had, because the coach attaches to review. Nothing depends on anyone maintaining a record, because verification is automatic. Attribution is clean on the beachhead, because experiments carry their own controls. And the product is useful on day one, before any history exists, because the person layer works from cold.
 
-**What would settle it.** Take experiment-shaped decisions and compare two rates. How often the coach's flagged calls turned out to be right, against how often the same team's unflagged calls did. One number, run on a narrow decision type, long before the product is broad.
+What would settle it. Take experiment-shaped decisions and compare two rates. How often the coach's flagged calls turned out to be right, against how often the same team's unflagged calls did. One number, run on a narrow decision type, long before the product is broad.

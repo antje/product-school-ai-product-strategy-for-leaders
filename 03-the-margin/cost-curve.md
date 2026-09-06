@@ -6,9 +6,9 @@ The coach sits in a product manager's daily work. It helps with prioritisation c
 
 That split matters for everything below. The daily help is frequent, cheap and unscored. The objection is rare, expensive and scored. The coach only claims a hit rate on what it formally predicted, not on everything it ever said.
 
-**Usage, per seat per month.** Four assists on a working day is 88 interactions, plus 1.67 experiment reviews, plus ambient watching of open experiments. Counted in AI requests rather than user actions, that is **528 requests per seat per month**.
+Usage, per seat per month. Four assists on a working day is 88 interactions, plus 1.67 experiment reviews, plus ambient watching of open experiments. Counted in AI requests rather than user actions, that is **528 requests per seat per month**.
 
-**One measured input.** The product is running and records the model, cost and outcome of every call in a `calls` table. Pulled 2026-09-01: 15 objections, $0.96 total, **$0.0642 average**, range $0.0449 to $0.1042, all on claude-opus-5. That measured figure is used for the objection line below. Everything else is modelled from published token prices and stated volumes.
+One measured input. The product is running and records the model, cost and outcome of every call in a `calls` table. Pulled 2026-09-01: 15 objections, $0.96 total, **$0.0642 average**, range $0.0449 to $0.1042, all on claude-opus-5. That measured figure is used for the objection line below. Everything else is modelled from published token prices and stated volumes.
 
 ## Where every number on this page comes from
 
@@ -57,7 +57,7 @@ Fifteen calls over one day is a small sample, and all of them replayed completed
 
 **Derived.** Everything else is arithmetic over those three groups, shown where each number first appears.
 
-**Usage, worked through.** 50 experiments a year at 2 passes each is 100 reviews per team per year, 8.3 a month, and across 5 seats **1.67 reviews per seat per month**. Four assists a day across 22 working days is **88 interactions per seat per month**. Counted as AI requests rather than user actions, because one interaction fans out into several calls, the total is **528 requests per seat per month**, composed in the tier table below.
+Usage, worked through. 50 experiments a year at 2 passes each is 100 reviews per team per year, 8.3 a month, and across 5 seats **1.67 reviews per seat per month**. Four assists a day across 22 working days is **88 interactions per seat per month**. Counted as AI requests rather than user actions, because one interaction fans out into several calls, the total is **528 requests per seat per month**, composed in the tier table below.
 
 ## Packaging decision
 
@@ -71,7 +71,7 @@ Fifteen calls over one day is a small sample, and all of them replayed completed
 
 The Filler is what earns the habit. Nobody adopts a tool they open twice a month, so the daily help is what puts the coach in the workflow and the objection is what makes it worth paying for.
 
-**Why the Killer is an add-on, and it is not mainly about cost.** Priced as it would actually be built, 20 cheap checks a day plus one frontier proposal, it is $3.58 per team per month, or $0.72 a seat. Bundling it costs about two points of margin.
+Why the Killer is an add-on, and it is not mainly about cost. Priced as it would actually be built, 20 cheap checks a day plus one frontier proposal, it is $3.58 per team per month, or $0.72 a seat. Bundling it costs about two points of margin.
 
 The reason to sell it separately is the 70% rule and what sits behind it. Teams will not hand an agent the job of proposing what to test before it has a track record, so adoption starts well below 70%. And its cost runs on calendar time rather than on use, which makes it the one feature whose bill is uncorrelated with the metered revenue funding everything else. Every other cost line moves with experiments reviewed. This one does not.
 
@@ -88,9 +88,7 @@ Per seat per month, at an assumed 10 teams and 50 seats.
 | Human-in-the-loop | $5.000 | 2 hours x $150 = $300 per team, / 12 months / 5 seats |
 | **Total AI COGS** | **$7.719** | Template label. The first two rows and part of the fourth are AI. The rest is infrastructure and labour |
 
-**Blended cost per request: $1.939 of AI cost over 528 requests, so $0.00367.** Gross margin is **74.3%** at $30 a seat and **94.9%** at the pricing proposed below, rising to 97.8% by year three.
-
-Two things this table says that are worth stating plainly.
+Blended cost per request: $1.939 of AI cost over 528 requests, so $0.00367. Gross margin is **74.3%** at $30 a seat and **94.9%** at the pricing proposed below, rising to 97.8% by year three.
 
 Frontier inference is 0.47% of requests and 8.3% of cost. That is what a working cascade looks like from the outside.
 
@@ -100,13 +98,13 @@ Human onboarding is still the largest single line at 65% of COGS, which is unusu
 
 Daily help is 84% of AI cost and is priced at zero. That is a strategy decision, not an oversight, and it is the same decision as the moat.
 
-**It buys the workflow moat.** The moat work scored this product low on workflow depth because the coach appeared only at experiment time, which a team under deadline pressure can skip. Eighty-eight interactions a month is a habit. Under two is a tool nobody opens. The daily surface is what puts the coach in the path of the work, and it costs $1.64 a seat a month, paid out of gross margin on purpose.
+It buys the workflow moat. The moat work scored this product low on workflow depth because the coach appeared only at experiment time, which a team under deadline pressure can skip. Eighty-eight interactions a month is a habit. Under two is a tool nobody opens. The daily surface is what puts the coach in the path of the work, and it costs $1.64 a seat a month, paid out of gross margin on purpose.
 
-**It feeds the data moat.** Every daily interaction adds context about what this team is working on and worried about, which is what makes the rare scored objection specific rather than generic. The cheap surface is the input to the expensive one.
+It feeds the data moat. Every daily interaction adds context about what this team is working on and worried about, which is what makes the rare scored objection specific rather than generic. The cheap surface is the input to the expensive one.
 
 So charging for daily help would raise revenue slightly and damage both moats at once. It would put a price on the thing that creates the habit, and starve the corpus that makes the paid output worth paying for.
 
-**The load-bearing assumptions.** Four assists per working day is the one everything else rests on. Two hours of onboarding per team is the second. Both are guesses about behaviour rather than measurements, and both should be checked against the first real customer before this model is trusted.
+Two assumptions carry most of the weight. Four assists per working day, and two hours of onboarding per team. Both are guesses about behaviour rather than measurements, and both should be checked against the first real customer before this model is trusted.
 
 ## Cascading Strategy
 
@@ -131,7 +129,7 @@ So charging for daily help would raise revenue slightly and damage both moats at
 | Backtest, amortised over year one | Complex | Frontier, opus | Identical task to the row above, so identical model. A cheaper one would produce a hit rate the customer then fails to reproduce | $0.06418 | 0.2% | $0.0535 |
 | **Blended** | | | | **$0.00367** | **100%** | **$1.9390** |
 
-**The rule this table follows: a task moves up a tier only when both tests pass.** Does a smaller model actually fail at it, and does being wrong cost something that matters?
+The rule this table follows: a task moves up a tier only when both tests pass. Does a smaller model actually fail at it, and does being wrong cost something that matters?
 
 Either test alone gives the wrong answer. Difficulty alone would push the harder daily-help requests to frontier, where being wrong costs a re-read. Consequence alone would push everything the coach is measured on to the biggest model available, including the arithmetic of checking a figure against a row, which any model gets right.
 
@@ -152,9 +150,9 @@ Cascading cuts AI COGS by 75% and adds **19.5 points of gross margin**. At ten t
 
 Worth building, and not existential. The temptation when modelling this is to price every request at the objection's size and produce a frightening number. Most requests are nothing like that shape: a daily assist on the frontier model costs $0.0775, not $0.12, and the 396 embedding calls would never go to a model at all.
 
-**It is designed and it does not run yet.** `lib/ai/router.ts` maps three tasks to three models. `lib/coach/review.ts` only ever calls `task: 'objection'`, and every review in the ledger went to opus. A routing table can look like a cascade in code review while doing nothing, which matters more once the daily-help surface ships and multiplies request volume by 300.
+It is designed and it does not run yet. `lib/ai/router.ts` maps three tasks to three models. `lib/coach/review.ts` only ever calls `task: 'objection'`, and every review in the ledger went to opus. A routing table can look like a cascade in code review while doing nothing, which matters more once the daily-help surface ships and multiplies request volume by 300.
 
-**Retrieval is the volume, not the cost.** Embeddings are 75% of all requests and 0.1% of spend. They are easy to under-count and almost free, so the risk they carry is latency and rate limits rather than money.
+Retrieval is the volume, not the cost. Embeddings are 75% of all requests and 0.1% of spend. They are easy to under-count and almost free, so the risk they carry is latency and rate limits rather than money.
 
 ## Pricing Model
 
@@ -164,15 +162,15 @@ Worth building, and not existential. The temptation when modelling this is to pr
 
 **Model:** hybrid, sold self-serve.
 
-**Strategy posture: maximize.** Not skim, because there is no track record to skim on. Not penetrate, because a low price on a product that claims to improve decisions argues against the claim.
+Strategy posture: maximize. Not skim, because there is no track record to skim on. Not penetrate, because a low price on a product that claims to improve decisions argues against the claim.
 
 ### What the customer actually values
 
 The obvious answer is a wasted experiment prevented, and it is wrong twice over.
 
-**A failed experiment is not waste.** It is the mechanism. A team running 50 tests a year expects most to fail, because that is how the winners get found. A product selling itself as stopping tests that would fail is selling less learning.
+A failed experiment is not waste. It is the mechanism. A team running 50 tests a year expects most to fail, because that is how the winners get found. A product selling itself as stopping tests that would fail is selling less learning.
 
-**Loss avoidance also sells badly.** There is no budget line for waste prevented, and nobody is promoted for experiments they did not run.
+Loss avoidance also sells badly. There is no budget line for waste prevented, and nobody is promoted for experiments they did not run.
 
 What the coach detects is not failure, it is **repetition**. Every objection cites the team's own past experiments. It does not say this will fail, it says you established this eighteen months ago. A test that fails for a new reason is valuable. A test that fails for a reason already in the corpus is the only real waste.
 
@@ -192,29 +190,29 @@ Three candidate units were tested against what a buyer's finance function would 
 | Objection raised | Yes | No | Shrinks | Partly |
 | **Experiment reviewed** | **Yes** | **No** | **Grows** | **Yes** |
 
-**Why the outcome-based unit fails, even though the module recommends outcome pricing.** A resolved call is defined as an objection the team acted on that our own scoring later judged correct. That means **the vendor decides the invoice**, which no buyer's finance function accepts and no auditor is comfortable with. Intercom can bill per resolved conversation because resolution is determined by the customer's behaviour, not by Intercom's opinion of its own accuracy. We have no equivalent, so we should not pretend to.
+Why the outcome-based unit fails, even though the module recommends outcome pricing. A resolved call is defined as an objection the team acted on that our own scoring later judged correct. That means **the vendor decides the invoice**, which no buyer's finance function accepts and no auditor is comfortable with. Intercom can bill per resolved conversation because resolution is determined by the customer's behaviour, not by Intercom's opinion of its own accuracy. We have no equivalent, so we should not pretend to.
 
 It also creates a leak that costs nothing to exploit. If billing depends on clicking accept, the rational customer reads the objection, acts on it, and clicks keep original. Full value, no charge. And it gives us a financial incentive to nudge people toward accepting, which corrupts the only thing the product sells.
 
-**Why the unit must not shrink as the product works.** Objections fall as a team stops repeating itself, which is the product succeeding. Any unit tied to warnings therefore bills less the better it gets, and the expansion case would quietly depend on the coach not working.
+Why the unit must not shrink as the product works. Objections fall as a team stops repeating itself, which is the product succeeding. Any unit tied to warnings therefore bills less the better it gets, and the expansion case would quietly depend on the coach not working.
 
 Experiments reviewed does the opposite. Recovered slots mean **more** experiments, so the product working raises the billable quantity. Revenue and customer value move the same direction for the same reason.
 
-**On billing for a clean review.** A share of reviews return no objection, and charging for those is not a flaw. A code review that finds nothing is still a code review, and an audit that finds nothing still gets invoiced. What is being bought is a check on every decision.
+On billing for a clean review. A share of reviews return no objection, and charging for those is not a flaw. A code review that finds nothing is still a code review, and an audit that finds nothing still gets invoiced. What is being bought is a check on every decision.
 
-**Refined after Module 4 (2026-09-03).** That argument was carrying more weight than it should. A fourth outcome was added to the coach: an endorsement, which cites positive precedent and carries its own prediction. That changes the picture materially. Roughly 63% of reviews now return a scored call rather than 31%, and only 37% return nothing at all. So most reviews produce a cited, falsifiable output, and the invoice needs less defending than it did. The unit and the price are unchanged, because the frontier model call happens on every review regardless of which way the call goes.
+Refined after Module 4 (2026-09-03). That argument was carrying more weight than it should. A fourth outcome was added to the coach: an endorsement, which cites positive precedent and carries its own prediction. That changes the picture materially. Roughly 63% of reviews now return a scored call rather than 31%, and only 37% return nothing at all. So most reviews produce a cited, falsifiable output, and the invoice needs less defending than it did. The unit and the price are unchanged, because the frontier model call happens on every review regardless of which way the call goes.
 
-**Why a base fee as well as metering.** The record has value on days when nobody drafts anything, and experiment cadence falls exactly when a team is under pressure. The base holds the leadership view in place through a quiet quarter, and it carries the fixed cost of serving the account.
+Why a base fee as well as metering. The record has value on days when nobody drafts anything, and experiment cadence falls exactly when a team is under pressure. The base holds the leadership view in place through a quiet quarter, and it carries the fixed cost of serving the account.
 
-**Not the daily help**, even though it is 84% of cost. Metering it would make people think before asking, and that is the habit the whole position rests on.
+Not the daily help, even though it is 84% of cost. Metering it would make people think before asking, and that is the habit the whole position rests on.
 
 ### Revenue scales with value, cost scales with usage
 
 Both move with experiments, but not at the same rate, and the gap is where the moats show up.
 
-**Cost tracks experiments reviewed** and nothing else. Every review costs the same to produce whether or not it finds something, so COGS is forecastable from a single number.
+Cost tracks experiments reviewed and nothing else. Every review costs the same to produce whether or not it finds something, so COGS is forecastable from a single number.
 
-**Value tracks the corpus.** As the record fills, the coach is right more often and the team overrides less. The same $60 review is worth more in year three than in month three, because the objection behind it is grounded in more of the team's own history. The **data moat** raises the hit rate. The **workflow moat** raises the rate at which advice is acted on. Neither shows up in the price, both show up in retention and in the customer's willingness to expand.
+Value tracks the corpus. As the record fills, the coach is right more often and the team overrides less. The same $60 review is worth more in year three than in month three, because the objection behind it is grounded in more of the team's own history. The **data moat** raises the hit rate. The **workflow moat** raises the rate at which advice is acted on. Neither shows up in the price, both show up in retention and in the customer's willingness to expand.
 
 | | Experiments | Revenue | Growth | COGS | Gross margin |
 |---|---|---|---|---|---|
@@ -234,14 +232,14 @@ Experiments reviewed rests on one assumption. Between 35 and 70 experiments a ye
 
 An $8,000 to $9,000 contract sits in the awkward middle: too expensive for a casual card purchase, too cheap to justify a salesperson who must clear a security review to run the backtest. Left unresolved, that alone breaks the economics.
 
-**The answer is to make it self-serve, which is the same investment already argued for on cost grounds.** The backtest connects to an analytics platform by OAuth and runs without a human, so a prospect sees their own history scored before talking to anyone. That is a product-led motion at a team price, which is how Linear, Vercel and Statsig sell in this range.
+The answer is to make it self-serve, which is the same investment already argued for on cost grounds. The backtest connects to an analytics platform by OAuth and runs without a human, so a prospect sees their own history scored before talking to anyone. That is a product-led motion at a team price, which is how Linear, Vercel and Statsig sell in this range.
 
 | Motion | CAC | Payback | 3-year LTV:CAC |
 |---|---|---|---|
 | **Self-serve, no rep** | **$1,200** | **1.7 months** | **24.5x** |
 | Rep-assisted with security review | $3,200 | 4.5 months | 9.2x |
 
-Both work. Only one is achievable without hiring, and the difference between them is the same self-serve onboarding work that is 65% of the cost of serving a customer.
+Both motions work, but only one is achievable without hiring, and the difference between them is the same self-serve onboarding work that is 65% of the cost of serving a customer.
 
 ### Checking the price against the value
 
@@ -267,11 +265,11 @@ All three are measured at $30 a seat, which is the harsh case. At the proposed p
 
 Three scenarios hurt more than any of those.
 
-**Onboarding takes four hours instead of two.** Margin falls from 74.3% to 57.6%, because labour is 65% of COGS. Making the backtest self-serve is worth more than every token optimisation combined.
+Onboarding takes four hours instead of two. Margin falls from 74.3% to 57.6%, because labour is 65% of COGS. Making the backtest self-serve is worth more than every token optimisation combined.
 
-**The cascade never ships.** Margin falls to 54.8%. At 19.5 points it is the largest controllable item on this page.
+The cascade never ships. Margin falls to 54.8%. At 19.5 points it is the largest controllable item on this page.
 
-**Monitoring gets bundled.** Margin falls to 71.9%, only two points. So the case for selling it separately rests on adoption and on its cost being uncorrelated with revenue, not on the size of the bill.
+Monitoring gets bundled. Margin falls to 71.9%, only two points. So the case for selling it separately rests on adoption and on its cost being uncorrelated with revenue, not on the size of the bill.
 
 ### Holding quality while cutting cost
 
@@ -289,24 +287,24 @@ Together these take AI COGS from $1.94 to about $0.73 a seat, lifting margin at 
 
 ## Board One-Pager
 
-**Before, traditional SaaS**
+Before, traditional SaaS
 Revenue: $30 per seat times 5 seats = $1,800 per team per year
 COGS: $463 per team in year one, of which $347 is fixed and $116 variable
 Gross margin: **74.3%**
 
-**After, AI-powered**
+After, AI-powered
 Revenue: $500 per month base plus $60 per experiment reviewed = $9,000 per team in year one, $11,100 by year three
 COGS: $463 in year one, $245 by year three
 Gross margin: **94.9%**, rising to **97.8%**
 
-**Net margin shift**
+Net margin shift
 Δ margin: **+20.6 points** · Δ gross dollars: **+$7,200 per team per year**, or +$72,000 at ten teams
 
 ### The narrative
 
-**Why margin moves, and why it moves the unusual way.** The standard AI board story is margin down and gross profit up, and the job is explaining why the trade is fine. This one goes up on both, and the reason is structural rather than good housekeeping. The expensive part of the product is the daily help, which stays free because it buys the habit. The priced part is the review, which costs almost nothing to produce. Charging for the check rather than for access adds $7,200 per team and no cost at all.
+Why margin moves, and why it moves the unusual way. The standard AI board story is margin down and gross profit up, and the job is explaining why the trade is fine. This one goes up on both, and the reason is structural rather than good housekeeping. The expensive part of the product is the daily help, which stays free because it buys the habit. The priced part is the review, which costs almost nothing to produce. Charging for the check rather than for access adds $7,200 per team and no cost at all.
 
-**Why it keeps moving.** Cost falls after year one because onboarding is a one-time expense. Revenue grows because experiment volume grows, and it grows partly because the product works: recovered slots mean more experiments. That is the alignment worth pointing at. The product succeeding raises the billable quantity rather than reducing it, which is not true of any outcome-based unit we considered.
+Why it keeps moving. Cost falls after year one because onboarding is a one-time expense. Revenue grows because experiment volume grows, and it grows partly because the product works: recovered slots mean more experiments. That is the alignment worth pointing at. The product succeeding raises the billable quantity rather than reducing it, which is not true of any outcome-based unit we considered.
 
 | | Experiments | Revenue | Growth |
 |---|---|---|---|
@@ -314,7 +312,7 @@ Gross margin: **94.9%**, rising to **97.8%**
 | Year 2 | 70 | $10,200 | **113%** |
 | Year 3 | 85 | $11,100 | **109%** |
 
-**That is gross expansion, not net revenue retention.** Net of churn:
+That is gross expansion, not net revenue retention. Net of churn:
 
 | Logo retention | NRR |
 |---|---|
@@ -324,7 +322,7 @@ Gross margin: **94.9%**, rising to **97.8%**
 
 NRR clears 100% if fewer than about one team in nine churns. With no customers there is no churn data, so the honest claim is that the structure makes NRR above 100% reachable and retention decides whether it is reached.
 
-**Where the moats show up.** Not in the price, which is flat per review. In retention and in expansion. As the corpus fills the coach is right more often, and as the habit sets the team overrides less, so the same $60 review is worth more in year three than in month three. That is what makes a team run more experiments and keeps them from leaving. The data moat and the workflow moat are the retention argument, and they fail together if either stalls.
+Where the moats show up. Not in the price, which is flat per review. In retention and in expansion. As the corpus fills the coach is right more often, and as the habit sets the team overrides less, so the same $60 review is worth more in year three than in month three. That is what makes a team run more experiments and keeps them from leaving. The data moat and the workflow moat are the retention argument, and they fail together if either stalls.
 
 **The hedge.** If metered volume collapsed, the base alone is $6,000 per team, two thirds of plan, still clearing 92% margin against a $463 cost to serve. If the price proves unsellable, retreating to $60 a seat gives $3,600 at 87% margin, a worse business but not a broken one.
 
@@ -338,9 +336,9 @@ Gross margin is half of unit economics and it is the flattering half. A CFO asks
 | Rep-assisted, security review in the path | $3,200 | $8,537 | 4.5 months | 9.2x |
 | $30/seat, rep-assisted | $3,200 | $1,337 | 28.7 months | 1.4x |
 
-**The real argument against seat pricing is not margin.** At $30 a seat the product still runs 74% gross margin, which looks fine, takes 29 months to repay the cost of winning the customer, and returns 1.4x lifetime value against acquisition. That cannot fund its own growth.
+The real argument against seat pricing is not margin. At $30 a seat the product still runs 74% gross margin, which looks fine, takes 29 months to repay the cost of winning the customer, and returns 1.4x lifetime value against acquisition. That cannot fund its own growth.
 
-**And the real argument for self-serve is not cost.** It is that it is the only motion this ACV supports. Nine thousand dollars is too much for a casual card purchase and too little for a rep who has to clear a security review before running the backtest. Making the backtest run on an OAuth connection without a human resolves both at once.
+And the real argument for self-serve is not cost. It is that it is the only motion this ACV supports. Nine thousand dollars is too much for a casual card purchase and too little for a rep who has to clear a security review before running the backtest. Making the backtest run on an OAuth connection without a human resolves both at once.
 
 ### What this asks the board to decide
 
