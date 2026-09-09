@@ -18,7 +18,7 @@
 | **The Moat** | M2 | Done | [`02-the-moat/`](02-the-moat/): data flywheel and kill switch audit |
 | **The Margin** | M3 | Done | [`03-the-margin/`](03-the-margin/): cost curve, pricing and board story |
 | **The Contract** | M4 | Done | [`04-the-contract/`](04-the-contract/): golden dataset, confidence UX, reliability contract |
-| **The Guardrails** | M5 | [ ] | `05-the-guardrails/` |
+| **The Guardrails** | M5 | Done | [`05-the-guardrails/`](05-the-guardrails/): compounding system, governance policy, shadow AI audit |
 | **The Pitch** | M6 | [ ] | `06-the-pitch/` |
 
 ---
@@ -83,13 +83,14 @@
 
 ## The Guardrails (M5)
 
-**What breaks when this scales — and what compounds.**
+**What breaks when this scales, and what compounds.**
 
-- **Compounding System:** [describe feedback loops]
-- **Governance Posture:** [approach]
-- **Shadow AI Status:** __ tools found, __ triaged
-- **Agent Boundaries:**
-- **Regulatory Exposure:**
+- **Compounding System:** Three loops, none compounding today, for three different reasons. Recursive Learning is the one defect: the product records every override and resolves every prediction, then never returns the record to the reasoning. Cross-Domain Transfer is declined on purpose, because A/B tested decisions are the only ground where a prediction can be checked against a control. Network Intelligence is gated on having customers. Six design commitments follow, the first being that the record is the product and the advice is how we earn the right to keep it.
+- **Freeze Test:** Frozen for a quarter with every competitor on the same model, product-coach is the only asset in the comparison that grows. Templates, content breadth and in-experiment optimization all go static. A verified record of predictions and outcomes cannot be bought, scraped or generated, because it requires having been present at the decision, the override and the read-out.
+- **Governance Posture:** The coach argues, it never acts, and holds no write path into any customer system. Two decisions need human approval: scoring a prediction when the read-out is ambiguous, defined as the 95% CI containing the objection's threshold, and shipping any prompt or model change, gated at 90% golden-set pass and 1% hallucinated citations. `decline-only` is the named degraded state, entered automatically on a fabricated citation or a 10-point pass-rate drop.
+- **Shadow AI Status:** 6 workarounds found, triaged to 4 build, 1 partner, 1 ignore. $35 per PM per month in adjacent spend. Dominant signal is trust, which reframes the audit: users double-checking output against another model are reporting a credibility problem, not requesting a feature.
+- **Agent Boundaries:** Four components, three of which call a model, plus one designed and unbuilt. Each row separates what code enforces from what policy merely asks, because a reader cannot otherwise tell which limits survive a bug. No component calls another's tools and there is no chain, so there is no handoff to own.
+- **Regulatory Exposure:** EU AI Act limited risk, conditionally. It holds only while a person's coaching profile stays private to that person; exposing it upward is Annex III performance monitoring and moves the product to high risk. The decision is to keep it private, which costs the per-person visibility that was one reason a leader would buy, and keeps the team-level decision record that carries the renewal.
 
 → Details: [`05-the-guardrails/`](05-the-guardrails/)
 

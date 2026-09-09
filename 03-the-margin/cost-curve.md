@@ -86,7 +86,7 @@ Per seat per month, at an assumed 10 teams and 50 seats.
 | Infrastructure | $0.780 | ($20 Vercel + $19 Neon) / 50 seats |
 | Data/storage | $0.002 | 396 embedding calls at roughly 1,000 tokens each, at $0.02 per million |
 | Human-in-the-loop | $5.000 | 2 hours x $150 = $300 per team, / 12 months / 5 seats |
-| **Total AI COGS** | **$7.719** | Template label. The first two rows and part of the fourth are AI. The rest is infrastructure and labour |
+| **Total AI COGS** | **$7.719** | Template label. The first two rows and part of the fourth are AI. The rest is infrastructure and labor |
 
 Blended cost per request: $1.939 of AI cost over 528 requests, so $0.00367. Gross margin is **74.3%** at $30 a seat and **94.9%** at the pricing proposed below, rising to 97.8% by year three.
 
@@ -265,7 +265,7 @@ All three are measured at $30 a seat, which is the harsh case. At the proposed p
 
 Three scenarios hurt more than any of those.
 
-Onboarding takes four hours instead of two. Margin falls from 74.3% to 57.6%, because labour is 65% of COGS. Making the backtest self-serve is worth more than every token optimisation combined.
+Onboarding takes four hours instead of two. Margin falls from 74.3% to 57.6%, because labor is 65% of COGS. Making the backtest self-serve is worth more than every token optimization combined.
 
 The cascade never ships. Margin falls to 54.8%. At 19.5 points it is the largest controllable item on this page.
 
