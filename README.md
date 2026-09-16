@@ -1,10 +1,16 @@
-# product-coach: An AI Product Strategy
+<p align="center">
+  <a href="https://antje.github.io/product-school-ai-product-strategy-for-leaders/final-presentation.html">
+    <img src="assets/title-card.png" alt="product-coach: a reviewer that objects to product decisions using the team's own data, attaches a prediction, and keeps score on whether it was right. Click for the board pitch." width="100%">
+  </a>
+</p>
+
+# <img src="assets/product-coach-icon.svg" width="28" align="top" alt=""> product-coach: An AI Product Strategy
 
 > **Product teams will pay for a coach that argues with their decisions using their own data and keeps score on whether it was right.**
 >
 > Engineers get code review. Product managers get nothing. product-coach reads a team's repository, tracker, analytics and customer feedback, objects to a decision using that team's own numbers, attaches a falsifiable prediction to the objection, and records whether it was right when the result comes in. The advice is copyable next quarter. The record of predictions and outcomes is not.
 
-**Prototype:** [product-coach.vercel.app](https://product-coach.vercel.app/) · **Board pitch:** [antje.github.io/…/final-presentation.html](https://antje.github.io/product-school-ai-product-strategy-for-leaders/final-presentation.html) · **Author:** Antje Barth
+**Prototype:** [product-coach-app.vercel.app](https://product-coach-app.vercel.app/) · **Board pitch:** [antje.github.io/…/final-presentation.html](https://antje.github.io/product-school-ai-product-strategy-for-leaders/final-presentation.html) · **Author:** Antje Barth
 
 ---
 
@@ -31,7 +37,9 @@
 - **Vulnerability Scores:** Moat 4/5 · Data 4/5 · Platform 2/5. The moat score is the design's ceiling; realized today, with a 9/20 flywheel and no loop compounding, it is nearer 2 and rises with the record on the dates the roadmap names.
 - **Top Risk:** The product is sold on keeping score, so if the coach's calls do not beat the team's own judgment, it will have collected the evidence against itself and published it.
 - **Confidence:** M. The demand is proven, ChatPRD sells AI coaching to product managers at $15 a seat. The wedge is not: nothing yet shows the coach's calls beat the team's own.
-- **Prototype:** [product-coach.vercel.app](https://product-coach.vercel.app/)
+- **Prototype:** [product-coach-app.vercel.app](https://product-coach-app.vercel.app/)
+<p align="center"><img src="01-the-bet/screenshots/prototype-02-after-review.png" width="100%" alt="The prototype after a review: one objection citing five past experiments, a prediction with a date, and a sharpened hypothesis to accept or ship anyway"></p>
+
 - **Kill Criteria:** A pre-registered backtest over the completed experiments of two or three named design partners, pooled: flagged experiments must succeed at least 20 points less often than unflagged, the coach seeing only the brief with history cut at its date, within eight weeks of the first connecting. Pooled because one partner's twelve flags carry a ±27-point interval and three partners' thirty-six carry about ±16, so a single partner is a signal and the pool is the verdict. A lower-trust mode scores an anonymised export offline for partners who will not grant live access before proof. It is also the entry gate: no subscription starts until a team's own backtest passes, so the kill decision precedes the spend on both sides.
 
 → Details: [`diagnostic.md`](01-the-bet/diagnostic.md) · [`prototype.md`](01-the-bet/prototype.md)
@@ -74,6 +82,8 @@
 - **Reliability Target:** Accuracy 90% (alert <85%), hallucination <1% (alert >2%), latency p95 <20s, drift <5pp per 4 weeks. Measured weekly against the golden set, segmented by prompt version, model and call type. Accuracy proves consistency against a corpus we built; the commercial claim that predictions beat a team's own judgment needs a customer's real history and is not asserted.
 - **Golden Dataset:** 10 rows today, 300 at v1, 4 adversarial and 6 edge cases. At 10 rows a 90% measurement carries ±18.6 points, so the contract is not enforceable until the set grows. The path to 300 is corpus rows, reworded variants, refusal cases and the first three customer backtests.
 - **Confidence UX:** Four outcomes, not one answer. Refuse before any model call on an unreviewable brief, Object when history contradicts, Endorse on named positive precedent, Decline when history is silent. Below 90% confidence an endorsement degrades to Decline, because encouragement costs more to get wrong than caution does.
+<p align="center"><img src="01-the-bet/screenshots/prototype-01-before-review.png" width="100%" alt="An empty brief with the four deterministic checks the coach runs for free before any model is called"></p>
+
 - **HITL Architecture:** A human is reached only on a fabricated citation or an endorsement whose precedents disagree. Refusals and declines never escalate, so review volume tracks failures, not usage, and the queue shrinks as the corpus grows.
 - **Failure Mode Coverage:** Four coverage gaps named, and one real failure kept, not fixed. The live coach misread ex-044's mechanism from its prose and was wrong by 9.2pp. Softening the corpus to hide it would be the self-grading failure the product exists to avoid.
 

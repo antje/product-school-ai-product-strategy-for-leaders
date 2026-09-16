@@ -64,7 +64,7 @@ Reframing the figures from an overall record to a record on this kind of call do
 ## Prototype Link
 <!-- Paste the shareable URL -->
 
-https://product-coach.vercel.app/
+https://product-coach-app.vercel.app/
 
 Live and public. Click "Review experiment" to trigger the coach. The Team history tab and the "View all calls" link are navigation stubs. The prototype demonstrates the single review moment, not the whole product.
 
