@@ -99,9 +99,11 @@ Why now. Two things became true recently. Agents can read a team's live systems 
 ## Kill Criteria
 <!-- When would you stop? What evidence would kill this bet? -->
 
-**The one that kills it.** Run the coach backwards over about fifty of a team's completed experiments. Compare the calls it would have flagged against the ones it would have passed. If the flagged experiments do not underperform the unflagged ones by a clear margin, the coach has no judgment worth selling, and every other part of the strategy depends on it having some.
+**The one that kills it.** Run the coach backwards over about fifty of a team's completed experiments. Compare the calls it would have flagged against the ones it would have passed. If the flagged experiments do not underperform the unflagged ones, the coach has no judgment worth selling, and every other part of the strategy depends on it having some.
 
-This test is cheap. It uses data that already sits in the analytics platform, and it can run before any product is built. That is why it goes first.
+The test is pre-registered, because a test this important can be passed by accident or softened after the fact. The threshold: the success rate of flagged experiments is at least 20 points below the unflagged ones, with at least 12 flagged, which is the smallest effect visible at roughly 17 against 33. The leakage control: the coach sees only the brief, with the team's history cut at the brief's date, and never the read-out. The data: two or three named design-partner teams, through the analytics connector each one uses. The date: within eight weeks of the first partner connecting. Threshold, controls and partners are written down before the run and published with the result.
+
+This test is cheap. It uses data that already sits in the analytics platform, and it runs before any product is sold. It is also the entry gate: a subscription starts only when a team's own backtest passes, so the kill decision precedes the spend on both sides.
 
 **The one that kills it slowly.** Objections that get overridden without being read. If teams mute the coach or click past it, nothing accumulates and the scoreboard never fills. The product then degrades into a linter nobody looks at.
 

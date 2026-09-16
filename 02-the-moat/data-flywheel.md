@@ -9,7 +9,7 @@
 |---|---|---|---|---|
 | **Correction** | **4/5** | The accept-or-override choice, then the experiment result that says who was right | Every override comes back labelled, so the system learns which objection types hold up | Objections start citing the user's own past disagreements and how they turned out |
 | **Preference** | **2/5** | Override events, who overrode and on what kind of objection | Nothing acts on it yet, and when it does it has to run backwards | Nothing. Every user gets the same coach |
-| **Domain Context** | **1/5** | Nothing that crosses areas, the beachhead is one decision type | It does not, siloed on purpose | Nothing. Moving from activation to retention, the coach starts cold |
+| **Domain Context** | **1/5** | Nothing that crosses areas. Today only controlled experiments carry a read-out | Not yet. Widens by attribution grade, not by decision type | Nothing. Moving from activation to retention, the coach starts cold |
 | **Network** | **2/5** | Every objection, override and outcome, held per customer | Which objection types prove right is not confidential, so it can be pooled | Nothing at launch. Once there are enough customers, a benchmark before they have any history |
 
 ### Correction Loop - 4/5
@@ -38,9 +38,9 @@ The second reason is cost. Deep personalization is per-person customization, whi
 
 ### Domain Context Loop - 1/5
 
-**What you capture today:** Nothing that crosses areas. The coach works on one kind of decision, experiments that get A/B tested, because that is the only ground where you can check afterwards whether the advice was right.
+**What you capture today:** Nothing that crosses areas. Today the only read-outs in the record come from controlled experiments, because that is the only ground where the prototype can check afterwards whether the advice was right.
 
-**How it compounds:** It does not. The narrow start is a trade. Covering one kind of decision means the evidence stacks up in a single place, which is what makes a claim about the coach's accuracy believable. Covering ten would leave a handful of examples in each and nothing defensible anywhere.
+**How it compounds:** Not yet, and the way it will is by attribution grade rather than by decision type. Every read-out is graded by the quality of its counterfactual: A for a controlled test, B for a staged rollout or flagged release, C for a plain launch. Grade A and B outcomes stack into one record with confidence weighted by grade, so a flag rollout on retention teaches the coach something about retention without pretending it was a controlled test. Covering every decision type ungraded would leave a handful of unscorable examples in each and nothing defensible anywhere. Covering them graded keeps the evidence in one place.
 
 **What the user notices next time:** Nothing, and this is the visible cost of the narrow start. A product manager who has spent six months on activation moves to retention and the coach starts cold on the new area. It knows the team's experiment history but has no accumulated sense of the new problem space.
 
@@ -56,21 +56,19 @@ The second reason is cost. Deep personalization is per-person customization, whi
 
 **Weakest Loop:** Domain Context, at 1.
 
-**Fix for weakest loop:** Build the cross-customer benchmark, which raises the Network loop. Leave Domain Context at 1 for now.
+**Fix for weakest loop:** Build the cross-customer benchmark, which raises the Network loop. Domain Context rises on its own once grade B read-outs from staged rollouts enter the record, which happens at the first design partner releasing behind flags.
 
 That answer runs against the exercise, which says to invest in the weakest loop, so both halves need explaining.
 
-### Why not fix Domain Context
+### Why Domain Context widens by grade, not by decision type
 
-The coach works on one kind of decision: experiments that get A/B tested. An A/B test has a control group, so weeks later you can tell whether the coach's advice was right. On most other product decisions you cannot tell, because too many things change at once and nothing isolates the effect.
+Domain Context scores 1 because what the coach learns from activation experiments does not carry over when the same person starts working on retention. The obvious fix is to cover more kinds of decisions, and done naively it costs more than it returns, because most product decisions are ones where nobody can check the advice afterwards. Roadmap calls, pricing changes, positioning. Expanding into them ungraded means giving up the ability to keep score, and keeping score is the only thing separating this from every other AI advice tool.
 
-Domain Context scores 1 because what the coach learns from activation experiments does not carry over when the same person starts working on retention. The obvious fix is to cover more kinds of decisions, and it would cost more than it returns.
+The way through is to grade the read-out rather than to pick the decision type. A controlled test is grade A. A staged rollout or a flagged release is grade B: partial exposure and a before-and-after, attributable with care, and about ten times more common than a formal experiment. A plain launch is grade C and never counts toward the published hit rate. Confidence on a prediction and its weight in the record follow the grade. The coach can then object on any decision that will produce a read-out, and the record stays honest about how much each outcome proves.
 
-The other kinds of decisions are exactly the ones where nobody can check the advice afterwards. Roadmap calls, pricing changes, positioning. Expanding into them means giving up the ability to keep score, and keeping score is the only thing separating this from every other AI advice tool.
+That also fixes the evidence problem. Credibility comes from many scored decisions in one record, and grading puts rollouts and experiments in the same record with the weighting stated, instead of splitting them into ten thin piles.
 
-There is also an evidence problem. The coach's credibility comes from having reviewed many decisions of one kind and being able to say how often it was right about them. Cover ten kinds and there are a handful of examples in each, which supports no claim anywhere. Stay on one kind and the evidence stacks up in a single place.
-
-So Domain Context stays at 1 on purpose, and gets addressed once there is a real record on experiments to extend from.
+*Refined after Module 6.* This section first argued for leaving Domain Context at 1 on purpose and staying on A/B tested decisions only. That kept the scoring honest and kept the market small, and it placed the product on the surface the experimentation platforms own. Attribution grading keeps the first and removes the other two.
 
 ### Why the Network loop instead
 
@@ -186,15 +184,17 @@ The likelihood splits in two. Copying the mechanism is likely, because it is a q
 
 **Time-to-threat:** One to two quarters.
 
-**% of value at risk:** About 90%, and this is the worst of the three. They are the only attacker who could build all three rows, including the proof, because the outcome data is already sitting in their database.
+**% of value at risk:** About 50%, revised from 90% after Module 6 (note below). On value at risk ChatPRD now leads at 65%; on capability these remain the most dangerous, because they are the only attacker who could build the proof. They are the only attacker who could build all three rows, including the proof, because the outcome data is already sitting in their database.
 
 The speed comparison is the uncomfortable part. Reaching a per-objection-type accuracy claim takes roughly seventeen customer backtests, which for this product means seventeen sales. They already hold hundreds of customers' experiment histories and could run the same backtest across all of them in a weekend.
 
-What holds the number below 100% is that they see the experiment and not the decision. They have no objection, no override, and nothing from the repository, the tracker or the customer feedback channels. They know what was tested. They do not know what the team believed or what else it was weighing.
+What holds the number below 100% is that they see the experiment and not the decision. They have no objection, no override, and nothing from the repository, the tracker or the customer feedback channels. They know what was tested. They do not know what the team believed, what else it was weighing, or what it decided without testing.
+
+*Refined after Module 6.* The 90% assumed the product lived inside the experiment flow. It no longer does. The coach objects at the brief, PRD or roadmap stage, upstream of any platform, and scores against read-outs from every source the team uses, including flag rollouts the platforms never see. A native review step inside Statsig covers the slice of decisions that reached Statsig. Value at risk from that vector is nearer 50% than 90%. That puts ChatPRD ahead on the copyable rows, and the platforms still ahead on capability, since only they hold outcome data. The defense is the part neither can reach: the decisions that never became experiments, the cross-source context, and the pooled objection-type priors from the Network loop, which is why that loop is sequenced first.
 
 The likelihood is lower than the capability, for two reasons. Their buyer is data and engineering rather than product leadership, so this would be a new sales motion. And publishing an accuracy number invites the same scrutiny of everything else they sell.
 
-The conclusion this assessment changes. Module 1 named ChatPRD as the primary attacker on two of three axes. That was wrong. Choosing A/B tested decisions as the beachhead, which was the right call for attribution, placed the product inside a surface the experimentation platforms already own. They are the more dangerous attacker, and the assessment should have found that before the beachhead was chosen rather than after.
+The conclusion this assessment changes. Module 1 named ChatPRD as the primary attacker on two of three axes. That was wrong. Choosing A/B tested decisions as the beachhead, which was the right call for attribution, placed the product inside a surface the experimentation platforms already own. They are the more dangerous attacker, and the assessment should have found that before the beachhead was chosen rather than after. Module 6 acted on it: the intervention point moved upstream to the brief and roadmap, the platforms became read-out sources, and the value at risk from this vector is revised above.
 
 ## 90-Day Encroachment Plan
 
@@ -202,13 +202,13 @@ The conclusion this assessment changes. Module 1 named ChatPRD as the primary at
 
 **Attacker:** Microsoft, Developer Division. Chosen over Google or OpenAI because they own GitHub, Azure DevOps and the enterprise licence, so they can attack distribution and breadth in the same move.
 
-**Attack vector (target the weakest loop):** Domain Context, scored 1, plus Network, scored 2. The coach covers one kind of decision and has no cross-customer learning. Microsoft attacks both by going wide and by starting from a corpus this product would need years of sales to match.
+**Attack vector (target the weakest loop):** Domain Context, scored 1, plus Network, scored 2. The coach's record today holds only controlled experiments and has no cross-customer learning. Microsoft attacks both by going wide and by starting from a corpus this product would need years of sales to match.
 
 **Weeks 1-4 - what they ship:** Decision Review inside GitHub Copilot Enterprise. It reads the repository, Issues, Pull Requests and Azure Monitor metrics, and comments on an experiment plan the way Copilot comments on code. Not a new product and not a new purchase. It appears in a tool most target customers already have open, on a seat they already pay for. product-coach needs a procurement conversation. Microsoft needs a feature flag.
 
 **Weeks 5-8 - how they poach users:** They sell breadth where this product chose depth. Their version reviews the PRD in Teams, the roadmap item in Azure Boards, the launch plan and the pricing change. A VP of Product with eleven kinds of decision to make this quarter has never asked for a tool that covers fewer of them. And when a product manager moves from activation to retention, the coach here starts cold while theirs has been reading everything.
 
-**Weeks 9-12 - why users don't come back:** They never arrive. The ask is a purchase order for a point solution covering one decision type, against a checkbox that covers eleven and came free with a licence renewed last March. The track record argument requires a prospect to try the product first, and nothing in the buying process gets them that far. Then it folds into E5 and the buyer stops being a product leader with a budget.
+**Weeks 9-12 - why users don't come back:** They never arrive. The ask is a purchase order for a point solution, against a checkbox that covers eleven decision types and came free with a licence renewed last March. The track record argument requires a prospect to try the product first, and nothing in the buying process gets them that far. Then it folds into E5 and the buyer stops being a product leader with a budget.
 
 **Your defense:**
 

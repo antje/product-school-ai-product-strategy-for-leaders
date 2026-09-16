@@ -25,13 +25,13 @@
 
 **What we're building, for whom, why now.**
 
-- **Product:** product-coach, decision review for product teams. It connects to the repository, tracker, analytics, and customer feedback, objects using the team's own numbers, and then records whether its own calls were right.
+- **Product:** product-coach, decision review for product teams. It connects to the repository, tracker, analytics and customer feedback, objects at the brief, PRD or roadmap stage using the team's own numbers, and records whether its own call was right when the read-out arrives. Every read-out is graded by the quality of its counterfactual, so a flag rollout counts without pretending to be a controlled test.
 - **AI Value Archetype:** Copilot, with an Orchestrator trajectory once it proposes experiments rather than only reviewing them.
 - **Vulnerability Scores:** Moat 4/5 · Data 4/5 · Platform 2/5
 - **Top Risk:** The product is sold on keeping score, so if the coach's calls do not beat the team's own judgment, it will have collected the evidence against itself and published it.
 - **Confidence:** M. The demand is proven, ChatPRD sells AI coaching to product managers at $15 a seat. The wedge is not: nothing yet shows the coach's calls beat the team's own.
 - **Prototype:** [product-coach.vercel.app](https://product-coach.vercel.app/)
-- **Kill Criteria:** Backtest the coach over about fifty of a team's completed experiments. If the calls it would have flagged do not underperform the ones it would have passed by a clear margin, there is no judgment worth selling and the bet stops. It runs before the first sale, on history that already sits in the analytics platform, so the kill decision precedes the spend.
+- **Kill Criteria:** A pre-registered backtest over about fifty of a team's completed experiments: flagged experiments must succeed at least 20 points less often than unflagged, with at least 12 flagged, the coach seeing only the brief with history cut at its date, on two or three named design partners, within eight weeks of the first connecting. It is also the entry gate: no subscription starts until a team's own backtest passes, so the kill decision precedes the spend on both sides.
 
 → Details: [`diagnostic.md`](01-the-bet/diagnostic.md) · [`prototype.md`](01-the-bet/prototype.md)
 
@@ -42,9 +42,9 @@
 **Why this won't get copied in 6 months.**
 
 - **Data Flywheel Score:** 9/20 (Correction 4 · Preference 2 · Domain Context 1 · Network 2)
-- **Weakest Loop:** Domain Context. Left at 1 deliberately, because covering more decision types means covering ones where nobody can check the advice afterwards. The investment goes to Network instead.
+- **Weakest Loop:** Domain Context, at 1 today because the record holds only controlled experiments. It widens by attribution grade rather than by decision type: staged rollouts and flagged releases enter the record as grade B, weighted below controlled tests and above nothing, which grows the scorable surface about tenfold without diluting the hit rate.
 - **Competitive Position:** ChatPRD scores 8/20 on the same loops, so the category has no flywheel. The whole difference is the Correction loop: their corrections say a user changed the wording, these say the user was wrong.
-- **Encroachment Defense:** The most dangerous attacker is the experimentation platforms, not the AI writing tools, because the beachhead sits on a surface they already own. What they cannot see is the decision itself, the objection, and the override.
+- **Encroachment Defense:** The most dangerous attacker is the experimentation platforms, because they could add a review step inside their own experiment flow within a year. The coach therefore sits upstream of them, at the brief and roadmap stage, and reads from all of them. What a native step cannot reach: decisions made without an experiment, the cross-source context around each one, and pooled objection-type priors across customers, which is why the Network loop is sequenced first.
 - **Vendor Portability:** Partial. Eval is strong because the product already scores its own advice, so the usual blocker is solved. Provider, abstraction and routing are all High risk and about two weeks of ordinary work away.
 
 → Details: [`data-flywheel.md`](02-the-moat/data-flywheel.md) · [`kill-switch.md`](02-the-moat/kill-switch.md)
@@ -57,9 +57,9 @@
 
 - **Gross Margin (floor):** 74.3% at the rejected $30-per-seat price, shown as the worst case. COGS is $7.72 per seat per month, $463 per five-seat team per year, and 65% of it is human onboarding rather than inference.
 - **Gross Margin (proposed pricing):** 94.9% in year one, 97.8% by year three once onboarding is self-serve. Inference is $116 of the $463, so revenue per inference dollar is about 78x.
-- **Pricing Model:** Hybrid, sold self-serve. $500 per team per month plus $60 per experiment reviewed, so $9,000 in year one. Outcome units were rejected because a resolved call would let the vendor decide the invoice, and because any unit tied to warnings shrinks as the coach teaches the team to stop repeating itself.
+- **Pricing Model:** Hybrid. $500 per team per month plus $60 per experiment reviewed, so $9,000 in year one. Year one is a founder-led design-partner program of three to five teams, onboarded by hand under data-use terms that seed the pooled layer; self-serve from year two. Every subscription starts only when the team's own backtest passes. Outcome units were rejected because a resolved call would let the vendor decide the invoice, and because any unit tied to warnings shrinks as the coach teaches the team to stop repeating itself.
 - **Cascading Strategy:** 96% of requests to small models and embeddings, 4% to mid and frontier. A task moves up a tier only when a smaller model actually fails at it and being wrong costs something. Worth 19.5 points of gross margin.
-- **Break-even at:** Contribution is $8,537 per team per year, so the platform ($20 Vercel, $19 Neon a month) is covered by the first team. The model carries no salary, so real break-even is loaded founder cost divided by $8,537, and that number is what the ask has to fund. A review costs 0.7% of the $25,000 experiment it checks; CAC payback is 1.7 months self-serve against 28.7 at seat pricing with a rep.
+- **Break-even at:** Contribution is $8,537 per team per year, so the platform ($20 Vercel, $19 Neon a month) is covered by the first team. The model carries no salary, so real break-even is loaded founder cost divided by $8,537, and that number is what the ask has to fund. A review costs 0.7% of the $25,000 experiment it checks; year-one CAC is founder time, and from year two self-serve payback is 1.7 months against 28.7 at seat pricing with a rep.
 
 → Details: [`cost-curve.md`](03-the-margin/cost-curve.md)
 
@@ -84,7 +84,7 @@
 **What breaks when this scales, and what compounds.**
 
 - **Freeze Test:** Frozen for a quarter with every competitor on the same model, product-coach is the only asset in the comparison that grows. Templates, content breadth and in-experiment optimization all go static. A verified record of predictions and outcomes cannot be bought, scraped or generated, because it requires having been present at the decision, the override and the read-out.
-- **Compounding System:** Three loops, none compounding today, for three different reasons. Recursive Learning is the one defect: the product records every override and resolves every prediction, then never returns the record to the reasoning. Cross-Domain Transfer is declined on purpose, because A/B tested decisions are the only ground where a prediction can be checked against a control. Network Intelligence is gated on having customers. Six design commitments follow, the first being that the record is the product and the advice is how we earn the right to keep it.
+- **Compounding System:** Three loops, none compounding today, for three different reasons. Recursive Learning is the one defect: the product records every override and resolves every prediction, then never returns the record to the reasoning. Cross-Domain Transfer is designed and unfed: attribution grading lets rollouts enter the record, and the first grade B outcome arrives with the first design partner releasing behind flags. Network Intelligence is gated on those partners' data-use terms. Six design commitments follow, the first being that the record is the product and the advice is how we earn the right to keep it.
 - **Governance Posture:** The coach argues, it never acts, and holds no write path into any customer system. Two decisions need human approval: scoring a prediction when the read-out is ambiguous, defined as the 95% CI containing the objection's threshold, and shipping any prompt or model change, gated at 90% golden-set pass and 1% hallucinated citations. `decline-only` is the named degraded state, entered automatically on a fabricated citation or a 10-point pass-rate drop.
 - **Shadow AI Status:** 6 workarounds found, triaged to 4 build, 1 partner, 1 ignore. $35 per PM per month in adjacent spend. Dominant signal is trust, which reframes the audit: users double-checking output against another model are reporting a credibility problem, not requesting a feature.
 - **Agent Boundaries:** Four components, three of which call a model, plus one designed and unbuilt. Each row separates what code enforces from what policy merely asks, because a reader cannot otherwise tell which limits survive a bug. No component calls another's tools and there is no chain, so there is no handoff to own.

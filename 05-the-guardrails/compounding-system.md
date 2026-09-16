@@ -5,7 +5,7 @@
 | Loop | Input | Output | Compounds? | Status |
 |------|-------|--------|-----------|--------|
 | Recursive Learning | Accept or override on each objection, plus the experiment result weeks later | Which objection types hold up, and how confidently to raise each one | N | broken |
-| Cross-Domain Transfer | Nothing. The coach covers one decision type, A/B tested experiments | Nothing | N | missing |
+| Cross-Domain Transfer | Read-outs from staged rollouts and flagged releases, graded B, alongside controlled tests graded A | Whether objection types that hold on controlled tests also hold on rollouts, and how much a grade B outcome should move confidence | N | designed |
 | Network Intelligence | Objections, overrides and outcomes, held per customer | Which call types prove right across all accounts | N | missing |
 
 **Broken loop identified by partner:** Recursive Learning. The product captures the accept or override on every objection, and resolves each prediction when the experiment reads out. It then uses none of it. The record is shown to the user and never returned to the reasoning, so the objection a team gets in month three is the one they would have got on day one, however the intervening calls turned out.
@@ -19,10 +19,10 @@ The tool asks present tense: does this loop compound today. product-coach is a p
 | Loop | What is actually absent | Gated on |
 |------|------------------------|----------|
 | Recursive Learning | The return path from the record to the reasoning | Nothing. This is a design decision we can make now |
-| Cross-Domain Transfer | Nothing absent. Declined on purpose | A decision already made, revisited only once the record is dense |
-| Network Intelligence | Customers | First paying accounts |
+| Cross-Domain Transfer | Attribution grading on read-outs, and the first grade B outcomes | The first design partner releasing behind flags |
+| Network Intelligence | Customers, under data-use terms that permit pooling | The first design partners, whose agreements grant pooled use of objection-type outcomes and nothing else |
 
-Cross-Domain Transfer is a scope decision, not a hole. The coach covers A/B tested decisions because that is the one place a prediction can be checked against a control group. Widening it would trade honest scoring for coverage, which is the trade this product exists to refuse.
+Cross-Domain Transfer was first declined as a scope decision, on the grounds that only controlled tests can be checked against a control. That kept scoring honest and left the product on the surface the experimentation platforms own, with a market of teams that run formal experiments weekly. The revised answer grades every read-out by the quality of its counterfactual: A for a controlled test, B for a staged rollout or flagged release, C for a plain launch. The coach objects on any decision that will produce a read-out, confidence and record weight follow the grade, and only A and B count toward the published hit rate. The loop is designed and not yet fed, because the record today holds only grade A outcomes.
 
 Network Intelligence cannot exist before customers do. Marking it as a failure would be marking pre-launch as a failure.
 
@@ -98,7 +98,7 @@ So the record should set confidence and phrasing, and a call type the coach has 
 3. The craft and context split, which costs nothing now and is unrecoverable later.
 4. The pooled cold-start layer, at the first paying accounts.
 
-Cross-Domain Transfer stays closed until the record on experiments is dense enough that widening does not dilute it.
+Cross-Domain Transfer opens with attribution grading at the first design partner releasing behind flags, and the grade keeps it from diluting the record.
 
 ## Context Connectivity
 
@@ -126,7 +126,7 @@ The exposure that does exist is quieter: this product grades its own homework, a
 | Read the repository, tracker, analytics and feedback channels | Auto | Read-only. No write scope is requested on any customer system |
 | Run the preflight refusal checks | Auto | Deterministic arithmetic, no model call, no variance between runs |
 | Score a prediction right or wrong when the read-out is unambiguous | Auto | Rule-based comparison against the threshold the objection committed to |
-| **Score a prediction when the read-out is ambiguous** | **Human approval** | Defined below. Never resolved automatically |
+| **Score a prediction when the read-out is ambiguous** | **Human approval** | Defined below. Never resolved automatically. Grade C read-outs are never scored at all |
 | **Ship a prompt or model change that alters how objections are formed** | **Human approval** | Gated on the golden set, thresholds below |
 | Write to a customer's experiment, brief, ticket or backlog | Never | No approval path exists. A request for one opens a design review |
 | Show a person's coaching profile to anyone but that person | Never | See the regulatory section |
@@ -173,7 +173,7 @@ Four roles, one person. That is a single point of failure, not a design. The mit
 
 **Risk tier: limited, conditionally.** A decision-support tool for product teams sits in no Annex III category. The applicable obligation is transparency, which the product meets by construction, since the entire interface is an AI stating an opinion and every objection is labelled advisory.
 
-**Controls.** No customer data trains any model. Prompts carry briefs and experiment metadata only, with no PII fields collected by design. The ledger holds a salted hash of the caller's IP for rate limiting and session-scoped call records. Model and prompt versions are stamped on every ledger row, so any score is attributable to a specific system version rather than to the product in general. Retention: IP hashes 30 days, since their only purpose is rate limiting; call records 24 months, because the track record is the product and a shorter window would delete the asset; aggregate craft statistics irreversibly anonymised and retained indefinitely. Deletion on request removes call records and any personal profile within 30 days and cannot reach the anonymised aggregates, which is stated plainly at signup rather than buried.
+**Controls.** Design-partner and customer agreements grant pooled use of one thing, which objection types proved right, and nothing else; a team's experiments, briefs and overrides never leave the account. No customer data trains any model. Prompts carry briefs and experiment metadata only, with no PII fields collected by design. The ledger holds a salted hash of the caller's IP for rate limiting and session-scoped call records. Model and prompt versions are stamped on every ledger row, so any score is attributable to a specific system version rather than to the product in general. Retention: IP hashes 30 days, since their only purpose is rate limiting; call records 24 months, because the track record is the product and a shorter window would delete the asset; aggregate craft statistics irreversibly anonymised and retained indefinitely. Deletion on request removes call records and any personal profile within 30 days and cannot reach the anonymised aggregates, which is stated plainly at signup rather than buried.
 
 **Personal data.** Saying no PII is collected is too neat. An override is attributable to the person who made it, which makes it personal data under GDPR whether or not a name field exists. Data minimisation is therefore about what we do with it: the leadership record aggregates by decision and never by named individual.
 

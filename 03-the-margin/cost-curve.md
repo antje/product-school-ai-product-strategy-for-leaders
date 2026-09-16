@@ -160,7 +160,9 @@ Retrieval is the volume, not the cost. Embeddings are 75% of all requests and 0.
 
 **Proposed AI pricing:** $500 per team per month, plus **$60 per experiment reviewed**. At 50 experiments a year that is $6,000 base and $3,000 metered, so **$9,000 per team per year**.
 
-**Model:** hybrid, sold self-serve.
+**Model:** hybrid. Year one is a design-partner motion, founder-led, three to five teams. Self-serve from year two, once onboarding runs without a person. Entry is gated on the backtest in both years: the subscription starts only when a team's own pre-registered backtest passes.
+
+The unit covers any reviewed decision with a scheduled read-out, whatever its attribution grade. The 50-a-year base case counts controlled experiments only, so it is conservative once flag rollouts are reviewed under the same unit.
 
 Strategy posture: maximize. Not skim, because there is no track record to skim on. Not penetrate, because a low price on a product that claims to improve decisions argues against the claim.
 
@@ -232,14 +234,19 @@ Experiments reviewed rests on one assumption. Between 35 and 70 experiments a ye
 
 An $8,000 to $9,000 contract sits in the awkward middle: too expensive for a casual card purchase, too cheap to justify a salesperson who must clear a security review to run the backtest. Left unresolved, that alone breaks the economics.
 
-The answer is to make it self-serve, which is the same investment already argued for on cost grounds. The backtest connects to an analytics platform by OAuth and runs without a human, so a prospect sees their own history scored before talking to anyone. That is a product-led motion at a team price, which is how Linear, Vercel and Statsig sell in this range.
+The answer in steady state is self-serve, which is the same investment already argued for on cost grounds. The backtest connects to an analytics platform by OAuth and runs without a human, so a prospect sees their own history scored before talking to anyone. That is a product-led motion at a team price, which is how Linear, Vercel and Statsig sell in this range.
+
+Year one is not that, and saying it is would contradict the cost model, where 65% of COGS is a person onboarding each team. Year one is a design-partner program: three to five teams, founder-led, onboarding done by hand and priced into the $463 above. Partners pay the full rate once their backtest passes and, in exchange for the hand-holding, agree to data-use terms that let their objection-type outcomes seed the pooled craft layer. Their purpose is to fill the record and prove the wedge, and the ARR they produce is secondary. CAC for that motion is founder hours, not cash, so it is not in the table.
 
 | Motion | CAC | Payback | 3-year LTV:CAC |
 |---|---|---|---|
-| **Self-serve, no rep** | **$1,200** | **1.7 months** | **24.5x** |
+| Design partner, founder-led (year one) | Founder time | Not modelled as cash | Fills the record |
+| **Self-serve, no rep (year two on)** | **$1,200** | **1.7 months** | **24.5x** |
 | Rep-assisted with security review | $3,200 | 4.5 months | 9.2x |
 
-Both motions work, but only one is achievable without hiring, and the difference between them is the same self-serve onboarding work that is 65% of the cost of serving a customer.
+Self-serve is the only scalable motion this ACV supports, and the year-one program is what makes it possible: onboarding becomes self-serve by automating the exact steps the founder did by hand for the first five teams.
+
+*Refined after Module 6.* This section first said "sold self-serve" without a year attached, which contradicted the onboarding line in the cost model. The self-serve numbers are unchanged and now belong to year two.
 
 ### Checking the price against the value
 
@@ -339,7 +346,8 @@ Gross margin is half of unit economics and it is the flattering half. A CFO asks
 
 | Motion | CAC | Year 1 gross profit | Payback | 3-year LTV:CAC |
 |---|---|---|---|---|
-| **Self-serve, backtest runs without a human** | **$1,200** | **$8,537** | **1.7 months** | **24.5x** |
+| Design partner, founder-led, year one | Founder time | $8,537 | Not modelled as cash | Fills the record |
+| **Self-serve, backtest runs without a human, year two on** | **$1,200** | **$8,537** | **1.7 months** | **24.5x** |
 | Rep-assisted, security review in the path | $3,200 | $8,537 | 4.5 months | 9.2x |
 | $30/seat, rep-assisted | $3,200 | $1,337 | 28.7 months | 1.4x |
 
@@ -349,9 +357,11 @@ And the real argument for self-serve is not cost. It is that it is the only moti
 
 ### What this asks the board to decide
 
-**Approve the pricing model change.** Seat to hybrid on experiments reviewed is +$7,200 per team in year one at no additional cost. What has to be true is that a self-serve backtest convinces a buyer, and that is testable before any of this ships.
+**Approve the pricing model change.** Seat to hybrid on experiments reviewed is +$7,200 per team in year one at no additional cost. What has to be true is that a backtest convinces a buyer, and that is testable before any of this ships.
 
-**Fund self-serve onboarding, and treat it as a revenue decision rather than a cost one.** Two hours of a person per team is the largest line in year-one COGS and a growth ceiling at 200 hours per hundred teams. More importantly it is what makes a $9,000 ACV sellable at all, by taking the rep and the security review out of the path.
+**Run year one as a design-partner program, and gate every subscription on the backtest.** Three to five teams, onboarded by hand, paying full rate once their pre-registered backtest passes, under data-use terms that seed the pooled craft layer. This is how the record fills and the wedge gets proven before self-serve is asked to carry the growth.
+
+**Fund self-serve onboarding for year two, and treat it as a revenue decision rather than a cost one.** Two hours of a person per team is the largest line in year-one COGS and a growth ceiling at 200 hours per hundred teams. More importantly it is what makes a $9,000 ACV sellable at all, by taking the rep and the security review out of the path.
 
 **Fund the cascade before the daily-help surface launches.** It is 19.5 points of gross margin and about $3,500 a year at ten teams. Cheap now, awkward to retrofit once request volume is 300 times higher.
 
@@ -363,4 +373,6 @@ Three numbers, in the order they would surface.
 
 **Churn above one team in nine.** NRR drops below 100% and the expansion argument goes with it. Retention is where the moats are supposed to appear, so this failing means they are not forming.
 
-**Self-serve conversion not working.** If prospects will not connect an analytics platform without a call, CAC goes to the rep-assisted number or higher, payback stretches past a year, and the ACV question reopens. Replace the $1,200 assumption with a measurement after the first twenty signups rather than carrying it into a plan.
+**Backtests not passing.** If fewer than three of the first five design partners clear the pre-registered threshold, there is no wedge and the pricing question is moot. This surfaces first, within the first quarter, and it is the M1 kill criterion arriving through the revenue model.
+
+**Self-serve conversion not working, year two.** If prospects will not connect an analytics platform without a call, CAC goes to the rep-assisted number or higher, payback stretches past a year, and the ACV question reopens. Replace the $1,200 assumption with a measurement after the first twenty self-serve signups rather than carrying it into a plan.
