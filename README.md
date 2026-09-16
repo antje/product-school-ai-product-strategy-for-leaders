@@ -4,7 +4,7 @@
 >
 > Engineers get code review. Product managers get nothing. product-coach reads a team's repository, tracker, analytics and customer feedback, objects to a decision using that team's own numbers, attaches a falsifiable prediction to the objection, and records whether it was right when the result comes in. The advice is copyable next quarter. The record of predictions and outcomes is not.
 
-**Prototype:** [product-coach.vercel.app](https://product-coach.vercel.app/) · **Author:** Antje Barth
+**Prototype:** [product-coach.vercel.app](https://product-coach.vercel.app/) · **Board pitch:** [antje.github.io/…/board-pitch-deck.html](https://antje.github.io/product-school-ai-product-strategy-for-leaders/06-the-pitch/board-pitch-deck.html) · **Author:** Antje Barth
 
 ---
 
