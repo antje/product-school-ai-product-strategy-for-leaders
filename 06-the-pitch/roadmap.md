@@ -94,19 +94,21 @@ The summary line: "unusually disciplined thinking with unusually thin evidence. 
 
 ## Board Pitch
 
-**Thesis (1 sentence):**
+Written for a seed investor or funding committee, the audience whose yes funds twelve months. A board cares about defensibility and economics first, so the case leads with the record and the risks lead with the kill.
+
+**Thesis (1 sentence):** Product teams will pay for a coach that argues with their decisions using their own data and keeps score on whether it was right, and the score is the asset no competitor can backfill.
 
 **The case:**
-1. Why now:
-2. What's defensible:
-3. The economics:
+1. Why now: Two things became true in the last two years. Agents can read a team's live systems instead of being told about them, and experimentation platforms log hypotheses and results well enough that the coach can be graded on a buyer's own history before they buy. At the same time, producing product artifacts became free, so the only thing left worth paying for is whether the decision behind them was right. Nothing in the category measures that.
+2. What's defensible: The record of predictions and outcomes. Freeze the product for a quarter with every competitor on the same model and it is the only asset in the comparison that grows, because it requires having been present at the decision, the override and the read-out. The coach sits upstream of the experimentation platforms, at the moment a decision is written, and reads from all of them, so a native review step inside one platform sees only the slice that reached it. ChatPRD can copy the objection next quarter; it cannot copy a record of whether objections were right. Pooled objection-type priors across customers are what nobody else can reach, and they are sequenced first.
+3. The economics: $9,000 per team in year one, $500 a month plus $60 per experiment reviewed, at 94.9% gross margin. Contribution is $8,537 per team, inference is $116 of the $463 cost to serve, and the cascade is worth 19.5 margin points. A review costs 0.7% of the $25,000 experiment it checks. From year two the motion is self-serve with a 1.7-month payback; year one is founder-led design partners, priced at full rate once their backtest passes.
 
 **The risks:**
-1. Trust / failure modes:
-2. Scale / governance:
-3. Competitive:
+1. Trust / failure modes: The coach might not beat the team's own judgment, in which case the product has collected the evidence against itself. The pre-registered backtest answers this before any money is spent on a customer: flagged experiments must succeed 20 points less often than unflagged, on two or three named partners, within eight weeks, published either way. A confident wrong citation is the other failure, and it degrades the product to decline-only rather than to confident error. The golden set is 10 rows today and 100 in the first four weeks; no reliability number ships to a buyer until it comes from a real history.
+2. Scale / governance: One person holds every audit role, which is a stated single point of failure; the per-call invariants and daily golden run are automated, and the first hire is an eval owner at the first paying customer. Customer briefs are sent to Anthropic, so zero-retention and no-training terms are the first Guardrails item, signed before any partner connects. The person layer stays private to the individual, which keeps the EU AI Act tier at limited and costs one selling point.
+3. Competitive: Statsig, Eppo or Amplitude could ship native pre-launch review within a year; the upstream position and the pooled priors are the answer, and the Network loop is sequenced ahead of everything else for that reason. ChatPRD copying the mechanism is expected and not a kill: the answer is collecting outcomes faster than they do.
 
-**The ask:**
+**The ask:** Twelve months of one founder full-time and a design-partner program of three to five teams. Modelled at $250,000 loaded founder cost, an assumption the founder replaces with the real figure, plus $25,000 for outside counsel on data-use terms and platform, the ask is **$275,000**. Break-even at that cost is 30 teams at $8,537 contribution each. What the money buys by month three is the backtest result, published whether it passes or not, and the kill point is week eight after the first partner connects. If it fails, the spend to that point is under a quarter of the ask.
 
 ## M1 Baseline vs. Now
 *Your 3-sentence AI strategy from Module 1 vs. what you'd say now:*

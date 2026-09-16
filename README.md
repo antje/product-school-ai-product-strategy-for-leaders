@@ -17,7 +17,7 @@
 | **The Margin** | M3 | Done | [`03-the-margin/`](03-the-margin/): cost curve, pricing and board story |
 | **The Contract** | M4 | Done | [`04-the-contract/`](04-the-contract/): golden dataset, confidence UX, reliability contract |
 | **The Guardrails** | M5 | Done | [`05-the-guardrails/`](05-the-guardrails/): compounding system, governance policy, shadow AI audit |
-| **The Pitch** | M6 | [ ] | `06-the-pitch/` |
+| **The Pitch** | M6 | Done | [`06-the-pitch/`](06-the-pitch/): three-horizon roadmap, AI evaluation, board pitch, M1 baseline vs now |
 
 ---
 
@@ -101,12 +101,12 @@
 - **Horizon 1 (Now):** Four weeks, nine items, everything that gates the backtest: the first partner's analytics connector, the craft/context schema split, override capture and read-out delivery with their loop metrics, attribution grading, data-use and retention terms, golden set to 100 with a calibration check, and the customer ROI one-liner.
 - **Horizon 2 (Next):** One to three months, eleven items with kill criteria: the pre-registered backtest (stop if the gap is under 20 points on two partners by week 8), ten buyer conversations (reprice if fewer than 3 of 10 say yes by week 4), three to five design partners, the Recursive Learning return path, the cascade, the CI gate and `decline-only`, record prominence, the PII screen, provider abstraction, record export.
 - **Horizon 3 (Bet):** Three to six months, four items each with a precondition: the pooled cold-start layer, which is the one to protect if budget is cut; self-serve onboarding in year two; the monitoring add-on only after the backtest passes; the private person layer only once never-upward is enforced in code.
-- **Board Narrative:**
-- **Ask:**
+- **Board Narrative:** Product teams will pay for a coach that argues with their decisions using their own data and keeps score on whether it was right, and the score is the asset no competitor can backfill. Why now: agents can read live systems and platforms log outcomes well enough to grade the coach on a buyer's own history before the sale. Defensible: the record, upstream of the platforms, with pooled priors sequenced first. Economics: $9,000 per team at 94.9% gross margin. Risks: the backtest kills it before spend if the coach is not better than the team.
+- **Ask:** $275,000 for twelve months: one founder full-time at a modelled $250,000 loaded cost, plus $25,000 for counsel on data-use terms and platform, funding a three-to-five-team design-partner program. Break-even is 30 teams. The backtest result is published by month three either way, and the kill point is week eight after the first partner connects.
 - **Key Strategic Change:** The intervention point moved upstream of the experimentation platforms, to the moment a decision is written down, and read-outs are graded by attribution quality so flag rollouts count. The platforms went from the most dangerous attacker to the read-out sources the product sits above. Year one became a design-partner program gated on a pre-registered backtest.
 - **AI Metrics for the Board:** Hallucination <1% (alert >2%). Drift <5pp per four weeks. HITL rate <2% of reviews, since a human is reached only on a fabricated citation or disagreeing endorsement precedents. Inference ROI about 78x, $116 of inference per $9,000 of revenue. Eval regression: zero shipped, because a release is blocked below 90% golden-set pass; measured as the pass-rate delta per release. Confidence distribution is reported from the ledger by tier (>90%, 70 to 90%, declined below 70%) and deliberately not targeted, because a target would push the coach to game its own confidence.
 
-→ Details: [`06-the-pitch/`](06-the-pitch/)
+→ Details: [`roadmap.md`](06-the-pitch/roadmap.md)
 
 ---
 
