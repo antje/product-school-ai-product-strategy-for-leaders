@@ -19,6 +19,8 @@ What product-coach promises, how it is measured, and what happens when it breaks
 
 **Golden set:** 300 rows at v1, 10 today. The gap is the main risk in this document and the arithmetic is below.
 
+**Three further numbers a board will ask for, derived from the contract rather than added to it.** HITL rate: under 2% of reviews, because a human is reached only on a fabricated citation or an endorsement whose precedents disagree, and the first is bounded by the hallucination alert. Eval regression: zero shipped, because a release is blocked below 90% golden-set pass; the measured quantity is the pass-rate delta per release. Confidence distribution: reported from the ledger by tier (above 90%, 70 to 90%, declined below 70%) and deliberately not targeted, because a target on the distribution would push the coach to game its own confidence, which is the failure the throttled loop in the guardrails work exists to prevent.
+
 One thing this contract does not promise. It says nothing about whether the advice is good. Accuracy above measures whether the coach makes the call the golden set expects, against a corpus we built. The product's commercial claim, that its predictions beat a team's own judgment, needs a customer's real history and is not asserted here.
 
 ---

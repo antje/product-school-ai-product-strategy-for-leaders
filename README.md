@@ -1,12 +1,10 @@
 # product-coach: An AI Product Strategy
 
-> Decision review for product teams, and the strategy behind it.
+> **Product teams will pay for a coach that argues with their decisions using their own data and keeps score on whether it was right.**
 >
-> Product managers work without the review layer engineers take for granted. product-coach reads a team's repository, tracker, analytics, and customer feedback, objects to a decision using that team's own numbers, and then records whether its own call was right.
->
-> A living strategy built across six sessions. Each module adds one component. By Module 6 this repo is the strategy, version-controlled and portable.
+> Engineers get code review. Product managers get nothing. product-coach reads a team's repository, tracker, analytics and customer feedback, objects to a decision using that team's own numbers, attaches a falsifiable prediction to the objection, and records whether it was right when the result comes in. The advice is copyable next quarter. The record of predictions and outcomes is not.
 
-**Prototype:** [product-coach.vercel.app](https://product-coach.vercel.app/) · **Author:** Antje Barth · AI Product Strategy for Leaders, Product School
+**Prototype:** [product-coach.vercel.app](https://product-coach.vercel.app/) · **Author:** Antje Barth
 
 ---
 
@@ -31,9 +29,9 @@
 - **AI Value Archetype:** Copilot, with an Orchestrator trajectory once it proposes experiments rather than only reviewing them.
 - **Vulnerability Scores:** Moat 4/5 · Data 4/5 · Platform 2/5
 - **Top Risk:** The product is sold on keeping score, so if the coach's calls do not beat the team's own judgment, it will have collected the evidence against itself and published it.
-- **Confidence:** M
+- **Confidence:** M. The demand is proven, ChatPRD sells AI coaching to product managers at $15 a seat. The wedge is not: nothing yet shows the coach's calls beat the team's own.
 - **Prototype:** [product-coach.vercel.app](https://product-coach.vercel.app/)
-- **Kill Criteria:** Backtest the coach over about fifty of a team's completed experiments. If the calls it would have flagged do not underperform the ones it would have passed by a clear margin, there is no judgment worth selling and the bet stops.
+- **Kill Criteria:** Backtest the coach over about fifty of a team's completed experiments. If the calls it would have flagged do not underperform the ones it would have passed by a clear margin, there is no judgment worth selling and the bet stops. It runs before the first sale, on history that already sits in the analytics platform, so the kill decision precedes the spend.
 
 → Details: [`diagnostic.md`](01-the-bet/diagnostic.md) · [`prototype.md`](01-the-bet/prototype.md)
 
@@ -57,11 +55,11 @@
 
 **Will this make money or bleed it?**
 
-- **Gross Margin (current):** 74.3% at a $30 seat price. COGS is $7.72 per seat per month, and 65% of it is human onboarding rather than inference.
-- **Gross Margin (AI-adjusted):** 94.9% in year one on the proposed pricing, 97.8% by year three once onboarding drops out.
+- **Gross Margin (floor):** 74.3% at the rejected $30-per-seat price, shown as the worst case. COGS is $7.72 per seat per month, $463 per five-seat team per year, and 65% of it is human onboarding rather than inference.
+- **Gross Margin (proposed pricing):** 94.9% in year one, 97.8% by year three once onboarding is self-serve. Inference is $116 of the $463, so revenue per inference dollar is about 78x.
 - **Pricing Model:** Hybrid, sold self-serve. $500 per team per month plus $60 per experiment reviewed, so $9,000 in year one. Outcome units were rejected because a resolved call would let the vendor decide the invoice, and because any unit tied to warnings shrinks as the coach teaches the team to stop repeating itself.
 - **Cascading Strategy:** 96% of requests to small models and embeddings, 4% to mid and frontier. A task moves up a tier only when a smaller model actually fails at it and being wrong costs something. Worth 19.5 points of gross margin.
-- **Break-even at:** A review costs 0.7% of the $25,000 experiment it checks. CAC payback is 1.7 months self-serve, against 28.7 months at seat pricing with a rep.
+- **Break-even at:** Contribution is $8,537 per team per year, so the platform ($20 Vercel, $19 Neon a month) is covered by the first team. The model carries no salary, so real break-even is loaded founder cost divided by $8,537, and that number is what the ask has to fund. A review costs 0.7% of the $25,000 experiment it checks; CAC payback is 1.7 months self-serve against 28.7 at seat pricing with a rep.
 
 → Details: [`cost-curve.md`](03-the-margin/cost-curve.md)
 
@@ -85,8 +83,8 @@
 
 **What breaks when this scales, and what compounds.**
 
-- **Compounding System:** Three loops, none compounding today, for three different reasons. Recursive Learning is the one defect: the product records every override and resolves every prediction, then never returns the record to the reasoning. Cross-Domain Transfer is declined on purpose, because A/B tested decisions are the only ground where a prediction can be checked against a control. Network Intelligence is gated on having customers. Six design commitments follow, the first being that the record is the product and the advice is how we earn the right to keep it.
 - **Freeze Test:** Frozen for a quarter with every competitor on the same model, product-coach is the only asset in the comparison that grows. Templates, content breadth and in-experiment optimization all go static. A verified record of predictions and outcomes cannot be bought, scraped or generated, because it requires having been present at the decision, the override and the read-out.
+- **Compounding System:** Three loops, none compounding today, for three different reasons. Recursive Learning is the one defect: the product records every override and resolves every prediction, then never returns the record to the reasoning. Cross-Domain Transfer is declined on purpose, because A/B tested decisions are the only ground where a prediction can be checked against a control. Network Intelligence is gated on having customers. Six design commitments follow, the first being that the record is the product and the advice is how we earn the right to keep it.
 - **Governance Posture:** The coach argues, it never acts, and holds no write path into any customer system. Two decisions need human approval: scoring a prediction when the read-out is ambiguous, defined as the 95% CI containing the objection's threshold, and shipping any prompt or model change, gated at 90% golden-set pass and 1% hallucinated citations. `decline-only` is the named degraded state, entered automatically on a fabricated citation or a 10-point pass-rate drop.
 - **Shadow AI Status:** 6 workarounds found, triaged to 4 build, 1 partner, 1 ignore. $35 per PM per month in adjacent spend. Dominant signal is trust, which reframes the audit: users double-checking output against another model are reporting a credibility problem, not requesting a feature.
 - **Agent Boundaries:** Four components, three of which call a model, plus one designed and unbuilt. Each row separates what code enforces from what policy merely asks, because a reader cannot otherwise tell which limits survive a bug. No component calls another's tools and there is no chain, so there is no handoff to own.
@@ -103,7 +101,13 @@
 - **Horizon 1 (Now):**
 - **Horizon 2 (Next):**
 - **Horizon 3 (Bet):**
-- **Board Narrative:** [1-sentence thesis]
-- **Key Metric:**
+- **Board Narrative:**
+- **Ask:**
+- **Key Strategic Change:**
+- **AI Metrics for the Board:** Hallucination <1% (alert >2%). Drift <5pp per four weeks. HITL rate <2% of reviews, since a human is reached only on a fabricated citation or disagreeing endorsement precedents. Inference ROI about 78x, $116 of inference per $9,000 of revenue. Eval regression: zero shipped, because a release is blocked below 90% golden-set pass; measured as the pass-rate delta per release. Confidence distribution is reported from the ledger by tier (>90%, 70 to 90%, declined below 70%) and deliberately not targeted, because a target would push the coach to game its own confidence.
 
 → Details: [`06-the-pitch/`](06-the-pitch/)
+
+---
+
+A living strategy built across six sessions of AI Product Strategy for Leaders, Product School. One component per module; the repo is the deliverable.

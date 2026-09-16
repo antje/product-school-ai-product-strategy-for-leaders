@@ -300,6 +300,13 @@ Gross margin: **94.9%**, rising to **97.8%**
 Net margin shift
 Δ margin: **+20.6 points** · Δ gross dollars: **+$7,200 per team per year**, or +$72,000 at ten teams
 
+Contribution and break-even
+Contribution: $9,000 less $463 = **$8,537 per team per year**
+Inference ROI: $116 of inference per $9,000 of revenue, about **78x**
+Platform fixed cost: $20 Vercel plus $19 Neon, $468 a year, covered by the first team
+
+What the model leaves out. There is no salary in it. Every cost above is either per team or platform, and the largest real fixed cost, a founder's loaded compensation, is absent because it is a funding decision rather than a product one. Real break-even is that figure divided by $8,537, and it is the number the ask in the pitch has to fund.
+
 ### The narrative
 
 Why margin moves, and why it moves the unusual way. The standard AI board story is margin down and gross profit up, and the job is explaining why the trade is fine. This one goes up on both, and the reason is structural rather than good housekeeping. The expensive part of the product is the daily help, which stays free because it buys the habit. The priced part is the review, which costs almost nothing to produce. Charging for the check rather than for access adds $7,200 per team and no cost at all.
