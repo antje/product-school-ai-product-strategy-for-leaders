@@ -8,7 +8,7 @@ What product-coach promises, how it is measured, and what happens when it breaks
 |--------|--------|-------------|-----------------|
 | Accuracy | 90% | Weekly, full golden set, rule judge, segmented by `prompt_version`, `model` and call type | <85% pages the founder, triggers gold-set audit |
 | Hallucination rate | <1% | Same weekly run. Cited ids checked against the corpus deterministically, plus a safety rubric on misdescribed results, invented numbers and unsupported mechanism claims | >2% routes all reviews to decline-only, pages the founder |
-| Latency p95 | <20s | Continuous, per review. 60s function ceiling, and a timed-out review is a failed review | >30s p95, or completion below 97% over 20 reviews, pages the founder |
+| Latency p95 | <20s | Continuous, per review. 60s function ceiling, and a timed-out review is a failed review | >30s p95, or completion below 97% over 20 reviews, pages the eval owner, which is the founder today |
 | Drift velocity | <5pp decay per 4 weeks | 4-week rolling pass rate on the full golden set, against a frozen prompt version and model id | >10pp decay pins to the last verified model, triggers gold-set audit |
 
 **HITL architecture:** a fabricated citation on write, an endorsement whose precedents disagree, or a 4-week pass rate decaying more than 10 points routes to the founder. Refusals and declines never escalate. Reviewer corrections feed back into the weekly gold-set audit.
@@ -19,9 +19,9 @@ What product-coach promises, how it is measured, and what happens when it breaks
 
 **Golden set:** 300 rows at v1, 10 today. The gap is the main risk in this document and the arithmetic is below.
 
-**Attribution grade on every read-out.** A prediction is scored against whatever read-out the decision produces, and read-outs are not equal. Grade A is a controlled test. Grade B is a staged rollout or flagged release, attributable with care. Grade C is a plain launch, where a metric moved and nothing isolates why. The grade is recorded on the call, confidence on the prediction is capped by it, and only grade A and B outcomes count toward the published hit rate. Grade C outcomes are kept in the ledger as `not-scored`, the same class as declines, so widening the product to decisions beyond controlled experiments does not widen the number it sells on. The ambiguity rule above applies wherever a confidence interval exists, which is grade A always and grade B when the rollout reports one.
+**Attribution grade on every read-out.** A prediction is scored against whatever read-out the decision produces, and read-outs are not equal. Grade A is a controlled test. Grade B is a staged rollout or flagged release, scored as the exposed cohort against the pre-period baseline, with confidence capped at the medium tier; if the flag platform reports no interval the read-out is treated as grade C. Grade C is a plain launch, where a metric moved and nothing isolates why. The grade is recorded on the call, confidence on the prediction is capped by it, and only grade A and B outcomes count toward the published hit rate. Grade C outcomes are kept in the ledger as `not-scored`, the same class as declines, so widening the product to decisions beyond controlled experiments does not widen the number it sells on. The ambiguity rule above applies wherever a confidence interval exists, which is grade A always and grade B when the rollout reports one.
 
-**Three further numbers a board will ask for, derived from the contract rather than added to it.** HITL rate: under 2% of reviews, because a human is reached only on a fabricated citation or an endorsement whose precedents disagree, and the first is bounded by the hallucination alert. Eval regression: zero shipped, because a release is blocked below 90% golden-set pass; the measured quantity is the pass-rate delta per release. Confidence distribution: reported from the ledger by tier (above 90%, 70 to 90%, declined below 70%) and deliberately not targeted, because a target on the distribution would push the coach to game its own confidence, which is the failure the throttled loop in the guardrails work exists to prevent.
+**Three further numbers a board will ask for, derived from the contract, not added to it.** HITL rate: under 2% of reviews, because a human is reached only on a fabricated citation or an endorsement whose precedents disagree, and the first is bounded by the hallucination alert. Eval regression: zero shipped, because a release is blocked below 90% golden-set pass; the measured quantity is the pass-rate delta per release. Confidence distribution: reported from the ledger by tier (above 90%, 70 to 90%, declined below 70%) and not targeted, because a target on the distribution would push the coach to game its own confidence, which is the failure the throttled loop in the guardrails work exists to prevent.
 
 One thing this contract does not promise. It says nothing about whether the advice is good. Accuracy above measures whether the coach makes the call the golden set expects, against a corpus we built. The product's commercial claim, that its predictions beat a team's own judgment, needs a customer's real history and is not asserted here.
 
@@ -59,7 +59,7 @@ Outcomes in the corpus were assigned from this rule. It is written in the corpus
 - **Established accounts** (retention, renewal, expansion, reactivation). The same feeling-led mechanisms work fine here.
 - **education, notification, pricing-display** are noise, mixed both ways.
 
-Recomputed from the data rather than asserted, by `node scripts/check-corpus.mjs`:
+Recomputed from the data by `node scripts/check-corpus.mjs`:
 
 | Slice | n | Mean actual lift |
 |---|---|---|
@@ -69,7 +69,7 @@ Recomputed from the data rather than asserted, by `node scripts/check-corpus.mjs
 
 **Separation on the early funnel: 4.33pp.**
 
-That third row is why the corpus tests something rather than nothing. A coach that concludes "personalization is bad" has overfit to the planted rule, and the corpus catches it, because the same mechanism works on established accounts. Catching that is a real property of the test. It still says nothing about whether the coach would read a real company's history correctly.
+That third row is what gives the corpus something to test. A coach that concludes "personalization is bad" has overfit to the planted rule, and the corpus catches it, because the same mechanism works on established accounts. Catching that is a real property of the test. It still says nothing about whether the coach would read a real company's history correctly.
 
 ## The four outcomes, defined
 
@@ -77,7 +77,7 @@ The rows below use four words for what the coach can do, and they are not interc
 
 | | When it happens | Model called | Prediction made | Ledger effect |
 |---|---|---|---|---|
-| **Refuse** | The brief is not reviewable: no read date fixed before launch, volume cannot power the effect, a guardrail with no numeric bound, or a target asserted rather than derived | No | No | Nothing recorded |
+| **Refuse** | The brief is not reviewable: no read date fixed before launch, volume cannot power the effect, a guardrail with no numeric bound, or a target asserted without a derivation | No | No | Nothing recorded |
 | **Object** | The history contradicts the hypothesis. Carries a metric, a direction and a numeric threshold | Yes | Yes, lands below X | Scorable. Resolves right or wrong |
 | **Endorse** | The history supports the hypothesis, on named precedent | Yes | Yes, lands above X | Scorable. Resolves right or wrong |
 | **Decline** | The history says nothing either way | Yes | No | Recorded `not-scored`. Never moves the hit rate |
@@ -88,9 +88,9 @@ Refuse is a judgment about the input, and it costs nothing because it is arithme
 
 The obvious fourth state is "accept, this looks fine." That state is dishonest, because it would rest on the *absence* of a contradiction. Absence of evidence supports no claim, and a prediction built on it would enter the hit rate carrying nothing.
 
-Endorse is narrower. It fires only on **positive precedent**: prior experiments in this team's history with the same mechanism and the same audience that landed above the threshold. Named, counted and cited, exactly as an objection cites the cases that contradict.
+Endorse is narrower. It fires only on **positive precedent**: prior experiments in this team's history with the same mechanism and the same audience that landed above the threshold. Named, counted and cited, as an objection cites the cases that contradict.
 
-The bar is deliberately higher than for objecting, because the failure is worse. A wrong objection costs a team an experiment they should have run. A wrong endorsement manufactures confidence and costs them one they should not have, which is the Air Canada shape. Conditions:
+The bar is higher than for objecting because the failure is worse. A wrong objection costs a team an experiment they should have run. A wrong endorsement manufactures confidence and costs them one they should not have, which is the Air Canada shape. Conditions:
 
 1. At least three prior experiments match on mechanism and audience.
 2. Their mean lift is above the threshold being predicted.
@@ -108,13 +108,13 @@ Run against the 49 parsed corpus experiments:
 | Decline | 37% | 37% |
 | **Scorable share of reviews** | **31%** | **63%** |
 
-The ledger fills **2.1x faster**. A hit rate near 70% needs about 36 labelled calls. At 31% scorable, a 50-experiment customer backtest yields about 15 labels, so three customers are needed. At 63% it yields 31, so roughly one.
+The ledger fills **2.1x faster**. A hit rate near 70% needs about 36 labelled calls. At 31% scorable, a 50-experiment customer backtest yields about 16 labels, so three customers are needed. At 63% it yields about 32, so roughly one.
 
 It also changes what a review is worth. Roughly a third of reviews previously returned nothing, and "clear to proceed" is thin. A cited endorsement is the evidence a product manager needs to defend a decision in a review, which is the second value stream the pricing rests on.
 
 ## Golden Dataset Spec
 
-Ten rows drawn from the synthetic corpus rather than written fresh for this exercise, so the inputs at least match what the running product actually processes. Each is a brief the coach is shown blind, with the read date withheld. Expected output is the call a correct reading produces. Every row is scored by the rule judge in `lib/ledger/scoring.ts` unless stated otherwise.
+Ten rows drawn from the synthetic corpus, not written fresh for this exercise, so the inputs at least match what the running product actually processes. Each is a brief the coach is shown blind, with the read date withheld. Expected output is the call a correct reading produces. Every row is scored by the rule judge unless stated otherwise.
 
 | # | Input | Expected Output | Edge Case? | Judge Type |
 |---|-------|----------------|-----------|-----------|
@@ -135,9 +135,9 @@ Ten rows drawn from the synthetic corpus rather than written fresh for this exer
 
 Row 4 is the anti-overfit case. A coach that learned "personalization is bad" fails it.
 
-Row 7 is a miss the live product actually made, though against a synthetic answer key. On 2026-08-29 the coach objected to ex-044, predicted the lift would land below +2pp, and it landed +7.2pp. Recorded **Wrong** in the ledger. The reasoning was substantive rather than lazy, distinguishing mechanisms that create value from ones that present it, which is what makes the miss worth keeping. It also exposed a genuine ambiguity: the experiment is labelled `time-to-value` but its hypothesis text describes a presentation change, so the coach reasoned from the prose while the hidden rule scored by the label. **Left unfixed on purpose.** Softening the corpus so the coach looks better is the self-grading failure this product exists to avoid, and it is a live temptation precisely because the corpus is ours to edit.
+Row 7 is a miss the live product actually made, though against a synthetic answer key. On 2026-08-29 the coach objected to ex-044, predicted the lift would land below +2pp, and it landed +7.2pp. Recorded **Wrong** in the ledger. The reasoning was substantive, distinguishing mechanisms that create value from ones that present it, which is why the miss stays in. It also exposed a genuine ambiguity: the experiment is labelled `time-to-value` but its hypothesis text describes a presentation change, so the coach reasoned from the prose while the hidden rule scored by the label. **Left unfixed.** Softening the corpus so the coach looks better is the self-grading failure this product exists to avoid, and it is a live temptation precisely because the corpus is ours to edit.
 
-Rows 8 and 9 test the refusal layer rather than the judgment layer, and they must fire without a model call.
+Rows 8 and 9 test the refusal layer, not the judgment layer, and they must fire without a model call.
 
 Row 10 tests the hardest behaviour to get right: declining when there is no pattern. A coach that always finds something to say is worse than useless, because every objection carries a prediction that enters the hit rate.
 
@@ -154,16 +154,16 @@ Row 10 tests the hardest behaviour to get right: declining when there is no patt
 
 **Approach:** all three, in a fixed order. A deterministic refusal layer runs first, then tiered confidence on what survives, then a human trigger on the bottom tier.
 
-The order matters because the refusals cost nothing and never vary. A brief that cannot be reviewed should not reach a model, and the product's opinions should be identical every time rather than varying with sampling temperature. A refusal that only fires sometimes is not a refusal.
+The order matters because the refusals cost nothing and never vary. A brief that cannot be reviewed should not reach a model, and the product's opinions should be identical every time, whatever the sampling temperature. A refusal that only fires sometimes is not a refusal.
 
-Layer 0, before any model call. Four deterministic checks, implemented as arithmetic in `lib/coach/preflight.ts`:
+Layer 0, before any model call. Four deterministic checks, implemented as arithmetic:
 
 | Code | Fires when | Shown to the user |
 |---|---|---|
 | `no-read-date` | No read date fixed before launch | The check, the remedy |
 | `underpowered` | Weekly volume cannot detect the stated effect in the window | The check, the remedy, and the sample-size arithmetic |
 | `guardrail-without-boundary` | A guardrail is named with no numeric bound | The check, the remedy |
-| `undevised-target` | The success target is asserted rather than derived | The check, the remedy |
+| `undevised-target` | The success target is asserted without a derivation | The check, the remedy |
 
 Sample size per arm uses n ≈ 16·p(1−p)/δ², the standard planning approximation at 80% power and 5% two-sided significance. The arithmetic is shown so the PM can check the work.
 
@@ -171,9 +171,9 @@ Sample size per arm uses n ≈ 16·p(1−p)/δ², the standard planning approxim
 
 **Medium confidence (70-90%):** the call is shown with the confidence figure visible. Copy shifts from "this will land below X" to "on this team's history this pattern has landed below X in n of m cases." The prediction is still recorded and still scored. Softening the language does not soften the accountability.
 
-Endorsements are held to a higher bar than objections at this tier. A hedged objection is a caution, which is cheap to be wrong about. A hedged endorsement is encouragement, which is not. Below 90% confidence an endorsement degrades to Decline rather than softening.
+Endorsements are held to a higher bar than objections at this tier. A hedged objection is a caution, which is cheap to be wrong about. A hedged endorsement is encouragement, which is not. Below 90% confidence an endorsement degrades to Decline instead of softening.
 
-**Low confidence (<70%):** **decline, do not hedge.** The coach says it has nothing to go on and names what it looked at. No prediction is made, and per `lib/ledger/scoring.ts` a decline is recorded as `not-scored` and never moves the hit rate.
+**Low confidence (<70%):** **decline, do not hedge.** The coach says it has nothing to go on and names what it looked at. No prediction is made, and a decline is recorded as `not-scored` and never moves the hit rate.
 
 A low-confidence call still carries a prediction, and a prediction entered at low confidence pollutes the only number the product sells. Declining is cheaper than being wrong.
 
@@ -218,17 +218,17 @@ Accuracy above is whether the coach made the *correct call* on a golden row, whe
 
 The **hit rate** is different: of the predictions the coach commits to, how many come true. That runs near 70%, and it is not a weak number. Predicting how an experiment lands is genuinely uncertain, and a product manager working unaided is close to a coin flip. Seventy percent on forecasts and 90% on classification are both strong, and they are measuring different things.
 
-The hit rate is the product's commercial claim and it is deliberately not in this contract, because it cannot be measured against a corpus we wrote.
+The hit rate is the product's commercial claim and it is not in this contract, because it cannot be measured against a corpus we wrote.
 
 Why hallucination is under 1% and not zero. A fabricated citation is only one kind, and it is the easy one: an id either exists or it does not, so that sub-check is deterministic and does run at zero tolerance on write. The harder kinds are a real id described wrongly, an invented number, or a mechanism claim the cited rows do not support. Those need a rubric and cannot be driven to zero. 
 
 The stakes are still the Air Canada stakes, and worse in one respect. Air Canada's bot invented a policy. This product would be inventing a fact about the customer's own history and handing it back to them as evidence.
 
-Why drift is measured as decay rather than flips. Ten rows is a coarse instrument, since one flip moves the pass rate ten points. A rolling four-week trend absorbs single-run noise and still catches a provider changing behaviour behind a stable model name. It gets sharper as the row count grows toward 300.
+Why drift is measured as decay, not flips. Ten rows is a coarse instrument, since one flip moves the pass rate ten points. A rolling four-week trend absorbs single-run noise and still catches a provider changing behaviour behind a stable model name. It gets sharper as the row count grows toward 300.
 
 Why there is no auto-rollback. There is no second qualified model to roll back to until the vendor swap gate from the kill-switch audit has been run. What fires instead is routing every review to decline-only, which is degraded-safe.
 
-Accuracy is measured against a rule we wrote, so it proves consistency rather than correctness. No accuracy figure ships to a customer or a sales conversation until it comes from a real backtest on a history nobody here authored. The other three metrics hold either way, because they are properties of the system rather than of the answers.
+Accuracy is measured against a rule we wrote, so it proves consistency, not correctness. No accuracy figure ships to a customer or a sales conversation until it comes from a real backtest on a history nobody here authored. The other three metrics hold either way, because they are properties of the system, not of the answers.
 
 ## HITL Architecture
 
@@ -241,11 +241,13 @@ Triggers are evaluated in order, and the first match wins.
 5. The 4-week rolling pass rate decays more than 10 points. Pin to the last verified model id and page the founder.
 6. A resolved call comes back Wrong on a golden row. Add to the weekly audit queue.
 
+One refinement to condition 2, because a decline can be misread as safety. Decline means the history is silent, and on most briefs that is the right and cheap answer. On a brief whose cost sits above the team's median experiment, silence is more dangerous than an objection, because the team is about to spend more than usual with no precedent either way. So a decline on a high-stakes brief is labelled as unprecedented and expensive, and shown with the nearest partial precedents instead of a blank. It still does not reach a human, since there is nothing for a human to check, but the user is never left to read no objection as endorsement.
+
 Who the human is: at current scale, the founder. A single reviewer is why the queue-shrinking design is a requirement and not a preference.
 
-Why the queue shrinks rather than scaling with usage. Only conditions 3, 4 and 5 reach a person, and all three are rare by construction. Condition 1 is arithmetic and condition 2 is a decline, so the two highest-volume paths never touch a human. Review volume therefore tracks failures rather than usage, which is the difference between the crutch pattern and the feature pattern.
+Why the queue shrinks instead of scaling with usage. Only conditions 3, 4 and 5 reach a person, and all three are rare by construction. Condition 1 is arithmetic and condition 2 is a decline, so the two highest-volume paths never touch a human. Review volume therefore tracks failures, not usage. That is the difference between the crutch pattern and the feature pattern.
 
-Corrections feed back. Every human review produces a labelled row that joins the gold set. This is the same mechanism as the Correction loop in the moat work, and it is the only place a human touching the system makes the system permanently better rather than just fixing one output.
+Corrections feed back. Every human review produces a labelled row that joins the gold set. This is the same mechanism as the Correction loop in the moat work, and it is the only place a human touching the system makes the system permanently better instead of fixing one output.
 
 ## Red-Team Findings
 
@@ -253,12 +255,12 @@ Found by the product itself, though against a synthetic answer key. The coach ob
 
 Why this one survives the synthetic problem. Most findings from invented data are worthless, because they only show the coach disagreeing with its author. This one is different. The failure is that the coach classified a mechanism from natural language and got it backwards, and that failure mode does not depend on the labels being true. Any brief whose wording and category disagree will break it, and real briefs are written by people who do not think in mechanism categories at all.
 
-**The fix, not yet built.** Classify mechanism as an explicit intermediate step with its own confidence, rather than inferring it inside the call. When the classifier's confidence is low, decline. That converts a silent wrong answer into a visible decline.
+**The fix, not yet built.** Classify mechanism as an explicit intermediate step with its own confidence, instead of inferring it inside the call. When the classifier's confidence is low, decline. That converts a silent wrong answer into a visible decline.
 
-Adding Endorse makes this failure worse before it makes it better. ex-044 should now be an endorsement, and the coach objected. Under the old three-state design a mechanism misread produced a wrong objection. Under four states it can produce a wrong endorsement, which is the more expensive direction. That is why the endorsement bar is three matching precedents and 90% confidence rather than the 70% floor everything else uses.
+Adding Endorse makes this failure worse before it makes it better. ex-044 should now be an endorsement, and the coach objected. Under the old three-state design a mechanism misread produced a wrong objection. Under four states it can produce a wrong endorsement, which is the more expensive direction. That is why the endorsement bar is three matching precedents and 90% confidence, not the 70% floor everything else uses.
 
-**A second finding, from reading the contract above.** The decline-rate band of 30 to 50% had no empirical basis. It was derived from the corpus flag rate, which is a property of the rule we planted rather than of anything real. It has been moved out of the enforceable contract and into the list of things that need a customer.
+**A second finding, from reading the contract above.** The decline-rate band of 30 to 50% had no empirical basis. It was derived from the corpus flag rate, which is a property of the rule we planted, not of anything real. It has been moved out of the enforceable contract and into the list of things that need a customer.
 
-What has not been red-teamed, and this is the honest headline. Nobody outside has tried to break this. Every coverage gap listed above was found by inspecting a corpus I wrote, against a rule I wrote, using a judge I wrote. That is the weakest form of red-teaming there is, and no amount of care inside that loop escapes it.
+What has not been red-teamed, which is the headline. Nobody outside has tried to break this. Every coverage gap listed above was found by inspecting a corpus I wrote, against a rule I wrote, using a judge I wrote. That is the weakest form of red-teaming there is, and no amount of care inside that loop escapes it.
 
 The first genuine test is a customer backtest on a history whose pattern nobody here planted. Until that runs, this document describes a system that behaves correctly, and says nothing about whether it is right.

@@ -5,6 +5,8 @@
 
 ## Flywheel Loops
 
+The module's test is wrapper versus workflow: a wrapper gets eaten when the model improves, a workflow survives because it owns a step of the job. The loops below are what decide which one this is. A product that captures corrections and outcomes and changes what the user sees next time owns the review step; one that only produces text does not.
+
 | Loop | Score | What the product captures today | How it compounds | What the user notices next time |
 |---|---|---|---|---|
 | **Correction** | **4/5** | The accept-or-override choice, then the experiment result that says who was right | Every override comes back labelled, so the system learns which objection types hold up | Objections start citing the user's own past disagreements and how they turned out |
@@ -14,11 +16,11 @@
 
 ### Correction Loop - 4/5
 
-**What you capture today:** The coach raises an objection. The user accepts the sharpened hypothesis or keeps the original. That choice is a correction, and it is captured by construction, because it is a button in the main flow rather than a feedback widget nobody clicks.
+**What you capture today:** The coach raises an objection. The user accepts the sharpened hypothesis or keeps the original. That choice is a correction, and it is captured by construction, because it is a button in the main flow, not a feedback widget nobody clicks.
 
 **How it compounds:** Three weeks later the experiment reads out and settles who was right. Most products store the disagreement and never learn the answer, so what they hold is a pile of opinions. Here it comes back labelled, without anyone doing extra work. The label is clean only when someone overrides, because an accepted objection means the original hypothesis never runs and nobody learns what it would have done.
 
-What improves is shared rather than per customer. The labelled results teach the product which kinds of objection hold up, and that lesson applies to every account. Each team's own history is read at the moment of the objection instead of being trained into a private model, so a new customer benefits from everything learned so far without anything being built specifically for them.
+What improves is shared, not per customer. The labelled results teach the product which kinds of objection hold up, and that lesson applies to every account. Each team's own history is read at the moment of the objection instead of being trained into a private model, so a new customer benefits from everything learned so far without anything being built specifically for them.
 
 Four is the ceiling to aim for. Reaching 5 would mean training a separate model per customer, and that cost grows with every account while the benefit stays inside one of them.
 
@@ -28,19 +30,19 @@ Four is the ceiling to aim for. Reaching 5 would mean training a separate model 
 
 **What you capture today:** Override events, with who overrode and on what kind of objection. Nothing more.
 
-**How it compounds:** It does not yet, because nothing acts on it. Two things keep this loop low on purpose.
+**How it compounds:** It does not yet, because nothing acts on it. Two things keep this loop low by design.
 
 A preference loop in a product whose job is to disagree is dangerous. Learning what someone prefers means learning to stop raising the objections they dislike, and the objections people dislike most are the ones about their favourite ideas. Satisfaction would climb while the product became worthless.
 
-The second reason is cost. Deep personalization is per-person customization, which is the expensive end of the trade, and it produces something that helps one user and nobody else. The same effort spent on shared learning improves every account at once.
+The second reason is cost. Deep personalization is per-person customization, the expensive end of the trade, and it produces something that helps one user and nobody else. The same effort spent on shared learning improves every account at once.
 
-**What the user notices next time:** Nothing. Every user gets the same coach. The designed version would give someone who keeps overriding sample-size objections, and keeps getting burned by underpowered tests, more of those checks rather than fewer. The profile would record what a person is repeatedly wrong about rather than what they enjoy hearing. None of that is built.
+**What the user notices next time:** Nothing. Every user gets the same coach. The designed version would give someone who keeps overriding sample-size objections, and keeps getting burned by underpowered tests, more of those checks, not fewer. The profile would record what a person is repeatedly wrong about, not what they enjoy hearing. None of that is built.
 
 ### Domain Context Loop - 1/5
 
 **What you capture today:** Nothing that crosses areas. Today the only read-outs in the record come from controlled experiments, because that is the only ground where the prototype can check afterwards whether the advice was right.
 
-**How it compounds:** Not yet, and the way it will is by attribution grade rather than by decision type. Every read-out is graded by the quality of its counterfactual: A for a controlled test, B for a staged rollout or flagged release, C for a plain launch. Grade A and B outcomes stack into one record with confidence weighted by grade, so a flag rollout on retention teaches the coach something about retention without pretending it was a controlled test. Covering every decision type ungraded would leave a handful of unscorable examples in each and nothing defensible anywhere. Covering them graded keeps the evidence in one place.
+**How it compounds:** Not yet, and the way it will is by attribution grade, not by decision type. Every read-out is graded by the quality of its counterfactual: A for a controlled test, B for a staged rollout or flagged release, C for a plain launch. Grade A and B outcomes stack into one record with confidence weighted by grade, so a flag rollout on retention teaches the coach something about retention without pretending it was a controlled test. Covering every decision type ungraded would leave a handful of unscorable examples in each and nothing defensible anywhere. Covering them graded keeps the evidence in one place.
 
 **What the user notices next time:** Nothing, and this is the visible cost of the narrow start. A product manager who has spent six months on activation moves to retention and the coach starts cold on the new area. It knows the team's experiment history but has no accumulated sense of the new problem space.
 
@@ -48,7 +50,7 @@ The second reason is cost. Deep personalization is per-person customization, whi
 
 **What you capture today:** Every objection, override and outcome, held per customer.
 
-**How it compounds:** Across customers rather than within one. Which kinds of objection get overridden and later prove wrong is not commercially sensitive, so it can be learned from every account without touching anyone's private information. Users never connect to each other, so this is pooled statistics rather than a network effect.
+**How it compounds:** Across customers, not within one. Which kinds of objection get overridden and later prove wrong is not commercially sensitive, so it can be learned from every account without touching anyone's private information. Users never connect to each other, so this is pooled statistics, not a network effect.
 
 **What the user notices next time:** Nothing at launch, because pooling needs a customer base first. Once enough teams are running, a new customer's first objection can carry a benchmark drawn from every other customer, telling them how often teams like theirs override this kind of call and how often those overrides go badly. No single team could produce that for itself.
 
@@ -64,11 +66,11 @@ That answer runs against the exercise, which says to invest in the weakest loop,
 
 Domain Context scores 1 because what the coach learns from activation experiments does not carry over when the same person starts working on retention. The obvious fix is to cover more kinds of decisions, and done naively it costs more than it returns, because most product decisions are ones where nobody can check the advice afterwards. Roadmap calls, pricing changes, positioning. Expanding into them ungraded means giving up the ability to keep score, and keeping score is the only thing separating this from every other AI advice tool.
 
-The way through is to grade the read-out rather than to pick the decision type. A controlled test is grade A. A staged rollout or a flagged release is grade B: partial exposure and a before-and-after, attributable with care, and about ten times more common than a formal experiment. A plain launch is grade C and never counts toward the published hit rate. Confidence on a prediction and its weight in the record follow the grade. The coach can then object on any decision that will produce a read-out, and the record stays honest about how much each outcome proves.
+The way through is to grade the read-out instead of picking the decision type. A controlled test is grade A. A staged rollout or a flagged release is grade B: partial exposure and a before-and-after, attributable with care, and about ten times more common than a formal experiment. A plain launch is grade C and never counts toward the published hit rate. Confidence on a prediction and its weight in the record follow the grade. The coach can then object on any decision that will produce a read-out, and the record states how much each outcome proves.
 
 That also fixes the evidence problem. Credibility comes from many scored decisions in one record, and grading puts rollouts and experiments in the same record with the weighting stated, instead of splitting them into ten thin piles.
 
-*Refined after Module 6.* This section first argued for leaving Domain Context at 1 on purpose and staying on A/B tested decisions only. That kept the scoring honest and kept the market small, and it placed the product on the surface the experimentation platforms own. Attribution grading keeps the first and removes the other two.
+*Refined after Module 6.* This section first argued for leaving Domain Context at 1 on purpose and staying on A/B tested decisions only. That kept the scoring clean and the market small, and it placed the product on the surface the experimentation platforms own. Attribution grading keeps the first and removes the other two.
 
 ### Why the Network loop instead
 
@@ -80,7 +82,7 @@ Three things make it the right investment.
 
 **It works on day one.** A new customer has no history of their own, so a benchmark drawn from everyone else is the only evidence available at that moment.
 
-It touches nobody's confidential information, because the pattern describes a category of objection rather than any company's product plans.
+It touches nobody's confidential information, because the pattern describes a category of objection, not any company's product plans.
 
 **And it works at small scale.** A statistic about objection types settles down after roughly a hundred teams, where a network effect needs millions. That difference is why one is reachable within a year and the other is not.
 
@@ -109,7 +111,7 @@ How many labels before a claim can be made. Stating a hit rate near 70% within p
 
 An overall accuracy claim is available after roughly three customers, which is reachable in the first months. The per-objection-type claim, which is the version that appears in the product and tells a user how much to trust the objection in front of them, needs around seventeen customers.
 
-That is the threshold for the flywheel doing visible work, and it is a sales target rather than an engineering one. It also confirms the priority independently: nothing in this arithmetic improves by making one customer's experience better.
+That is the threshold for the flywheel doing visible work, and it is a sales target, not an engineering one. It also confirms the priority independently: nothing in this arithmetic improves by making one customer's experience better.
 
 Refined after Module 4 (2026-09-03). The rates above assume the coach only produces a scorable call when it objects. Adding a fourth outcome, an endorsement carrying its own prediction on named positive precedent, roughly doubles the share of reviews that produce a labelled row.
 
@@ -124,7 +126,7 @@ The seventeen-customer threshold above was the binding constraint on this whole 
 
 ### For comparison, a competitor's flywheel
 
-Scored from public information about ChatPRD, so these are estimates rather than measurements.
+Scored from public information about ChatPRD, so these are estimates, not measurements.
 
 | Loop | ChatPRD | product-coach | Difference |
 |---|---|---|---|
@@ -184,17 +186,19 @@ The likelihood splits in two. Copying the mechanism is likely, because it is a q
 
 **Time-to-threat:** One to two quarters.
 
-**% of value at risk:** About 50%, revised from 90% after Module 6 (note below). On value at risk ChatPRD now leads at 65%; on capability these remain the most dangerous, because they are the only attacker who could build the proof. They are the only attacker who could build all three rows, including the proof, because the outcome data is already sitting in their database.
+**% of value at risk:** About 50%, revised from 90% after Module 6 (note below). On value at risk ChatPRD now leads at 65%. On capability these remain the most dangerous, because they are the only attacker who could build all three rows, including the proof: the outcome data is already sitting in their database.
 
-The speed comparison is the uncomfortable part. Reaching a per-objection-type accuracy claim takes roughly seventeen customer backtests, which for this product means seventeen sales. They already hold hundreds of customers' experiment histories and could run the same backtest across all of them in a weekend.
+The speed comparison is the uncomfortable part. Reaching a per-objection-type accuracy claim takes roughly seventeen customer backtests, nine after the Module 4 refinement above, which for this product means that many sales. They already hold hundreds of customers' experiment histories and could run the same backtest across all of them in a weekend.
 
 What holds the number below 100% is that they see the experiment and not the decision. They have no objection, no override, and nothing from the repository, the tracker or the customer feedback channels. They know what was tested. They do not know what the team believed, what else it was weighing, or what it decided without testing.
 
 *Refined after Module 6.* The 90% assumed the product lived inside the experiment flow. It no longer does. The coach objects at the brief, PRD or roadmap stage, upstream of any platform, and scores against read-outs from every source the team uses, including flag rollouts the platforms never see. A native review step inside Statsig covers the slice of decisions that reached Statsig. Value at risk from that vector is nearer 50% than 90%. That puts ChatPRD ahead on the copyable rows, and the platforms still ahead on capability, since only they hold outcome data. The defense is the part neither can reach: the decisions that never became experiments, the cross-source context, and the pooled objection-type priors from the Network loop, which is why that loop is sequenced first.
 
-The likelihood is lower than the capability, for two reasons. Their buyer is data and engineering rather than product leadership, so this would be a new sales motion. And publishing an accuracy number invites the same scrutiny of everything else they sell.
+Moving upstream trades one surface for another, and the trade should be named. The brief and roadmap stage belongs to Atlassian, Linear, Notion and Productboard, which already hold the tracker and the documents, and their vector is a review step on the PRD. What they lack is the mirror of what the experimentation platforms lack: they see the decision and never the outcome, the platforms see the outcome and never the decision. This product's position is the join. Neither side holds both without acquiring the other, and the record of decision against outcome is the asset that only the join can build.
 
-The conclusion this assessment changes. Module 1 named ChatPRD as the primary attacker on two of three axes. That was wrong. Choosing A/B tested decisions as the beachhead, which was the right call for attribution, placed the product inside a surface the experimentation platforms already own. They are the more dangerous attacker, and the assessment should have found that before the beachhead was chosen rather than after. Module 6 acted on it: the intervention point moved upstream to the brief and roadmap, the platforms became read-out sources, and the value at risk from this vector is revised above.
+The likelihood is lower than the capability, for two reasons. Their buyer is data and engineering, not product leadership, so this would be a new sales motion. And publishing an accuracy number invites the same scrutiny of everything else they sell.
+
+The conclusion this assessment changes. Module 1 named ChatPRD as the primary attacker on two of three axes. That was wrong. Choosing A/B tested decisions as the beachhead, which was the right call for attribution, placed the product inside a surface the experimentation platforms already own. They are the more dangerous attacker, and the assessment should have found that before the beachhead was chosen, not after. Module 6 acted on it: the intervention point moved upstream to the brief and roadmap, the platforms became read-out sources, and the value at risk from this vector is revised above.
 
 ## 90-Day Encroachment Plan
 
@@ -222,8 +226,8 @@ The third part does not survive contact.
 
 Microsoft's corpus is code, not product outcomes. GitHub holds repositories, issues and pull requests. Azure Monitor holds infrastructure telemetry. Neither holds the result of an A/B test on activation rate. So the benchmark they threatened to publish would be about code review, not about whether a product bet paid off, and those are different claims. The scale advantage evaporates once you ask which table the outcome data sits in.
 
-Breadth also carries a cost they did not mention. Covering eleven decision types means covering ten where nobody can check afterwards whether the advice was right. A product that reviews everything cannot keep score on anything, because most product decisions have no control group. They would ship a broader product that is structurally unable to do the one thing this product sells.
+Breadth also carries a cost they did not mention. Covering eleven decision types means covering ten where nobody can check cleanly afterwards whether the advice was right. A product that reviews everything ungraded cannot keep score on anything, because most product decisions have no counterfactual, and a product that grades its read-outs only keeps score where one exists. They would ship a broader product that is structurally unable to do the one thing this product sells.
 
 And a free bundled feature has no incentive to publish its own accuracy. E5 features are not measured in public. The same disincentive that stops ChatPRD stops Microsoft, and it is stronger for them, because a number attached to a bundled feature invites questions about every other bundled feature.
 
-So the defense is not to fight on breadth or on price, both of which are lost. It is to take the segment that has been burned by confident advice and wants a number attached to it, sell the backtest as the first conversation rather than the product, and stay on ground where results are measurable so the number keeps being true. That is a smaller market than Microsoft's, and it is one they have no reason to enter.
+So the defense is not to fight on breadth or on price, both of which are lost. It is to take the segment that has been burned by confident advice and wants a number attached to it, sell the backtest as the first conversation instead of the product, and stay on ground where results are measurable so the number keeps being true. That is a smaller market than Microsoft's, and it is one they have no reason to enter.

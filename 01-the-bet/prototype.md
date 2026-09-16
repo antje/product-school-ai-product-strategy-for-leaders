@@ -57,7 +57,7 @@ Keep the same three figures and the same wording everywhere else on the
 page. Change nothing else.
 ```
 
-The refinement fixes a hierarchy problem. The first build put the coach's hit rate at the bottom of the panel in the smallest type on the page. That inverts what matters. The objection is the part a competitor can copy next quarter. The record of whether past objections were right is the part that takes years to accumulate. Credibility should sit next to the claim it supports rather than trailing it as a footnote.
+The refinement fixes a hierarchy problem. The first build put the coach's hit rate at the bottom of the panel in the smallest type on the page. That inverts what matters. The objection is the part a competitor can copy next quarter. The record of whether past objections were right is the part that takes years to accumulate. Credibility should sit next to the claim it supports, not trail it as a footnote.
 
 Reframing the figures from an overall record to a record on this kind of call does a second thing. An aggregate hit rate tells a reader how good the coach is in general. A hit rate on objections about assumed causation tells them how much to trust the one on screen.
 
@@ -66,7 +66,7 @@ Reframing the figures from an overall record to a record on this kind of call do
 
 https://product-coach.vercel.app/
 
-Live and public. Click "Review experiment" to trigger the coach. The Team history tab and the "View all calls" link are navigation stubs. The prototype demonstrates the single review moment rather than the whole product.
+Live and public. Click "Review experiment" to trigger the coach. The Team history tab and the "View all calls" link are navigation stubs. The prototype demonstrates the single review moment, not the whole product.
 
 ### Screenshots
 
@@ -83,7 +83,7 @@ After the review, showing the refined layout. One objection, the coach's record 
 
 Copilot, moving to Orchestrator later.
 
-Copilot fits what this prototype shows and what the product is at the start. The economics scale with seats rather than with tasks replaced or assets produced. The human stays in the loop by design, because the product's differentiator is that it argues rather than answers.
+Copilot fits what this prototype shows and what the product is at the start. The economics scale with teams and reviews, not with tasks replaced or assets produced. The human stays in the loop by design, because the product's differentiator is that it argues instead of answering.
 
 Creator is the tempting label, since documents come out of it. It is the wrong one. Creator economics are where copies arrive fastest, and that is the ground the incumbent already owns.
 
@@ -94,14 +94,18 @@ The archetype changes once the coach proposes experiments instead of only review
 
 Product teams will pay for a coach that argues with their decisions using their own data and keeps score on whether it was right.
 
-Why now. Two things became true recently. Agents can read a team's live systems instead of being told about them. And experiment platforms log hypotheses and results well enough that the coach can be graded against a team's own history before anyone buys it. Neither was true two years ago. The second is what makes the scoreboard something you can sell on rather than something you promise.
+Why now. Two things became true recently. Agents can read a team's live systems instead of being told about them. And experiment platforms log hypotheses and results well enough that the coach can be graded against a team's own history before anyone buys it. Neither was true two years ago. The second is what makes the scoreboard something you can sell on instead of something you promise.
 
 ## Kill Criteria
 <!-- When would you stop? What evidence would kill this bet? -->
 
 **The one that kills it.** Run the coach backwards over about fifty of a team's completed experiments. Compare the calls it would have flagged against the ones it would have passed. If the flagged experiments do not underperform the unflagged ones, the coach has no judgment worth selling, and every other part of the strategy depends on it having some.
 
-The test is pre-registered, because a test this important can be passed by accident or softened after the fact. The threshold: the success rate of flagged experiments is at least 20 points below the unflagged ones, with at least 12 flagged, which is the smallest effect visible at roughly 17 against 33. The leakage control: the coach sees only the brief, with the team's history cut at the brief's date, and never the read-out. The data: two or three named design-partner teams, through the analytics connector each one uses. The date: within eight weeks of the first partner connecting. Threshold, controls and partners are written down before the run and published with the result.
+The test is pre-registered, because a test this important can be passed by accident or softened after the fact. The threshold: the success rate of flagged experiments is at least 20 points below the unflagged ones. The leakage control: the coach sees only the brief, with the team's history cut at the brief's date, and never the read-out. The data: two or three named design-partner teams, through the analytics connector each one uses. The date: within eight weeks of the first partner connecting. Threshold, controls and partners are written down before the run and published with the result.
+
+The unit of decision is the pool, not the partner. One partner's fifty experiments yield somewhere between the pre-registered minimum of twelve flags and the assumed seventeen, and at twelve a 20-point gap carries a 95% interval of roughly ±27 points, so a single-partner pass or fail is mostly noise. Pooled across three partners, about 150 experiments and 36 flags, the interval is about ±16 and a 20-point gap clears zero; across two it is about ±19 and just clears. So the kill decision is taken on the pooled result, a single partner is a signal and not a verdict, and the power arithmetic is part of the pre-registration. One more control: with history cut at each brief's date, the first experiments in a team's history have nothing to be objected with, so flags are counted only on experiments with at least ten prior read-outs available.
+
+A lower-trust mode exists for a partner who will not grant live access before proof: an export of anonymised briefs and read-outs, scored offline under the same pre-registration and threshold. Proof can then precede integration, which matters because the entry gate otherwise asks for the highest-trust access at the lowest-trust moment.
 
 This test is cheap. It uses data that already sits in the analytics platform, and it runs before any product is sold. It is also the entry gate: a subscription starts only when a team's own backtest passes, so the kill decision precedes the spend on both sides.
 
@@ -109,6 +113,6 @@ This test is cheap. It uses data that already sits in the analytics platform, an
 
 The signal to watch is the override rate, split by experience level. A senior manager overriding a bad objection and a new manager ignoring a good one look the same in aggregate, and they mean opposite things.
 
-**The one that forces a re-cut rather than a stop.** A coding agent shipping persistent cross-session product memory, bundled and free. That would not end the bet. The analytics context and the verified record of outcomes stay outside what a model provider can see. It would take the repository half of the context, and the wedge would have to be re-argued around what is left.
+**The one that forces a re-cut, not a stop.** A coding agent shipping persistent cross-session product memory, bundled and free. That would not end the bet. The analytics context and the verified record of outcomes stay outside what a model provider can see. It would take the repository half of the context, and the wedge would have to be re-argued around what is left.
 
 **Not a kill criterion.** A competitor copying the review-with-evidence mechanic. That is expected. It is one product decision away for a company that already has the seats. The answer to it is collecting outcomes faster than they do, not keeping the mechanism secret.

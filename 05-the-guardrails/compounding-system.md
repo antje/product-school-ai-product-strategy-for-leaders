@@ -22,7 +22,7 @@ The tool asks present tense: does this loop compound today. product-coach is a p
 | Cross-Domain Transfer | Attribution grading on read-outs, and the first grade B outcomes | The first design partner releasing behind flags |
 | Network Intelligence | Customers, under data-use terms that permit pooling | The first design partners, whose agreements grant pooled use of objection-type outcomes and nothing else |
 
-Cross-Domain Transfer was first declined as a scope decision, on the grounds that only controlled tests can be checked against a control. That kept scoring honest and left the product on the surface the experimentation platforms own, with a market of teams that run formal experiments weekly. The revised answer grades every read-out by the quality of its counterfactual: A for a controlled test, B for a staged rollout or flagged release, C for a plain launch. The coach objects on any decision that will produce a read-out, confidence and record weight follow the grade, and only A and B count toward the published hit rate. The loop is designed and not yet fed, because the record today holds only grade A outcomes.
+Cross-Domain Transfer was first declined as a scope decision, on the grounds that only controlled tests can be checked against a control. That kept scoring clean and left the product on the surface the experimentation platforms own, with a market of teams that run formal experiments weekly. The revised answer grades every read-out by the quality of its counterfactual: A for a controlled test, B for a staged rollout or flagged release, C for a plain launch. The coach objects on any decision that will produce a read-out, confidence and record weight follow the grade, and only A and B count toward the published hit rate. The loop is designed and not yet fed, because the record today holds only grade A outcomes.
 
 Network Intelligence cannot exist before customers do. Marking it as a failure would be marking pre-launch as a failure.
 
@@ -69,7 +69,7 @@ A loop whose inputs users do not produce cannot be wired, however good the backe
 
 Network Intelligence ships after the first paying accounts. The decision that enables it has to be made before the first one signs.
 
-Two things get recorded and they are not the same kind of thing. What this team tested and what happened is customer context, private, and it never leaves the account. Which objection types prove right is craft knowledge, a property of product management rather than of anyone's business, and it can be pooled without exposing anything.
+Two things get recorded and they are not the same kind of thing. What this team tested and what happened is customer context, private, and it never leaves the account. Which objection types prove right is craft knowledge, a property of product management, not of anyone's business, and it can be pooled without exposing anything.
 
 Stored as one blob per customer, the second can never be separated from the first, and pooling becomes a data protection problem instead of a product feature. That forecloses the loop permanently and quietly. Split at the schema, it stays open at no cost today.
 
@@ -85,15 +85,15 @@ The freeze table is also a kill list. Templates, integration breadth and content
 
 This is the commitment most likely to be broken under sales pressure, because integration count is what prospects ask about and record density is not.
 
-**6. Throttle the loop on purpose: the record calibrates how loudly a call is made, never whether to make it.**
+**6. Throttle the loop: the record calibrates how loudly a call is made, never whether to make it.**
 
-This is the guardrail the compounding loop needs, and it costs real compounding to install. A coach allowed to suppress objection types it had been wrong about would lift its hit rate by going quiet on exactly the cases a team most needs challenged, and the scoreboard would climb while the product got worse. Declining costs the team a warning and costs the coach nothing on the scoreboard, which makes silence the one failure this record cannot catch.
+This is the guardrail the compounding loop needs, and it costs real compounding to install. A coach allowed to suppress objection types it had been wrong about would lift its hit rate by going quiet on the cases a team most needs challenged, and the scoreboard would climb while the product got worse. Declining costs the team a warning and costs the coach nothing on the scoreboard, so silence is the failure this record cannot catch.
 
 So the record should set confidence and phrasing, and a call type the coach has misjudged before should be raised tentatively and say so. It should never decide what goes unsaid. The loop compounds more slowly this way. That is what the guardrail costs, and it is worth paying.
 
 ### What this means for build order
 
-1. The override and read-out experiences, because they are the inputs and nothing accumulates without them. The return path is gated on nothing technically, but wiring it to a record of dismissals would compound noise, so the inputs come first on purpose.
+1. The override and read-out experiences, because they are the inputs and nothing accumulates without them. The return path is gated on nothing technically, but wiring it to a record of dismissals would compound noise, so the inputs come first.
 2. The return path from the record into the reasoning, which closes Recursive Learning.
 3. The craft and context split, which costs nothing now and is unrecoverable later.
 4. The pooled cold-start layer, at the first paying accounts.
@@ -106,7 +106,7 @@ Cross-Domain Transfer opens with attribution grading at the first design partner
 
 **Where it silos:** Two places, and they are Recursive Learning and Network Intelligence. Between the record and the reasoning, so outcomes never reach the next objection. And between accounts, where each team's history is fenced. Fencing is correct for a team's own experiments and wrong for which objection types prove right, and the design commitment above is to split those two at the schema so the second can be pooled without touching the first.
 
-There is no third silo of the usual organizational kind, because there is no organization. One person builds, ships and reviews, which removes the classic handoff failures and replaces them with a single point of failure. The governance policy below accounts for that rather than pretending it away.
+There is no third silo of the usual organizational kind, because there is no organization. One person builds, ships and reviews, which removes the classic handoff failures and replaces them with a single point of failure. The governance policy below accounts for it.
 
 ## Governance Policy
 
@@ -134,7 +134,7 @@ The exposure that does exist is quieter: this product grades its own homework, a
 
 The two human-approval rows carry the weight.
 
-**Ambiguous read-outs.** Experiments come back inconclusive often: underpowered, flat, or with guardrails moving against the primary metric. Auto-scoring those is how a self-graded scoreboard drifts flattering, and the scoreboard is the product. Ambiguous means the 95% confidence interval on measured lift contains the threshold the objection named, or the experiment's minimum detectable effect exceeds the observed effect. Both tests need the read-out to carry a confidence interval alongside the point estimate, which the data model does not hold today. Until that field exists, every inconclusive result routes to manual resolution rather than being scored, so the rule degrades safely instead of silently failing to run.
+**Ambiguous read-outs.** Experiments come back inconclusive often: underpowered, flat, or with guardrails moving against the primary metric. Auto-scoring those is how a self-graded scoreboard drifts flattering, and the scoreboard is the product. Ambiguous means the 95% confidence interval on measured lift contains the threshold the objection named, or the experiment's minimum detectable effect exceeds the observed effect. Both tests need the read-out to carry a confidence interval alongside the point estimate, which the data model does not hold today. Until that field exists, every inconclusive result routes to manual resolution instead of being scored, so the rule degrades safely.
 
 **Prompt and model changes.** One prompt edit changes every objection every customer sees, which makes this the highest-leverage decision in the product. A change cannot ship if the golden-set pass rate is below 90%, if any adversarial row regresses against the previous version, or if the hallucinated-citation rate exceeds 1%. The run is stamped with the prompt version and attached to the release. Approver: Eval owner.
 
@@ -151,7 +151,7 @@ Each one is measurable, and each names the state the system moves to.
 5. Any request to write to a customer system. Refuse and log. This opens a design review rather than a permission request.
 6. A request for a named individual's coaching profile from anyone other than that individual. Hold and refer to the regulatory section.
 
-**Decline-only, defined.** A runtime state in which the coach still reviews and still refuses unreviewable briefs, and returns a decline on every call rather than an objection. It exists because the failure mode worth guarding against is a confident wrong citation, not silence. Entered automatically by triggers 1 and 2, and only by the Founder manually. Left only after the golden rows pass on the pinned version, which makes exit a measured event rather than a judgment call. This is the runtime hook the kill switch in the moat work assumed and did not name.
+**Decline-only, defined.** A runtime state in which the coach still reviews and still refuses unreviewable briefs, and returns a decline on every call instead of an objection. It exists because the failure mode worth guarding against is a confident wrong citation, not silence. Entered automatically by triggers 1 and 2, and only by the Founder manually. Left only after the golden rows pass on the pinned version, which makes exit a measured event, not a judgment call. This is the runtime hook the kill switch in the moat work assumed and did not name.
 
 ### Audit cadence
 
@@ -173,7 +173,7 @@ Four roles, one person. That is a single point of failure, not a design. The mit
 
 **Risk tier: limited, conditionally.** A decision-support tool for product teams sits in no Annex III category. The applicable obligation is transparency, which the product meets by construction, since the entire interface is an AI stating an opinion and every objection is labelled advisory.
 
-**Controls.** Design-partner and customer agreements grant pooled use of one thing, which objection types proved right, and nothing else; a team's experiments, briefs and overrides never leave the account. No customer data trains any model. Prompts carry briefs and experiment metadata only, with no PII fields collected by design. The ledger holds a salted hash of the caller's IP for rate limiting and session-scoped call records. Model and prompt versions are stamped on every ledger row, so any score is attributable to a specific system version rather than to the product in general. Retention: IP hashes 30 days, since their only purpose is rate limiting; call records 24 months, because the track record is the product and a shorter window would delete the asset; aggregate craft statistics irreversibly anonymised and retained indefinitely. Deletion on request removes call records and any personal profile within 30 days and cannot reach the anonymised aggregates, which is stated plainly at signup rather than buried.
+**Controls.** Design-partner and customer agreements grant pooled use of one thing, which objection types proved right, and nothing else; a team's experiments, briefs and overrides never leave the account. No customer data trains any model. Prompts carry briefs and experiment metadata only, with no PII fields collected by design. The ledger holds a salted hash of the caller's IP for rate limiting and session-scoped call records. Model and prompt versions are stamped on every ledger row, so any score is attributable to a specific system version, not to the product in general. Retention: IP hashes 30 days, since their only purpose is rate limiting; call records 24 months, because the track record is the product and a shorter window would delete the asset; aggregate craft statistics irreversibly anonymised and retained indefinitely. Deletion on request removes call records and any personal profile within 30 days and cannot reach the anonymised aggregates, which is stated at signup.
 
 **Personal data.** Saying no PII is collected is too neat. An override is attributable to the person who made it, which makes it personal data under GDPR whether or not a name field exists. Data minimisation is therefore about what we do with it: the leadership record aggregates by decision and never by named individual.
 
@@ -193,7 +193,7 @@ Four components today, three of which call a model, plus one designed and not ye
 | Judge | Score a resolved prediction against measured lift | Run in production, or resolve an ambiguous read-out | Code for the first. Policy plus the manual queue for the second, owned by the Eval owner |
 | Monitor, not built | Watch metrics and draft candidate experiments | Send, schedule or start anything | Design. To be enforced in code when built |
 
-No component calls another component's tools. Retrieval is a whitelisted read against four named sources. Memory is session-scoped for the caller and per-customer for the ledger, with nothing shared across customers by default. There is no chain in the multi-agent sense, so there is no handoff to own, and that simplicity is worth keeping on purpose rather than losing by accident.
+No component calls another component's tools. Retrieval is a whitelisted read against four named sources. Memory is session-scoped for the caller and per-customer for the ledger, with nothing shared across customers by default. There is no chain in the multi-agent sense, so there is no handoff to own, and that simplicity is worth keeping by decision, not losing by accident.
 
 ## Shadow AI Audit
 
@@ -236,7 +236,7 @@ Sequence: override reasons, then read-out delivery, then record prominence, then
 
 **Partner.** ChatPRD, with a generic open-in-your-drafting-tool fallback for teams on something else.
 
-Document generation is the stated hard no. It is the incumbent's ground and the economics where copies arrive fastest, so this is a workaround the strategy chooses to cause rather than one it failed to prevent.
+Document generation is the stated hard no. It is the incumbent's ground and the economics where copies arrive fastest, so this is a workaround the strategy chooses to cause, not one it failed to prevent.
 
 Auth is per-user OAuth from product-coach to the drafting tool, with no service account and no org-wide token, so one user's drafting workspace is never readable on another's behalf. Data flows one direction only: we push the sharpened hypothesis and the objection text out, and never read documents back. That keeps a new and sensitive data class outside our boundary entirely, the control the governance audit found missing almost everywhere else. The entry point is a draft-this action attached to the sharpened hypothesis inside the review, not a settings-page integration. Drafting is where a review gets triggered, so meeting the user there is how the coach arrives before intent instead of after it.
 
@@ -258,8 +258,8 @@ Six workarounds, four build, one partner, one ignore, nothing undecided. Adjacen
 
 Trust dominating changes what this audit is. Users double-checking the output against another model are not asking for a feature, they are telling us they do not yet believe the answer, which is a credibility problem wearing a feature request as a disguise. Building the four rows without fixing the credibility underneath would produce a better-instrumented product that people still verify elsewhere.
 
-So the next move loops back to the reliability work rather than forward into new surface: the confidence tiers, the reliability contract, and making the evaluation legible to the user, not only to us. The one build row that matters most on this reading is record prominence, because it is the only one that directly answers "why should I believe this call," and the other three are worth less until it lands.
+So the next move loops back to the reliability work instead of forward into new surface: the confidence tiers, the reliability contract, and making the evaluation legible to the user, not only to us. The one build row that matters most on this reading is record prominence, because it is the only one that directly answers "why should I believe this call," and the other three are worth less until it lands.
 
 Sequence the build column on frequency against strategic relevance, not on frequency alone. Confirm the partner row with ChatPRD's partnership team before treating it as a plan. Re-run the whole audit each quarter, because workarounds move faster than roadmaps.
 
-**What would make this audit real.** Each entry in the signal source column is a place to go looking. Search the support inbox for ChatGPT, Claude, Zapier and competitor names. Read the Zapier and Make directories for recipes naming the product. Ask in interviews what someone did in the ten minutes after the objection appeared, because the two highest-frequency rows here are invisible in telemetry and surface only by watching someone work. Five mentions is a pattern. All of it requires customers, which is the same gate as the judgment backtest, and the same reason this section forecasts rather than reports.
+**What would make this audit real.** Each entry in the signal source column is a place to go looking. Search the support inbox for ChatGPT, Claude, Zapier and competitor names. Read the Zapier and Make directories for recipes naming the product. Ask in interviews what someone did in the ten minutes after the objection appeared, because the two highest-frequency rows here are invisible in telemetry and surface only by watching someone work. Five mentions is a pattern. All of it requires customers, which is the same gate as the judgment backtest, and the same reason this section forecasts instead of reporting.
