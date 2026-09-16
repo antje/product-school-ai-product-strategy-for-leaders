@@ -4,7 +4,7 @@
 >
 > Engineers get code review. Product managers get nothing. product-coach reads a team's repository, tracker, analytics and customer feedback, objects to a decision using that team's own numbers, attaches a falsifiable prediction to the objection, and records whether it was right when the result comes in. The advice is copyable next quarter. The record of predictions and outcomes is not.
 
-**Prototype:** [product-coach.vercel.app](https://product-coach.vercel.app/) · **Board pitch:** [antje.github.io/…/board-pitch-deck.html](https://antje.github.io/product-school-ai-product-strategy-for-leaders/06-the-pitch/board-pitch-deck.html) · **Author:** Antje Barth
+**Prototype:** [product-coach.vercel.app](https://product-coach.vercel.app/) · **Board pitch:** [antje.github.io/…/final-presentation.html](https://antje.github.io/product-school-ai-product-strategy-for-leaders/final-presentation.html) · **Author:** Antje Barth
 
 ---
 
@@ -107,7 +107,7 @@
 - **Key Strategic Change:** The intervention point moved upstream of the experimentation platforms, to the moment a decision is written down, and read-outs are graded by attribution quality so flag rollouts count. The platforms went from the most dangerous attacker to the read-out sources the product sits above. Year one became a design-partner program gated on a pre-registered backtest.
 - **AI Metrics for the Board:** Hallucination <1% (alert >2%). Drift <5pp per four weeks. HITL rate <2% of reviews, since a human is reached only on a fabricated citation or disagreeing endorsement precedents. Inference ROI about 78x, $116 of inference per $9,000 of revenue. Eval regression: zero shipped, because a release is blocked below 90% golden-set pass; measured as the pass-rate delta per release. Confidence distribution is reported from the ledger by tier (>90%, 70 to 90%, declined below 70%) and deliberately not targeted, because a target would push the coach to game its own confidence.
 
-→ Details: [`roadmap.md`](06-the-pitch/roadmap.md) · [board pitch deck, live](https://antje.github.io/product-school-ai-product-strategy-for-leaders/06-the-pitch/board-pitch-deck.html)
+→ Details: [`roadmap.md`](06-the-pitch/roadmap.md) · [`final-presentation.html`](final-presentation.html), [live](https://antje.github.io/product-school-ai-product-strategy-for-leaders/final-presentation.html)
 
 ---
 

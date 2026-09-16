@@ -94,7 +94,7 @@ The summary line: "unusually disciplined thinking with unusually thin evidence. 
 
 ## Board Pitch
 
-A slide version of this section is at [`board-pitch-deck.html`](board-pitch-deck.html), served live at [antje.github.io/product-school-ai-product-strategy-for-leaders/06-the-pitch/board-pitch-deck.html](https://antje.github.io/product-school-ai-product-strategy-for-leaders/06-the-pitch/board-pitch-deck.html), eight slides with arrow-key navigation. The text below is the spoken version.
+A slide version of this section is at [`final-presentation.html`](../final-presentation.html) in the repo root, served live at [antje.github.io/product-school-ai-product-strategy-for-leaders/final-presentation.html](https://antje.github.io/product-school-ai-product-strategy-for-leaders/final-presentation.html), eight slides with arrow-key navigation. The text below is the spoken version.
 
 For a partner at a seed fund writing $500k to $1M first checks into B2B software, an ex-product leader who has run experiments and has passed on a dozen AI copilots for PMs. They lead the deal and sell it to two partners on a Monday, so the thesis has to survive without the founder in the room.
 
