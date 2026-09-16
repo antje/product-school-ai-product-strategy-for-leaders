@@ -58,7 +58,7 @@
 - **Gross Margin (floor):** 74.3% at the rejected $30-per-seat price, shown as the worst case. COGS is $7.72 per seat per month, $463 per five-seat team per year, and 65% of it is human onboarding rather than inference.
 - **Gross Margin (proposed pricing):** 94.9% in year one, 97.8% by year three once onboarding is self-serve. Inference is $116 of the $463, so revenue per inference dollar is about 78x.
 - **Pricing Model:** Hybrid. $500 per team per month plus $60 per experiment reviewed, so $9,000 in year one. Year one is a founder-led design-partner program of three to five teams, onboarded by hand under data-use terms that seed the pooled layer; self-serve from year two. Every subscription starts only when the team's own backtest passes. Outcome units were rejected because a resolved call would let the vendor decide the invoice, and because any unit tied to warnings shrinks as the coach teaches the team to stop repeating itself.
-- **Cascading Strategy:** 96% of requests to small models and embeddings, 4% to mid and frontier. A task moves up a tier only when a smaller model actually fails at it and being wrong costs something. Worth 19.5 points of gross margin.
+- **Cascading Strategy:** 96% of requests to small models and embeddings, 4% to mid and frontier. The volume is the daily-help surface, about 88 assists per seat per month, given away to build the habit; the priced review is the 4%. A task moves up a tier only when a smaller model actually fails at it and being wrong costs something. Worth 19.5 points of gross margin.
 - **Break-even at:** Contribution is $8,537 per team per year, so the platform ($20 Vercel, $19 Neon a month) is covered by the first team. The model carries no salary, so real break-even is loaded founder cost divided by $8,537, and that number is what the ask has to fund. A review costs 0.7% of the $25,000 experiment it checks; year-one CAC is founder time, and from year two self-serve payback is 1.7 months against 28.7 at seat pricing with a rep.
 
 → Details: [`cost-curve.md`](03-the-margin/cost-curve.md)
@@ -98,12 +98,12 @@
 
 **How you get this funded, shipped, and adopted.**
 
-- **Horizon 1 (Now):**
-- **Horizon 2 (Next):**
-- **Horizon 3 (Bet):**
+- **Horizon 1 (Now):** Four weeks, nine items, everything that gates the backtest: the first partner's analytics connector, the craft/context schema split, override capture and read-out delivery with their loop metrics, attribution grading, data-use and retention terms, golden set to 100 with a calibration check, and the customer ROI one-liner.
+- **Horizon 2 (Next):** One to three months, eleven items with kill criteria: the pre-registered backtest (stop if the gap is under 20 points on two partners by week 8), ten buyer conversations (reprice if fewer than 3 of 10 say yes by week 4), three to five design partners, the Recursive Learning return path, the cascade, the CI gate and `decline-only`, record prominence, the PII screen, provider abstraction, record export.
+- **Horizon 3 (Bet):** Three to six months, four items each with a precondition: the pooled cold-start layer, which is the one to protect if budget is cut; self-serve onboarding in year two; the monitoring add-on only after the backtest passes; the private person layer only once never-upward is enforced in code.
 - **Board Narrative:**
 - **Ask:**
-- **Key Strategic Change:**
+- **Key Strategic Change:** The intervention point moved upstream of the experimentation platforms, to the moment a decision is written down, and read-outs are graded by attribution quality so flag rollouts count. The platforms went from the most dangerous attacker to the read-out sources the product sits above. Year one became a design-partner program gated on a pre-registered backtest.
 - **AI Metrics for the Board:** Hallucination <1% (alert >2%). Drift <5pp per four weeks. HITL rate <2% of reviews, since a human is reached only on a fabricated citation or disagreeing endorsement precedents. Inference ROI about 78x, $116 of inference per $9,000 of revenue. Eval regression: zero shipped, because a release is blocked below 90% golden-set pass; measured as the pass-rate delta per release. Confidence distribution is reported from the ledger by tier (>90%, 70 to 90%, declined below 70%) and deliberately not targeted, because a target would push the coach to game its own confidence.
 
 → Details: [`06-the-pitch/`](06-the-pitch/)
